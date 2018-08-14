@@ -1,0 +1,82 @@
+#!/bin/bash
+HOME_DIR="/home/aide/aide"
+
+for client in `ls ${HOME_DIR}/clients`
+do
+  echo "Client ${client}:"
+	count=`ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | wc -l`
+	if [ "$count" -ge "2" ]; then
+	
+		newer=`ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | sort -r| sed -n '1p'`
+		if [ -f "${HOME_DIR}/clients/${client}/logs/${newer}" ]; then
+		  echo "   No newer version available. Aborting..."
+		  continue
+		else
+		  echo "   New version has been found: ${newer}"
+		fi
+		
+		older=`ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | sort -r| sed -n '2p'`
+		echo "   Recent version has been found: ${older}"
+			
+		echo "   Setting up ${client}.conf for new version."
+			cat ${HOME_DIR}/conf/${client}.conf | 
+			sed -r "s|^(database=file:).*$|\1${HOME_DIR}/spool/${older}|" |
+			sed -r "s|^(database_new=file:).*$|\1${HOME_DIR}/spool/${newer}|" > /tmp/xxx
+			cat /tmp/xxx > ${HOME_DIR}/conf/${client}.conf
+			
+		echo "   Comparing databases. Please wait..."
+		aide_error_log="${HOME_DIR}/logs/aide-`date +%s`"
+			/usr/sbin/aide -c ${HOME_DIR}/conf/${client}.conf --compare 1>${HOME_DIR}/clients/${client}/logs/${newer} 2>${aide_error_log}
+
+		if [ "$?" -lt "14" ]; then
+			echo -e "   [\e[32mOK\e[0m] OUTPUT HAS BEEN SAVED TO PROPER LOG FILE"
+			if [ ! -s ${aide_error_log} ]; then
+				rm -f ${aide_error_log}      
+			fi
+		  else
+			echo -e "   [\e[31mERROR\e[0m] AIDE ERROR" 
+			exit "$?"
+		fi
+	else
+		echo -e "   [\e[93mWARRNING\e[0m] No enough amount of versions has been provided."
+	fi
+done
+
+echo "Cleaning:"
+echo "   Looking for wrong named files..."
+for d in `ls ${HOME_DIR}/spool | grep -vP ^.+-[0-9]{10}`; do
+  echo "      Removing ${d}"
+  rm -f ${HOME_DIR}/spool/${d}
+done
+echo "   Looking for unregistered clients..."
+list=""
+for d in `ls ${HOME_DIR}/clients`; do
+  list+=`ls ${HOME_DIR}/spool | grep "${d}-"`
+done
+for d in `ls ${HOME_DIR}/spool`; do
+  if ! echo $list | grep ${d} > /dev/null; then 
+    echo "      Removing ${d}"
+    rm -f ${HOME_DIR}/spool/$d
+  fi
+done
+
+echo "   Looking for redundant databases..." 
+for z in `ls ${HOME_DIR}/clients`; do
+  for d in `ls ${HOME_DIR}/spool | grep -P ^${z}-[0-9]{10} | sort -r| sed -n '3,$p'`; do
+    echo "      Removing ${d}"
+    rm -f ${HOME_DIR}/spool/$d
+  done
+done
+
+echo "Checking cron options..."
+if crontab -l 2>/dev/null | grep "30 \* \* \* \* ~/aide/scripts/createLogs > ~/aide/logs/cron/cron\`date +\\\%s\`" 1>/dev/null; then
+  echo -e "   [\e[32mOK\e[0m] Cron is set up correctly."
+else
+  echo -e "   [\e[31mERROR\e[0m] Cron error."
+  echo "   Updating cron..."
+  crontab -l 2>/dev/null | grep -v aide > /tmp/xxx
+  cat ${HOME_DIR}/scripts/cron >> /tmp/xxx
+  crontab /tmp/xxx
+  rm -f /tmp/xxx
+  echo -e "   [\e[32mOK\e[0m] Cron has been fixed."
+fi

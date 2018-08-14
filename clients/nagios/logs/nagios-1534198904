@@ -1,0 +1,44 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-14 00:30:09
+
+Summary:
+  Total number of files:	152
+  Added files:			0
+  Removed files:		0
+  Changed files:		6
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/group
+changed: /etc/passwd
+changed: /etc/shadow
+changed: /etc/sudoers
+changed: /usr/local/nagios/etc/linux_services.cfg
+changed: /usr/local/nagios/etc/objects/commands.cfg
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/group
+ SHA256   : VkLK3ajDo8iecic0CssVePVU7szNRqNg , 2+liyC3vFwfO+TMXmNsjuU5lQfDIhEpn
+
+File: /etc/passwd
+ SHA256   : opSw1e6Fnl8LLunNWrJ90lbpxT+jMPPy , LUzp0uZPIT/z+y59Jmsu3L8+0mBOOc4W
+
+File: /etc/shadow
+ SHA256   : +ihIFkU90F2vSAWQ0KqXRXaL+Vtg4lWI , hHCpo8VdLk8DL4EHJjSsCh7zKh8KOF3d
+
+File: /etc/sudoers
+ SELinux  : system_u:object_r:etc_t:s0       , unconfined_u:object_r:etc_t:s0
+
+File: /usr/local/nagios/etc/linux_services.cfg
+ SHA256   : S1bRYltE2eQKZufVM8GK3ITGGCDMBr0F , /rFLXrJZrsYQY2z5UEu1I6JL5AdAL+jP
+
+File: /usr/local/nagios/etc/objects/commands.cfg
+ SHA256   : HmNNCgAGHs/UNXRW+/5OZyPwlz3ih2nz , cIftmKCsOJqolOECgnbwl3wPKd7yaEZK

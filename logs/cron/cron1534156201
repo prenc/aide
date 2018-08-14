@@ -1,0 +1,26 @@
+Client dockerserver:
+   New version has been found: dockerserver-1534154438
+   Recent version has been found: dockerserver-1534111237
+   Setting up dockerserver.conf for new version.
+   Comparing databases. Please wait...
+   [[32mOK[0m] OUTPUT HAS BEEN SAVED TO PROPER LOG FILE
+Client nagios:
+   New version has been found: nagios-1534111799
+   Recent version has been found: nagios-1534068867
+   Setting up nagios.conf for new version.
+   Comparing databases. Please wait...
+   [[32mOK[0m] OUTPUT HAS BEEN SAVED TO PROPER LOG FILE
+Client teampass:
+   New version has been found: teampass-1534155271
+   Recent version has been found: teampass-1534111515
+   Setting up teampass.conf for new version.
+   Comparing databases. Please wait...
+   [[32mOK[0m] OUTPUT HAS BEEN SAVED TO PROPER LOG FILE
+Cleaning:
+   Looking for wrong named files...
+   Looking for unregistered clients...
+   Looking for redundant databases...
+      Removing dockerserver-1534068038
+      Removing teampass-1534068733
+Checking cron options...
+   [[32mOK[0m] Cron is set up correctly.

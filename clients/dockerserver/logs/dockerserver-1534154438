@@ -1,0 +1,25 @@
+Entry /etc/sysctl.conf in databases has different attributes: b4020081d a4020081d
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-13 12:30:01
+
+Summary:
+  Total number of files:	90
+  Added files:			0
+  Removed files:		0
+  Changed files:		1
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/sysctl.conf
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/sysctl.conf
+ SHA256   : cq723SRCg5bVmdA5tz0TJhQGKTLHym2M , UdFu4ufu8S3ULpJK9rg1hh6LedEZIboE

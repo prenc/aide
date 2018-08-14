@@ -1,0 +1,1 @@
+30 * * * * ~/aide/scripts/createLogs > ~/aide/logs/cron/cron`date +\%s`

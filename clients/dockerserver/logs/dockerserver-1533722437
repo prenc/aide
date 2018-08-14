@@ -1,0 +1,72 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-08 12:30:01
+
+Summary:
+  Total number of files:	92
+  Added files:			0
+  Removed files:		0
+  Changed files:		6
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/group
+changed: /etc/gshadow
+changed: /etc/passwd
+changed: /etc/shadow
+changed: /sbin/aide
+changed: /usr/sbin/aide
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/group
+ SHA256   : B4BAPZPaEpJIeSJZs5bUESYI88bAVyF+ , abkWFfd7XEc5lmqxJS9M3VWjtIKAF433
+
+File: /etc/gshadow
+ SHA256   : LN6YgAYHhiGHirzYgHVFh0PWyzPRht0L , D3j/VGg4gTtsKqYYZ53xpwjpwUS0T2KY
+
+File: /etc/passwd
+ SHA256   : hzb+DPpRp7vbrGZ2BLnWVZ6xeS9QB4wG , KpQjBwySb7HVwogNMzSsHltSq66j7GCB
+
+File: /etc/shadow
+ SHA256   : +r09aLdDZGHVaiPvuMs1dPOVGmy3qY7K , EQMhlLc9MvLfKC5rLfeABsPZi44Mp5nI
+
+File: /sbin/aide
+ Perm     : -rwx------                       , -rwxr-x---
+ ACL      : old = A:
+----
+user::rwx
+group::---
+other::---
+----
+                  D: <NONE>
+            new = A:
+----
+user::rwx
+group::r-x
+other::---
+----
+                  D: <NONE>
+
+File: /usr/sbin/aide
+ Perm     : -rwx------                       , -rwxr-x---
+ ACL      : old = A:
+----
+user::rwx
+group::---
+other::---
+----
+                  D: <NONE>
+            new = A:
+----
+user::rwx
+group::r-x
+other::---
+----
+                  D: <NONE>

@@ -1,0 +1,30 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-09 00:30:01
+
+Summary:
+  Total number of files:	88
+  Added files:			1
+  Removed files:		0
+  Changed files:		1
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /etc/docker/daemon.json
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /root/dockerProjects/https/stronka/index.html
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /root/dockerProjects/https/stronka/index.html
+ SHA256   : B02gyerdDXN7a+6wXVmSsnzyzIr0o1Jn , +O9/cAi5ddvvKBTaZ0y660Z2sJ/xHrYA

@@ -1,0 +1,30 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-08 11:41:17
+
+Summary:
+  Total number of files:	88
+  Added files:			1
+  Removed files:		0
+  Changed files:		1
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /etc/aide.conf.rpmsave
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/aide.conf
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/aide.conf
+ SHA256   : Sbxq/JHVWpe2DwdS5QhP0bEkQanEcwKm , OQih9JPr8QgVKdLVibqiB5sZRhzZZjVA

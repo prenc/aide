@@ -1,0 +1,28 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-13 15:30:02
+
+Summary:
+  Total number of files:	108
+  Added files:			0
+  Removed files:		0
+  Changed files:		2
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/cups/subscriptions.conf
+changed: /etc/cups/subscriptions.conf.O
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/cups/subscriptions.conf
+ SHA256   : HGNGvLaBGcjSnPgex4TpgLqpxD5Zbth1 , C8axtjrbBYxI9zoVhXt4XRdXggSWVBFN
+
+File: /etc/cups/subscriptions.conf.O
+ SHA256   : v+y0Dwvq+V4Z6N9Wf6N+XeZgg/DS5LVs , CxnYOjUkzvk3KzLCV5A7JfDdVWKsrVLU

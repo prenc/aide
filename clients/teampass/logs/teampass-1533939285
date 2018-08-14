@@ -1,0 +1,60 @@
+Entry /etc/systemd/system/multi-user.target.wants/httpd.service in databases has different attributes: b0000081d a0000081d
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-11 00:30:26
+
+Summary:
+  Total number of files:	112
+  Added files:			0
+  Removed files:		0
+  Changed files:		6
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/cups/subscriptions.conf
+changed: /etc/cups/subscriptions.conf.O
+changed: /etc/firewalld/zones/public.xml
+changed: /etc/firewalld/zones/public.xml.old
+changed: /etc/sysconfig/network-scripts/ifcfg-ens192
+changed: /etc/sysconfig/network-scripts/ifcfg-ens192.bak
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/cups/subscriptions.conf
+ SHA256   : T4uPlTK2MIwLpKHQCt75X/AKygFhLEHD , tN1NltJK6Aygh+McrVO3Hus40H9tbAeo
+
+File: /etc/cups/subscriptions.conf.O
+ SHA256   : PEuinNvZzSeLbL9VJq0Q++//B29WtjLj , UA7SJCDdC8OTnu6smIGFySbnyzGio3T8
+
+File: /etc/firewalld/zones/public.xml
+ SHA256   : +jhNiC5gZQMAwFAgiWexyFfHt2zs3BrU , nOjUy3LdGYb9Pi3uo0MOYnM+rbY/R6Lr
+
+File: /etc/firewalld/zones/public.xml.old
+ SHA256   : DIcOc7dDmyu0Fg0sahBF/XoRhexketUR , +jhNiC5gZQMAwFAgiWexyFfHt2zs3BrU
+
+File: /etc/sysconfig/network-scripts/ifcfg-ens192
+ SHA256   : cQFR1k7AOYusuTgSy8C29245ceI0560S , MzBiIYbPOy3iobZTQvonzpoM3uDJYt8i
+
+File: /etc/sysconfig/network-scripts/ifcfg-ens192.bak
+ Perm     : -rw-r--r--                       , -rw-------
+ SHA256   : uLsNEGubqmavVov3TdNcqRzSYPSlLTi2 , cQFR1k7AOYusuTgSy8C29245ceI0560S
+ ACL      : old = A:
+----
+user::rw-
+group::r--
+other::r--
+----
+                  D: <NONE>
+            new = A:
+----
+user::rw-
+group::---
+other::---
+----
+                  D: <NONE>

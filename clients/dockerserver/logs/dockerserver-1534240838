@@ -1,0 +1,28 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-14 12:30:01
+
+Summary:
+  Total number of files:	91
+  Added files:			0
+  Removed files:		0
+  Changed files:		2
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /lib/systemd/system-preset/90-default.preset
+changed: /usr/lib/systemd/system-preset/90-default.preset
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /lib/systemd/system-preset/90-default.preset
+ SHA256   : E3Nv2DxNGCb4tKwiYuSmomw7PUZ8pJF7 , 9XQHS/xJTFzj0oa14impyJxtWgo1hQVP
+
+File: /usr/lib/systemd/system-preset/90-default.preset
+ SHA256   : E3Nv2DxNGCb4tKwiYuSmomw7PUZ8pJF7 , 9XQHS/xJTFzj0oa14impyJxtWgo1hQVP
