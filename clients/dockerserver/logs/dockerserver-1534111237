@@ -1,5 +1,0 @@
-WARNING: Old db contains a entry that shouldn't be there, run --init or --update
-Entry /var/log/audit/audit.log.1 in databases has different attributes: 93020081d 83020081d
-
-AIDE, version 0.15.1
-

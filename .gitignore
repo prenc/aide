@@ -1,2 +1,2 @@
-!**/logs
-!/spool/*
+**/logs/*
+/spool/*
