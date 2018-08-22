@@ -1,50 +1,64 @@
 #!/usr/bin/expect
 
-set timeout 20
+if {[llength $argv] == 0} {
+	puts "usage: installClient.expect {server_name}" 
+	exit 1
+}
+
+set timeout 5
 set SERVER [lindex $argv 0];
 
 spawn ssh -oStrictHostKeyChecking=no root@${SERVER}
-interact \r return
+expect {
+	timeout {puts "time out"; exit 1}
+	"Name or service not known" {exit 1}
+	"password:" {interact \r return}
+}
+
 send \r
 expect "root" {
 	send {if yum list installed aide 1>/dev/null 2>/dev/null;then echo "OK"; else echo "NOT INSTALLED"; fi};send \r
 	}
 expect "fi"	{send \r}
+set timeout 60
 expect {
-	"NOT INSTALLED" {send {yum -y install aide};send \r;}
+	"NOT INSTALLED" {send {yum -y install aide};send \r;send \r}
 	"OK" {send \r}
 }
 expect "root" {
 	send {useradd -c "aide user" aide_spool};send \r
-	}
+}
+set timeout 5
 expect "root" {
 	send {touch /var/lib/aide/aide.db.new.gz};send \r;
 	send {chown aide_spool /var/lib/aide};send \r;
 	send {chgrp aide_spool /var/lib/aide};send \r;
 	send {chmod -R g+rx /var/lib/aide};send \r
-	}
+}
 expect "root" {
 	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/sbin/aide@' /etc/sudoers > /tmp/x};send \r
-	}
+}
 expect "root" {
-	send {cat /tmp/x > /etc/sudoers};send \r
-	}
-expect "root" {
-	send {su aide_spool};send \r
-	}	
-expect "aide_spool" {
+	send {cat /tmp/x > /etc/sudoers};send \r;
+	send {rm -f /tmp/x };send \r
+}
+expect {
+	"root" {send {su aide_spool};send \r}
+	timeout {exit 1}
+}	
+expect "aide_spool@" {
 	send {ssh-keygen -t rsa};send \r
-	}
+}
 expect "/.ssh/id_rsa):" {send \r}
 expect {
 	"Overwrite" {send y\r; exp_continue}
 	"empty for no passphrase)" {send \r; exp_continue}
 	"passphrase again:" {send \r}
-	}
+}
 
 expect "aide_spool" {
-	send {ssh-copy-id -f aide@192.168.1.240};send \r
-	}
+	send {ssh-copy-id -f aide@aide};send \r
+}
 expect {
 	"yes/no" {send yes\r; exp_continue}
 	"password:" {send Admin123\r}
@@ -55,7 +69,7 @@ expect "aide_spool" {
 }
 
 expect "aide_spool" {
-	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@192.168.1.240:~/aide/spool/\${HOSTNAME}-\`/bin/date +\%s\`" >> /tmp/cron};send \r
+	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\`/bin/date +\%s\`" >> /tmp/cron};send \r
 }
 expect "aide_spool" {
 	send {crontab /tmp/cron};send \r
@@ -67,5 +81,5 @@ expect "aide_spool" {
 	send {exit};send \r
 }
 send logout\r
+puts "expect has finished"
 interact
-puts "expect finished"

@@ -3,7 +3,7 @@ HOME_DIR="/home/aide/aide"
 
 for client in `ls ${HOME_DIR}/clients`
 do
-  echo "Client ${client}:"
+    echo "Client ${client}:"
 	count=`ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | wc -l`
 	if [ "$count" -ge "2" ]; then
 	
@@ -35,10 +35,10 @@ do
 			fi
 		  else
 			echo -e "   [\e[31mERROR\e[0m] AIDE ERROR" 
-			exit "$?"
+			exit 1
 		fi
 	else
-		echo -e "   [\e[93mWARRNING\e[0m] No enough amount of versions has been provided."
+		echo -e "   [\e[93mWARRNING\e[0m] Not enough amount of versions has been provided."
 	fi
 done
 
@@ -69,7 +69,7 @@ for z in `ls ${HOME_DIR}/clients`; do
 done
 
 echo "Checking cron options..."
-if crontab -l 2>/dev/null | grep "30 \* \* \* \* ~/aide/scripts/createLogs > ~/aide/logs/cron/cron\`date +\\\%s\`" 1>/dev/null; then
+if crontab -l 2>/dev/null | grep "0 \*/3 \* \* \* ~/aide/scripts/createLogs > ~/aide/logs/cron/cron\`date +\\\%s\`" 1>/dev/null; then
   echo -e "   [\e[32mOK\e[0m] Cron is set up correctly."
 else
   echo -e "   [\e[31mERROR\e[0m] Cron error."

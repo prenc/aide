@@ -1,36 +1,61 @@
 #!/bin/bash
 HOME_DIR="/home/aide/aide"
+TEST_MODE=0
 
-if [ "$1" = "-h" ]; then
-	if [ -n "$2" ]; then 
-		server=$2
-	else
-		echo Usage: $0 -h hostname
-		exit 1
-	fi
-else
-	echo Usage: $0 -h hostname
+usage () {
+	echo -e "Usage: $0 -h hostname"
 	exit 1
-fi 
+}
+error () {
+	echo -e "[\e[31mERROR\e[0m]"
+}
 
-./installClient.expect ${server} #1>/dev/null 2>/dev/null
-echo 
-echo "Creating home dirs for the client"
-mkdir /home/aide/aide/clients/${server} 2>/dev/null
-mkdir /home/aide/aide/clients/${server}/logs 2>/dev/null
+while [[ $# -gt 0 ]]; do
+i=$1
+	case $1 in
+		-h)
+			SERVER=$2
+			shift 2
+		;;
+		-t)
+			TEST_MODE=1
+			shift
+		;;
+		*)
+			usage
+		;;
+	esac
+done
+
+if [ -z ${SERVER} ]; then
+	usage
+fi
+
+./installClient.expect ${SERVER}
 if [ "$?" = 0 ]; then
-	echo -e "[\e[32mOK\e[0m] New dirs has been created."
+	echo -e "[\e[32mOK\e[0m] Client ${SERVER} has been successfully installed."
 else
-	echo -e "[\e[93mWARRNING\e[0m] This client already has his dirs."
+	echo -e "[\e[31mERROR\e[0m] Expect script failure."
+	exit 1
+fi
+if [[ ${TEST_MODE} == 0 ]]; then
+	echo 
+	echo "Creating home dirs for the client"
+	mkdir /home/aide/aide/clients/${SERVER} 2>/dev/null
+	mkdir /home/aide/aide/clients/${SERVER}/logs 2>/dev/null
+	if [ "$?" = 0 ]; then
+		echo -e "[\e[32mOK\e[0m] New dirs has been created."
+	else
+		echo -e "[\e[93mWARRNING\e[0m] This client already has his dirs."
+	fi
+
+	echo "Creating new ${SERVER}.conf"
+
+	if [ ! -f ${HOME_DIR}/conf/${SERVER}.conf ]; then
+		cp -n ${HOME_DIR}/conf/aide.conf ${HOME_DIR}/conf/${SERVER}.conf 2>/dev/null
+		echo -e "[\e[32mOK\e[0m] ${SERVER}.conf has been created."
+	else
+		echo -e "[\e[93mWARRNING\e[0m] ${SERVER}.conf already exists."
+	fi
 fi
 
-echo "Creating new ${server}.conf"
-
-if [ ! -f ${HOME_DIR}/conf/${server}.conf ]; then
-	cp -n ${HOME_DIR}/conf/aide.conf ${HOME_DIR}/conf/${server}.conf 2>/dev/null
-	echo -e "[\e[32mOK\e[0m] ${server}.conf has been created."
-else
-	echo -e "[\e[93mWARRNING\e[0m] ${server}.conf already exists."
-fi
-
-echo -e "[\e[32mOK\e[0m] Client ${server} has been successfully installed."
