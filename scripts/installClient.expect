@@ -1,85 +1,79 @@
 #!/usr/bin/expect
 
-if {[llength $argv] == 0} {
-	puts "usage: installClient.expect {server_name}" 
+if {[llength $argv] != 3} {
+	puts "usage: installClient.expect {server_name} {root_password} {admin_password}" 
 	exit 1
 }
 
 set timeout 5
 set SERVER [lindex $argv 0];
+set SERVER_PASSWORD [lindex $argv 1];
+set ADMIN_PASSWORD [lindex $argv 2];
 
-spawn ssh -oStrictHostKeyChecking=no root@${SERVER}
+spawn ssh root@${SERVER}
 expect {
 	timeout {puts "time out"; exit 1}
 	"Name or service not known" {exit 1}
-	"password:" {interact \r return}
+	"to continue connecting (yes/no)?" {send yes\r; exp_continue}
+	"password:" {send ${SERVER_PASSWORD}; send \r}
 }
-
-send \r
-expect "root" {
-	send {if yum list installed aide 1>/dev/null 2>/dev/null;then echo "OK"; else echo "NOT INSTALLED"; fi};send \r
+expect "Last login" {send {PS1="\n#########<#>\u>> \n\n"};send \r}
+expect "<#>root>>" {
+	send {if yum list installed aide 1>/dev/null 2>/dev/null;then echo "OK"; else echo "NOT INSTALLED"; fi};send \r;
 	}
-expect "fi"	{send \r}
+expect "fi"
 set timeout 60
 expect {
-	"NOT INSTALLED" {send {yum -y install aide};send \r;send \r}
-	"OK" {send \r}
-}
-expect "root" {
-	send {useradd -c "aide user" aide_spool};send \r
+	"NOT INSTALLED" {send {yum -y install aide};send \r;exp_continue}
+	"Complete!" {send {useradd -c "AIDE user" aide_spool};send \r}
+	"OK*<#>root>>" {send {useradd -c "AIDE user" aide_spool};send \r}
 }
 set timeout 5
-expect "root" {
-	send {touch /var/lib/aide/aide.db.new.gz};send \r;
-	send {chown aide_spool /var/lib/aide};send \r;
-	send {chgrp aide_spool /var/lib/aide};send \r;
-	send {chmod -R g+rx /var/lib/aide};send \r
+expect "<#>root>>" {
+	send {touch /var/lib/aide/aide.db.new.gz && chown aide_spool /var/lib/aide && chgrp aide_spool /var/lib/aide};send \r
 }
-expect "root" {
-	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/sbin/aide@' /etc/sudoers > /tmp/x};send \r
+expect "<#>root>>" {
+	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/sbin/aide@' /etc/sudoers > /tmp/temp};send \r
 }
-expect "root" {
-	send {cat /tmp/x > /etc/sudoers};send \r;
-	send {rm -f /tmp/x };send \r
+expect "<#>root>>" {
+	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/bin/tar@' /tmp/temp > /tmp/temp2};send \r
 }
+expect "<#>root>>" {
+	send {cat /tmp/temp2 > /etc/sudoers && rm -f /tmp/temp && rm -f /tmp/temp2};send \r
+}
+expect "<#>root>>" {send {passwd aide_spool};send \r}
 expect {
-	"root" {send {su aide_spool};send \r}
-	timeout {exit 1}
-}	
-expect "aide_spool@" {
-	send {ssh-keygen -t rsa};send \r
+	"New password:" {send {zzz};send \r;exp_continue}
+	"Retype new password:" {send {zzz};send \r}
 }
-expect "/.ssh/id_rsa):" {send \r}
+expect "<#>root>>" {send {su aide_spool};send \r}
+expect "<#>aide_spool>>" {send {ssh-keygen -t rsa};send \r}
 expect {
+	"/.ssh/id_rsa):" {send \r; exp_continue}
 	"Overwrite" {send y\r; exp_continue}
-	"empty for no passphrase)" {send \r; exp_continue}
+	"empty for no passphrase):" {send \r; exp_continue}
 	"passphrase again:" {send \r}
 }
-
-expect "aide_spool" {
+expect "<#>aide_spool>>" {
 	send {ssh-copy-id -f aide@aide};send \r
 }
 expect {
-	"yes/no" {send yes\r; exp_continue}
-	"password:" {send Admin123\r}
+	"yes/no)?" {send yes\r; exp_continue}
+	"password:" {send ${SERVER_PASSWORD}\r}
 }
-
-expect "aide_spool" {
-	send {crontab -l > /tmp/cron 2>/dev/null };send \r
+expect "<#>aide_spool>>" {
+	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\`/bin/date +\%s\`" > /tmp/cron};send \r
 }
-
-expect "aide_spool" {
-	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\`/bin/date +\%s\`" >> /tmp/cron};send \r
+expect "<#>aide_spool>>" {
+	send {crontab /tmp/cron && rm -f /tmp/cron};send \r
 }
-expect "aide_spool" {
-	send {crontab /tmp/cron};send \r
+expect "<#>aide_spool>>" {
+	send {scp aide@aide:~/.ssh/id_rsa.pub ~/.ssh/authorized_keys};send \r
 }
-expect "aide_spool" {
-	send {rm -f /tmp/cron};send \r
-}
-expect "aide_spool" {
+expect "<#>aide_spool>>" {
 	send {exit};send \r
 }
-send logout\r
-puts "expect has finished"
-interact
+expect "<#>root>>" {
+	send {logout};send \r
+}
+
