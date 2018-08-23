@@ -47,6 +47,7 @@ expect {
 	"Retype new password:" {send {zzz};send \r}
 }
 expect "<#>root>>" {send {su aide_spool};send \r}
+send {PS1="\n@@@@@@@@@<#>\u>> \n\n"};send \r
 expect "<#>aide_spool>>" {send {ssh-keygen -t rsa};send \r}
 expect {
 	"/.ssh/id_rsa):" {send \r; exp_continue}
