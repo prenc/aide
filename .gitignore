@@ -1,2 +1,8 @@
-**/logs/*
 /spool/*
+!/spool
+/clients/*
+!/clients
+/conf/*
+!/conf/aide.conf
+/logs/cron/*
+~/logs/cron
