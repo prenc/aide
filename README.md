@@ -2,47 +2,29 @@
 	
 ## TODO:
 ### client installation script:
-- expect:
+#### expect:
   - [ ] check whether */etc/sudoers* has doubled lines
-  - [ ] inform bash part about progress -> pretty processing
+  - [ ] intime informing bash about progress
   - [ ] more specific errors (wrong password)
-- bash:
-  - [ ] pretty processing :heart_eyes_cat:
+#### bash:
+  - [ ] pretty processing (required intime informing):heart_eyes_cat:
+  - [ ] robustness (diffrent error code)
 ### backup and recovery:
-- [ ] create tar command basing on client's config (--exclude)
-- [ ] script can be invoked anytime with option -i and then creates backup from scratch (especially when client's config is reconfigured)
-- [ ] adding and removing files from backup according to changes detected by AIDE
-- [ ] when file change detected, send old version (*filename.old.unixtime*) to recovery directory and update backup :fire:
-- [ ] improve AIDE log file by showing differences between versions
-- [ ] error handling:
+#### backup.sh:
+- [x] create tar command basing on client's config
+- [ ] script can be invoked anytime with option -i and then creates backup from scratch (especially when client's config is reconfigured) 
+- [ ] adding and removing files from backup according to changes detected by AIDE (optinon -a and -r)
+- [ ] :fire: when file change detected, send old version (*filename.old.unixtime*) to recovery directory and update backup (option -c) 
+- [ ] improve AIDE log file by including differences between file versions
+- robustness:
 	- [ ] not enough space for new backup file
 
 ### documentation update:
-- client's hostname has to be unique
 - add script names and specification
-
-
-## Useful things:
-* ssh aide_spool@dockerserver tar czf - /root/aide/test > backup-$(date +%s).tar.gz
-
-* tar:
-
-
-     -c create new archive
-     -d difference between archive and file system
-     -v, --verbose
-     verbosely list files processed
-     -z, --gzip
-     filter the archive through gzip
-     -f, --file=ARCHIVE
-     use archive file or device ARCHIVE
-     -A, --catenate, --concatenate
-     append tar files to an archive
-     -r, --append
-     append files to the end of an archive
-     -u, --update
-     only append files newer than copy in archive
-     -x, --extract, --get
-     extract files from an archive
-     --delete
-     delete from the archive (not on mag tapes!)??
+- update source code
+- add backup and recovery chapter
+- change font to Times New Roman for regular text
+- add chapter ddedicated to AIDE
+- new introduction
+- update limitation
+	- client's hostname has to be unique
