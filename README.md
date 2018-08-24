@@ -7,8 +7,8 @@
   - [ ] intime informing bash about progress
   - [ ] more specific errors (wrong password)
 #### bash:
-  - [ ] pretty processing (required intime informing):heart_eyes_cat:
-  - [ ] robustness (diffrent error code)
+  - [ ] pretty processing (requires intime informing):heart_eyes_cat:
+  - [ ] robustness (different error code)
 ### backup and recovery:
 #### backup.sh:
 - [x] create tar command basing on client's config
