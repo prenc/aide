@@ -1,0 +1,54 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-24 03:00:28
+
+Summary:
+  Total number of files:	119
+  Added files:			6
+  Removed files:		2
+  Changed files:		4
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /usr/local/nagios/libexec/check_memory
+added: /usr/local/sbin/nsca_load
+added: /usr/local/sbin/nsca_mem
+added: /usr/local/sbin/nsca_procs
+added: /usr/share/doc/container-selinux-2.68
+added: /usr/share/doc/container-selinux-2.68/README.md
+
+---------------------------------------------------
+Removed files:
+---------------------------------------------------
+
+removed: /usr/share/doc/container-selinux-2.66
+removed: /usr/share/doc/container-selinux-2.66/README.md
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/cups/subscriptions.conf
+changed: /etc/cups/subscriptions.conf.O
+changed: /usr/share/selinux/devel/include/services/container.if
+changed: /usr/share/selinux/packages/container.pp.bz2
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/cups/subscriptions.conf
+ SHA256   : g+X6AquCLEMWgcZXbpvoBwM3pXVR/Avg , kBIsBT8iKnEQhpcLyN6kIupz3EF6ccUB
+
+File: /etc/cups/subscriptions.conf.O
+ SHA256   : yLGICbt2kv6zZGjrCLcriPgjBxPCZ8wx , KsAsp/NKCV/1WKdRRspSZn03H3VpFJLc
+
+File: /usr/share/selinux/devel/include/services/container.if
+ SHA256   : l9NYcdbcu+3cDl1yFA+sbjktVXbBxjBR , N+DBM5bdw3mZm/UVUcIFZPDigDAKYl8q
+
+File: /usr/share/selinux/packages/container.pp.bz2
+ SHA256   : vOAHloody98pjiPTGJGqjPf4yKw9uSvk , +C0+pigd7d7xzyV3I82WPedi1Fgx80ol

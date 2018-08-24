@@ -1,0 +1,43 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-16 15:00:11
+
+Summary:
+  Total number of files:	153
+  Added files:			4
+  Removed files:		0
+  Changed files:		3
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /root/.ssh/id_ed25519
+added: /root/.ssh/id_ed25519.pub
+added: /usr/local/nagios/etc/pfsense_services.cfg
+added: /usr/local/sbin/nsca_diskusage
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /usr/local/nagios/etc/linux_hosts.cfg
+changed: /usr/local/nagios/etc/nagios.cfg
+changed: /usr/local/nagios/etc/objects/commands.cfg
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /usr/local/nagios/etc/linux_hosts.cfg
+ Uid      : 0                                , 1001
+ Gid      : 0                                , 1001
+ SHA256   : vqesInjjo+S7ZTCgkqXmVLCaW+i0fbwN , EiQKmhTSswflJ+sMAmXXmPwY18nBIJrM
+
+File: /usr/local/nagios/etc/nagios.cfg
+ SHA256   : EEwO9R3B/fU3Yoc1aCVlyeBz0ys/PdEv , jHplg4yGwPylZQDtN/uwSsHJdunKjcyF
+
+File: /usr/local/nagios/etc/objects/commands.cfg
+ SHA256   : cIftmKCsOJqolOECgnbwl3wPKd7yaEZK , c1tpARKpTDh6SIOW+/vSHHdMSfaCCauk

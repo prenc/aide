@@ -1,0 +1,44 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-15 15:00:36
+
+Summary:
+  Total number of files:	112
+  Added files:			0
+  Removed files:		0
+  Changed files:		6
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/cups/subscriptions.conf
+changed: /etc/cups/subscriptions.conf.O
+changed: /lib/systemd/system-preset/90-default.preset
+changed: /lib64/python2.7/site-packages/perf.so
+changed: /usr/lib/systemd/system-preset/90-default.preset
+changed: /usr/lib64/python2.7/site-packages/perf.so
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/cups/subscriptions.conf
+ SHA256   : jTFbFvqFHo91v5cODR3eh0CHCeSVy8uo , sIzwwkjQv+PywETlUZXMDe5eWKO61cH0
+
+File: /etc/cups/subscriptions.conf.O
+ SHA256   : 8wH88+OEH3OiJd1pk3u51e0khwPNyrr+ , IrUnuuNK2v1WXKYspghll008ZJeu9wH8
+
+File: /lib/systemd/system-preset/90-default.preset
+ SHA256   : E3Nv2DxNGCb4tKwiYuSmomw7PUZ8pJF7 , 9XQHS/xJTFzj0oa14impyJxtWgo1hQVP
+
+File: /lib64/python2.7/site-packages/perf.so
+ SHA256   : WgZ6loRWeCftyZGjmcld9l671saovLoJ , Uk0kHV56F49fhwVueAhVQX35LeDRWhdQ
+
+File: /usr/lib/systemd/system-preset/90-default.preset
+ SHA256   : E3Nv2DxNGCb4tKwiYuSmomw7PUZ8pJF7 , 9XQHS/xJTFzj0oa14impyJxtWgo1hQVP
+
+File: /usr/lib64/python2.7/site-packages/perf.so
+ SHA256   : WgZ6loRWeCftyZGjmcld9l671saovLoJ , Uk0kHV56F49fhwVueAhVQX35LeDRWhdQ

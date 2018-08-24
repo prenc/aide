@@ -1,0 +1,89 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-17 14:33:05
+
+Summary:
+  Total number of files:	115
+  Added files:			0
+  Removed files:		0
+  Changed files:		10
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/cups/subscriptions.conf
+changed: /etc/cups/subscriptions.conf.O
+changed: /etc/nagios/send_nsca.cfg
+changed: /sbin/send_nsca
+changed: /usr/local/sbin/nsca_diskroot
+changed: /usr/local/sbin/nsca_diskusage
+changed: /usr/local/sbin/nsca_loggedonusers
+changed: /usr/local/sbin/nsca_swap
+changed: /usr/sbin/send_nsca
+changed: /var/log/cron
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/cups/subscriptions.conf
+ SHA256   : FkZcWHu0XJrlRa5VE5cXDrlAaMmt+6Tc , XrYoi97zEA4RO5ycqpjhSZXO5vbQGS1x
+
+File: /etc/cups/subscriptions.conf.O
+ SHA256   : iSgR2ZyZrQA5BP7MsJjezeRZayccJhev , iHh9BFlJ6NTZvtieGZZEd+SjOkO29Z/E
+
+File: /etc/nagios/send_nsca.cfg
+ Perm     : -rw-------                       , -rwxr-xr-x
+ Uid      : 0                                , 1001
+ ACL      : old = A:
+----
+user::rw-
+group::---
+other::---
+----
+                  D: <NONE>
+            new = A:
+----
+user::rwx
+group::r-x
+other::r-x
+----
+                  D: <NONE>
+
+File: /sbin/send_nsca
+ Uid      : 0                                , 1001
+
+File: /usr/local/sbin/nsca_diskroot
+ SHA256   : kFG+xbzqtmHUKKe4YjxQWFVnQ2C0dK1+ , 5zHSLByXqI+yHEE+gB3/nACbGhqWJNXx
+
+File: /usr/local/sbin/nsca_diskusage
+ SHA256   : kFG+xbzqtmHUKKe4YjxQWFVnQ2C0dK1+ , 5zHSLByXqI+yHEE+gB3/nACbGhqWJNXx
+
+File: /usr/local/sbin/nsca_loggedonusers
+ SHA256   : HDAM+KSpWf33rI1IpgpoOy9diR995my6 , oU5fC/Qeo0rk71zfg6Ec9cvJlDm9dJzG
+
+File: /usr/local/sbin/nsca_swap
+ SHA256   : L6T5DvvHoJfxNh10g1a0OM0rlZR3omW2 , RJY4/gpL2e2Jq6c+Y6wtc9XFJ9/qjCnG
+
+File: /usr/sbin/send_nsca
+ Uid      : 0                                , 1001
+
+File: /var/log/cron
+ Perm     : -rw-------                       , -rwxrwxrwx
+ ACL      : old = A:
+----
+user::rw-
+group::---
+other::---
+----
+                  D: <NONE>
+            new = A:
+----
+user::rwx
+group::rwx
+other::rwx
+----
+                  D: <NONE>

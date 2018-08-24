@@ -1,0 +1,4 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+
+AIDE, version 0.15.1
+

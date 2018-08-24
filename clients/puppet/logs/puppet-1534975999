@@ -1,0 +1,1731 @@
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-23 03:00:27
+
+Summary:
+  Total number of files:	1232
+  Added files:			818
+  Removed files:		4
+  Changed files:		220
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /etc/rc.d/init.d/ossec
+added: /etc/rc.d/rc0.d/K15ossec
+added: /etc/rc.d/rc1.d/K15ossec
+added: /etc/rc.d/rc2.d/S99ossec
+added: /etc/rc.d/rc3.d/S99ossec
+added: /etc/rc.d/rc4.d/S99ossec
+added: /etc/rc.d/rc5.d/S99ossec
+added: /etc/rc.d/rc6.d/K15ossec
+added: /opt/puppetlabs/puppet/lib/libcpp-pcp-client.so.1.5.7
+added: /opt/puppetlabs/puppet/lib/libfacter.so.3.11.4
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/bin/facter
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/bin/puppetserver-ca
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/cache/facter-2.5.1.gem
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/cache/puppetserver-ca-0.3.1.gem
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/COMMITTERS.md
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/CONTRIBUTING.md
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/Gemfile
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/LICENSE
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/README.md
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/Rakefile
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/bin
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/bin/facter
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/etc
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/etc/facter.conf
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/build_defaults.yaml
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/changelog.erb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/compat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/control
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/copyright
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/docs
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/lintian-overrides
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/rules
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/source
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/debian/source/format
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/facter-diff
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/ips
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/ips/facter.p5m.erb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/ips/rules
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/ips/transforms
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/osx
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/osx/file_mapping.yaml
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/osx/preflight.erb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/osx/prototype.plist.erb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/project_data.yaml
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/redhat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/redhat/facter.spec.erb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/solaris
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/ext/solaris/pkginfo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/install.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/Cfkey.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/application.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/architecture.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/augeasversion.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/blockdevices.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/aggregate.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/directed_graph.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/execution
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/execution/base.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/execution/posix.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/execution/windows.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/execution.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/logging.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/resolvable.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/core/suitable.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/dhcp_servers.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/domain.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ec2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ec2/rest.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ec2.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/facterversion.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/filesystems.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/fqdn.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/gce
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/gce/metadata.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/gce.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/gid.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/hardwareisa.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/hardwaremodel.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/hostname.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/id.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/interfaces.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ipaddress.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ipaddress6.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/iphostnumber.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/kernel.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/kernelmajversion.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/kernelrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/kernelversion.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ldom.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbdistcodename.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbdistdescription.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbdistid.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbdistrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbmajdistrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbminordistrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/lsbrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/macaddress.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/macosx.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/manufacturer.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/memory.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/netmask.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/network.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/base.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/cumuluslinux.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/implementation.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/linux.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/osreleaselinux.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/sunos.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/vmkernel.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem/windows.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystem.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystemmajrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/operatingsystemrelease.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/os.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/osfamily.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/partitions.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/path.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/physicalprocessorcount.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/processor.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/processors
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/processors/os.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/processors.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ps.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/puppetversion.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/rackspace.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/rubyplatform.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/rubysitedir.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/rubyversion.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/selinux.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/ssh.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/system32.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/system_uptime.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/timezone.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/uniqueid.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/uptime.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/uptime_days.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/uptime_hours.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/uptime_seconds.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/architecture.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/collection.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/composite_loader.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/config.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/confine.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/dhcp_servers.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/directory_loader.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/ec2.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/fact.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/file_read.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/formatter.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/ip
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/ip/windows.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/ip.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/loader.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/macaddress.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/macosx.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/manufacturer.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/memory.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/netmask.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/normalization.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/nothing_loader.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/operatingsystem.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/parser.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/partitions
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/partitions/linux.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/partitions/openbsd.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/partitions.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/plist
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/plist/generator.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/plist/parser.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/plist.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/posix.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/processor.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/registry.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/resolution.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/solaris_zones.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/unix_root.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/uptime.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/values.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/virtual.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/vlans.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows/api_types.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows/dir.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows/error.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows/process.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows/user.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/windows_root.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/wmi.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/util/xendomains.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/version.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/virtual.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/vlans.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/xendomains.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/zfs_version.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/zonename.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/zones.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter/zpool_version.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/lib/facter.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64dual
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64dual-grep
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64quad
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64solo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64tri
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64twentyfour
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/amd64twentyfour-grep
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/bbg3-armel
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/beaglexm-armel
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/panda-armel
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/ppc64
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/ppc64le
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/sparc
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/two_multicore-grep
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/cpuinfo/two_singlecore-grep
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo/hppa-rp4440
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo/ia64-rx2620
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo/ia64-rx6600
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo/ia64-rx8640
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo/superdome-server-SD32B
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/machinfo/superdome2-16s
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/sched.models
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/hpux/unistd.h
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/bsd_ifconfig_all_with_multiple_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/centos_5_5
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/centos_5_5_eth0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_10_3_0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_10_3_0_en0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_10_6_4
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_10_6_4_en1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_10_6_6_dualstack
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_10_6_6_dualstack_en1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_9_8_0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_9_8_0_en0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/darwin_ifconfig_all_with_multiple_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/fedora_10
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/fedora_10_eth0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/fedora_13
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/fedora_13_eth0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/fedora_8
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/fedora_8_eth0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/freebsd_6_0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/ifconfig_net_tools_1.60.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/ifconfig_ubuntu_1204.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/linux_ifconfig_all_with_multiple_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/linux_ifconfig_all_with_multiple_interfaces_and_fe80
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/linux_ifconfig_all_with_multiple_interfaces_and_no_public_ipv6
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/linux_ifconfig_no_addr
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/linux_ifconfig_no_mac
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/linux_ifconfig_venet
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/open_solaris_10
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/open_solaris_b132
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/openbsd_bridge_rules
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/sunos_ifconfig_all_with_multiple_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/ubuntu_7_04
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ifconfig/ubuntu_7_04_eth0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ldom
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/ldom/ldom_v1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/centos_5_5
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/darwin_10_3_0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/darwin_10_6_4
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/darwin_10_6_6_dualstack
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/darwin_9_8_0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/fedora_10
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/open_solaris_10
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/open_solaris_b132
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/netstat/ubuntu_7_04
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/processorcount
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/processorcount/solaris-psrinfo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/processorcount/solaris-sparc-kstat-cpu-info
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/processorcount/solaris-x86_64-kstat-cpu-info
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/nmcli_devices
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/nmcli_devices_disconnected
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/nmcli_eth0_dhcp
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/nmcli_eth0_static
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/nmcli_wlan0_dhcp
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/nmcli_wlan0_static
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/route
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/dhcp_servers/route_nogw
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ec2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ec2/rest
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ec2/rest/meta-data
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ec2/rest/meta-data/root
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/filesystems
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/filesystems/linux
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/gce
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/gce/metadata
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/gce/metadata/metadata.json
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/interfaces/ifconfig_net_tools_1.60.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/interfaces/ifconfig_net_tools_1.60.txt.em1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/interfaces/ifconfig_net_tools_1.60.txt.lo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/interfaces/ifconfig_net_tools_1.60_v6.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ipaddress
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ipaddress/ifconfig_multiple_127_addresses.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ipaddress/ifconfig_net_tools_1.60.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ipaddress/ifconfig_non_english_locale.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/ipaddress/ifconfig_ubuntu_1204.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/kernelrelease
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/kernelrelease/openbsd-5.3
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/kernelrelease/openbsd-5.3-current
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/aix-svmon
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/aix-swap_l
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/darwin-swapinfo-multiple
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/darwin-swapinfo-single
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/darwin-vm_stat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/dragonfly-vmstat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/freebsd-vmstat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/linux-proc_meminfo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/openbsd-vmstat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/smartos_zone_swap_l-single
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/solaris-prtconf
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/solaris-swap_l-multiple
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/solaris-swap_l-single
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/memory/solaris-vmstat
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/netmask
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/netmask/darwin_10_8_5.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/netmask/ifconfig_aix_7.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/netmask/ifconfig_net_tools_1.60.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/netmask/ifconfig_ubuntu_1204.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/processors
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/processors/os
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/processors/os/darwin-system-profiler
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/selinux
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/selinux/selinux_sestatus
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/selinux/selinux_sestatus2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/dhcp_servers
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/dhcp_servers/route
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/dhcp_servers/route_nogw
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2/centos-arp-ec2.out
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2/linux-arp-ec2.out
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2/linux-arp-not-ec2.out
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2/solaris8_arp_a_not_ec2.out
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2/windows-2008-arp-a-not-ec2.out
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ec2/windows-2008-arp-a.out
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/6.0-STABLE_FreeBSD_ifconfig
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/Mac_OS_X_10.5.5_ifconfig
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/darwin_ifconfig_all_with_multiple_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/darwin_ifconfig_single_interface
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/debian_kfreebsd_ifconfig
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1111_ifconfig_lan0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1111_ifconfig_lan1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1111_ifconfig_lo0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1111_lanscan
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1111_netstat_in
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_asterisk_ifconfig_lan0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_asterisk_ifconfig_lan1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_asterisk_ifconfig_lo0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_asterisk_lanscan
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_asterisk_netstat_in
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_ifconfig_lan0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_ifconfig_lan1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_ifconfig_lo0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_lanscan
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_netstat_in
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_nic_bonding_ifconfig_lan1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_nic_bonding_ifconfig_lan4
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_nic_bonding_ifconfig_lan4_1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_nic_bonding_ifconfig_lo0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_nic_bonding_lanscan
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/hpux_1131_nic_bonding_netstat_in
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/linux_2_6_35_proc_net_bonding_bond0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/linux_get_single_interface_eth0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/linux_get_single_interface_ib0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/linux_get_single_interface_lo
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/linux_ifconfig_all_with_single_interface
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/linux_ifconfig_ib0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/solaris_ifconfig_all_with_multiple_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/solaris_ifconfig_single_interface
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/windows_netsh_all_interfaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/windows_netsh_single_interface
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/ip/windows_netsh_single_interface6
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/freebsd_dmidecode
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/intel_linux_dmidecode
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/linux_dmidecode_with_spaces
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/opensolaris_smbios
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/smartos_smbios
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/solaris_sunfire_v120_prtdiag
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/manufacturer/solaris_t5220_prtdiag
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/operatingsystem
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/operatingsystem/coreos.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/operatingsystem/cumuluslinux.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/operatingsystem/redhat-7.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/operatingsystem/sabayon.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/operatingsystem/wheezy.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/partitions
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/partitions/partitions
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/partitions/partitions/mount
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/processor
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/processor/solaris-i86pc
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/processor/solaris-sun4u
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/processor/x86-pentium2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/uptime
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/uptime/kstat_boot_time
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/uptime/sysctl_kern_boottime_darwin
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/uptime/sysctl_kern_boottime_openbsd
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/uptime/ubuntu_proc_uptime
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/virtual
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/virtual/invalid_unicode_dmi_entries
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/virtual/solaris10_proc_self_status1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/vlans
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/vlans/centos-5-no-vlans
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/vlans/linux_vlan_config
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/xendomains
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/util/xendomains/xendomains
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/virtual
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/virtual/sysfs_dmi_entries_raw.txt
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/freebsd_8.2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/freebsd_9.0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/linux-fuse_0.6.9
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/solaris_10
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/solaris_11
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/zfs_new
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/zfs_old
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zfs_version/zfsonlinux_0.6.1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version/freebsd_8.2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version/freebsd_9.0
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version/linux-fuse_0.6.9
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version/solaris_10
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version/solaris_11
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/unit/zpool_version/zfsonlinux_0.6.1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_1_cgroup
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_1_cgroup/in_a_container
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_1_cgroup/in_a_docker_container
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_1_cgroup/in_a_docker_container_with_systemd_slices
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_1_cgroup/not_in_a_container
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status/vserver_2_1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status/vserver_2_1/guest
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status/vserver_2_1/host
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status/vserver_2_3
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status/vserver_2_3/guest
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/fixtures/virtual/proc_self_status/vserver_2_3/host
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/integration
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/integration/facter_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/integration/util
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/integration/util/windows
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/integration/util/windows/user_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/lib
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/lib/facter_spec
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/lib/facter_spec/cpuinfo.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/lib/facter_spec/windows_network.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/puppetlabs_spec
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/puppetlabs_spec/files.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/puppetlabs_spec/fixtures.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/puppetlabs_spec/matchers.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/puppetlabs_spec/verbose.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/puppetlabs_spec_helper.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/schema
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/schema/validate_facter_schema.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/shared_contexts
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/shared_contexts/platform.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/shared_formats
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/shared_formats/parses.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/spec_helper.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/application_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/architecture_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/blockdevices_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/aggregate_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/directed_graph_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/execution
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/execution/base_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/execution/posix_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/execution/windows_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/execution_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/logging_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/resolvable_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/core/suitable_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/dhcp_servers_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/domain_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ec2
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ec2/rest_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ec2_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/facter_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/filesystems_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/fqdn_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/gce
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/gce/metadata_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/gce_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/gid_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/hardwareisa_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/hardwaremodel_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/hostname_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/id_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/interfaces_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ipaddress6_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ipaddress_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/kernel_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/kernelmajversion_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/kernelrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/kernelversion_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ldom_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbdistcodename_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbdistdescription_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbdistid_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbdistrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbmajdistrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbminordistrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/lsbrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/macaddress_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/manufacturer_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/memory_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/netmask_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/base_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/cumuluslinux_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/implementation_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/linux_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/sunos_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/vmkernel_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem/windows_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystem_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystemmajrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/operatingsystemrelease_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/os_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/osfamily_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/partitions_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/physicalprocessorcount_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/processor_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/processors
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/processors/os_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/processors_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ps_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/rackspace_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/rubyplatform_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/selinux_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/ssh_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/system32_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/system_uptime_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/uniqueid_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/uptime_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/collection_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/config_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/confine_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/dhcp_servers_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/directory_loader_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/ec2_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/fact_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/file_read_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/formatter_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/ip
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/ip/windows_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/ip_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/loader_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/macaddress_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/macosx_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/manufacturer_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/normalization_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/operatingsystem_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/parser_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/partitions
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/partitions/partitions_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/partitions_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/posix_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/processor_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/registry_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/resolution_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/solaris_zones_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/uptime_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/values_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/virtual_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/vlans_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/wmi_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/util/xendomains_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/version_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/virtual_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/zfs_version_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/zonename_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/zones_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/unit/zpool_version_spec.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/facter-2.5.1/spec/watchr.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/.gitignore
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/.rspec
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/.travis.yml
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/CODE_OF_CONDUCT.md
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/CONTRIBUTING.md
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/Gemfile
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/LICENSE
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/README.md
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/Rakefile
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/bin
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/bin/console
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/bin/setup
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/exe
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/exe/puppetserver-ca
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/clean_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/cli.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/config_utils.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/create_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/generate_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/host.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/import_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/list_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/logger.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/puppet_config.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/puppetserver_config.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/revoke_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/sign_action.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/stub.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/utils.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/version.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca/x509_loader.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/ca.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/settings
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/settings/ttl_setting.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/utils
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/utils/file_utilities.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/utils/http_client.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/lib/puppetserver/utils/signing_digest.rb
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/gems/puppetserver-ca-0.3.1/puppetserver-ca.gemspec
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/specifications/facter-2.5.1.gemspec
+added: /opt/puppetlabs/puppet/lib/ruby/vendor_gems/specifications/puppetserver-ca-0.3.1.gemspec
+added: /opt/puppetlabs/server/apps/puppetserver/cli/apps/ca
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808212216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808212316.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220316.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220416.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220516.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220616.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220716.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220816.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808220915.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221115.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221316.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221416.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221515.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221615.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221715.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221816.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808221916.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808222016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808222116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808212245.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808212345.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220045.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220145.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220245.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220345.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220445.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220545.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220645.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220745.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220845.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808220945.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221045.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221145.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221245.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221345.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221445.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221545.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221645.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221745.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221845.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808221945.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808222045.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808222145.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808212220.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808212320.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220020.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220120.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220220.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220320.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220420.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220520.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220620.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220720.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220820.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808220920.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221020.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221120.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221220.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221320.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221420.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221520.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221620.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221720.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221820.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808221920.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808222020.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808222120.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808212216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808212317.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220316.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220416.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220516.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220616.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220716.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220816.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220855.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220857.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808220957.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221057.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221157.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221257.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221357.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221457.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221557.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221657.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221757.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221858.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808221957.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808222057.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808222157.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808212230.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808212331.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220030.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220130.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220230.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220330.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220430.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220530.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220630.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220730.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220830.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808220930.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221030.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221130.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221230.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221330.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221430.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221530.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221630.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221730.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221830.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808221931.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808222031.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808222131.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808212251.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808212350.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220050.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220152.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220250.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220350.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220450.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220550.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220650.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220750.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220852.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808220950.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221050.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221150.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221250.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221350.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221450.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221551.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221650.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221750.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221850.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808221950.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808222050.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808222150.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808212238.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808212339.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220038.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220138.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220238.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220338.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220438.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220538.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220639.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220738.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220838.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808220938.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221038.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221138.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221238.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221339.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221438.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221538.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221638.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221738.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221838.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808221938.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808222039.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808222138.yaml
+added: /root/.ssh
+added: /root/.ssh/known_hosts
+added: /usr/share/doc/puppet-agent-5.5.6
+added: /usr/share/doc/puppet-agent-5.5.6/bill-of-materials
+
+---------------------------------------------------
+Removed files:
+---------------------------------------------------
+
+removed: /opt/puppetlabs/puppet/lib/libcpp-pcp-client.so.1.5.6
+removed: /opt/puppetlabs/puppet/lib/libfacter.so.3.11.3
+removed: /usr/share/doc/puppet-agent-5.5.4
+removed: /usr/share/doc/puppet-agent-5.5.4/bill-of-materials
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /opt/puppetlabs/puppet/VERSION
+changed: /opt/puppetlabs/puppet/bin/augmatch
+changed: /opt/puppetlabs/puppet/bin/augparse
+changed: /opt/puppetlabs/puppet/bin/augtool
+changed: /opt/puppetlabs/puppet/bin/facter
+changed: /opt/puppetlabs/puppet/bin/fadot
+changed: /opt/puppetlabs/puppet/bin/openssl
+changed: /opt/puppetlabs/puppet/bin/pxp-agent
+changed: /opt/puppetlabs/puppet/bin/ruby
+changed: /opt/puppetlabs/puppet/cache/client_data/catalog/master.io.json
+changed: /opt/puppetlabs/puppet/cache/state/classes.txt
+changed: /opt/puppetlabs/puppet/cache/state/last_run_report.yaml
+changed: /opt/puppetlabs/puppet/cache/state/last_run_summary.yaml
+changed: /opt/puppetlabs/puppet/cache/state/resources.txt
+changed: /opt/puppetlabs/puppet/cache/state/state.yaml
+changed: /opt/puppetlabs/puppet/cache/state/transactionstore.yaml
+changed: /opt/puppetlabs/puppet/include/facter/version.h
+changed: /opt/puppetlabs/puppet/include/openssl/opensslconf.h
+changed: /opt/puppetlabs/puppet/include/whereami/version.h
+changed: /opt/puppetlabs/puppet/lib/libaugeas.a
+changed: /opt/puppetlabs/puppet/lib/libaugeas.so.0.24.0
+changed: /opt/puppetlabs/puppet/lib/libcpp-hocon.a
+changed: /opt/puppetlabs/puppet/lib/libcrypto.a
+changed: /opt/puppetlabs/puppet/lib/libcurl.a
+changed: /opt/puppetlabs/puppet/lib/libcurl.so.4.5.0
+changed: /opt/puppetlabs/puppet/lib/libexslt.a
+changed: /opt/puppetlabs/puppet/lib/libfa.a
+changed: /opt/puppetlabs/puppet/lib/libfa.so.1.5.1
+changed: /opt/puppetlabs/puppet/lib/libpxp-agent.a
+changed: /opt/puppetlabs/puppet/lib/libruby.so.2.4.4
+changed: /opt/puppetlabs/puppet/lib/libssl.a
+changed: /opt/puppetlabs/puppet/lib/libssl.so.1.0.0
+changed: /opt/puppetlabs/puppet/lib/libwhereami.a
+changed: /opt/puppetlabs/puppet/lib/libxml2.a
+changed: /opt/puppetlabs/puppet/lib/libxslt.a
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/bigdecimal.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/cgi/escape.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/continuation.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/coverage.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/date_core.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/bubblebabble.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/md5.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/rmd160.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/sha1.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/sha2.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/big5.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/cp949.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/emacs_mule.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/encdb.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/euc_jp.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/euc_kr.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/euc_tw.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/gb18030.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/gb2312.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/gbk.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_1.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_10.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_11.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_13.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_14.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_15.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_16.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_2.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_3.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_4.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_5.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_6.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_7.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_8.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_9.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/koi8_r.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/koi8_u.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/shift_jis.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/big5.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/chinese.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/ebcdic.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_iso2022_kddi.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_sjis_docomo.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_sjis_kddi.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_sjis_softbank.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/escape.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/gb18030.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/gbk.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/iso2022.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/japanese.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/japanese_euc.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/japanese_sjis.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/korean.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/single_byte.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/transdb.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/utf8_mac.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/utf_16_32.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_16be.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_16le.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_32be.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_32le.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1250.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1251.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1252.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1253.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1254.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1257.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_31j.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/etc.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/fcntl.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/fiber.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/fiddle.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/io/console.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/io/nonblock.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/io/wait.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/json/ext/generator.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/json/ext/parser.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/mathn/complex.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/mathn/rational.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/nkf.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/objspace.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/openssl.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/pathname.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/psych.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/pty.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/racc/cparse.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/rbconfig/sizeof.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/readline.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/ripper.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/sdbm.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/socket.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/stringio.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/strscan.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/syslog.so
+changed: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/zlib.so
+changed: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/default/bigdecimal-1.3.2.gemspec
+changed: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/default/rdoc-5.0.0.gemspec
+changed: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/facter.gemspec
+changed: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/hiera.gemspec
+changed: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/puppet.gemspec
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/2.4.0/x86_64-linux/_augeas.so
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/facter.jar
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/hiera/version.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/mcollective.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/application/cert.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/defaults.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/face/certificate.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/indirector/ldap.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/node/environment.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/parser/functions/tagged.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/pops/issues.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/pops/validation/checker4_0.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/pops/validation/validator_factory_4_0.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/provider/augeas/augeas.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/provider/service/smf.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/provider/service/upstart.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/test/test_helper.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/type/file/source.rb
+changed: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/version.rb
+changed: /opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper
+changed: /opt/puppetlabs/puppet/share/locale/puppet.pot
+changed: /opt/puppetlabs/puppet/share/man/man5/puppet.conf.5.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-agent.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-apply.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-ca.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-catalog.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-cert.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-certificate.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-certificate_request.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-certificate_revocation_list.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-config.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-describe.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-device.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-doc.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-epp.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-facts.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-filebucket.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-generate.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-help.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-key.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-lookup.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-man.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-master.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-module.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-node.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-parser.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-plugin.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-report.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-resource.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-script.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet-status.8.gz
+changed: /opt/puppetlabs/puppet/share/man/man8/puppet.8.gz
+changed: /opt/puppetlabs/puppet/ssl/puppet-cacerts
+changed: /opt/puppetlabs/server/apps/puppetserver/bin/puppetserver
+changed: /opt/puppetlabs/server/apps/puppetserver/ezbake.manifest
+changed: /opt/puppetlabs/server/apps/puppetserver/jruby-1_7.jar
+changed: /opt/puppetlabs/server/apps/puppetserver/jruby-9k.jar
+changed: /opt/puppetlabs/server/apps/puppetserver/puppet-server-release.jar
+changed: /opt/puppetlabs/server/apps/puppetserver/scripts/install.sh
+changed: /opt/puppetlabs/server/data/puppetserver/restartcounter
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/eyaml
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/hocon
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsgcat
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsgfmt
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsginit
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsgmerge
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rxgettext
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/fast_gettext-1.1.2.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/gettext-3.2.2.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/hiera-eyaml-2.1.0.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/highline-1.6.21.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/hocon-1.2.5.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/locale-2.1.2.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/semantic_puppet-0.1.3.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/text-1.3.1.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/trollop-2.1.3.gemspec
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/master.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/nagios.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/oracledb.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/proxy.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/teampass.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/tp.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/zabbix.io.yaml
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /opt/puppetlabs/puppet/VERSION
+ SHA256   : cA8imleun9Au12GBbHQR1Ki8dhATMGkn , m7WzHBb3anRvzhntG/V3qzp0YCLaAFiu
+
+File: /opt/puppetlabs/puppet/bin/augmatch
+ SHA256   : VVXyx0rcOUKXO3WBfamoGuQ/nLkKwHFm , 2zUV0KSD2CB5CBuxRgwEYok3O+V5b4vs
+
+File: /opt/puppetlabs/puppet/bin/augparse
+ SHA256   : fdvfxbzVwIc06zufMeM94qV/UC0K+elO , 2ZPDe4C94jxAqP8bwRmqs0qK+faGRSku
+
+File: /opt/puppetlabs/puppet/bin/augtool
+ SHA256   : i4SySQLUsiaOLumNN2etHU8672RwbzGy , 13QUFWUmMVGbh55FI/DLPJ06SXf4d3L/
+
+File: /opt/puppetlabs/puppet/bin/facter
+ SHA256   : zzWZ4eGW7buX/ONOybfQoqncyx4PQZYY , FGr8nnsFQVmVvV2Q/5SCVrxnJFLnIhtK
+
+File: /opt/puppetlabs/puppet/bin/fadot
+ SHA256   : jnBZLG59McnQxhjUSOjsjhD2QlY1CCY+ , ketdIKeNc3t2Fr5QkH47xc6B+9eGaVsB
+
+File: /opt/puppetlabs/puppet/bin/openssl
+ SHA256   : dcHEIAyDavd2iS/ZWqgG+ja7R30AP22z , xdZ6CKUhW1kDS0sMC/StXQRK04MrRxaK
+
+File: /opt/puppetlabs/puppet/bin/pxp-agent
+ SHA256   : yXnPNCq1Sylzvxr5AtcuHWv/fY8ltw/W , 6aSPyocvXjzYMf2pCjaiHwiDMhfUwvfO
+
+File: /opt/puppetlabs/puppet/bin/ruby
+ SHA256   : 95vu0dqf1j5aW7r3AnNLn9nMve+fp4oo , GJHwVkuoGfRhtCpw82sp5H5nNif2qGv/
+
+File: /opt/puppetlabs/puppet/cache/client_data/catalog/master.io.json
+ SHA256   : 35xqYPfpdT42m8OjgCC0JzaAShDGb9wU , dS+qXCCXO3u+HpvJazkCWtpjQt7H22V6
+
+File: /opt/puppetlabs/puppet/cache/state/classes.txt
+ SHA256   : nm7uBpEgds3P64BFlPiz4efsPLPw93wf , +KbjSxHKvYu6J5tSUmX43GSDd8si6gf0
+
+File: /opt/puppetlabs/puppet/cache/state/last_run_report.yaml
+ SHA256   : 1yHdM84ZZv8s6jQQfyEYwe082inzYaeT , dMTUwRVMq/TqIi4D0/UoTZnsoWPul2Hh
+
+File: /opt/puppetlabs/puppet/cache/state/last_run_summary.yaml
+ SHA256   : lZxOB1uWoPg/e6/rUHnNz4kP1nXULJ+p , yfvcX3xP+/uCaOgNqKERuYe9r091NbQu
+
+File: /opt/puppetlabs/puppet/cache/state/resources.txt
+ SHA256   : M9WCxGtI02wfY/0E1m/HLZMYqjqXP/sJ , ee1wYc43n7S+6/X9Y0oSq3XR2uTbZ18p
+
+File: /opt/puppetlabs/puppet/cache/state/state.yaml
+ SHA256   : ECF4AbsbcSr1yPIppf9HxwYX9J84IHFY , EXz0Kxc6EwFT0I804oAtV9bj80D/l9PZ
+
+File: /opt/puppetlabs/puppet/cache/state/transactionstore.yaml
+ SHA256   : GGPaApBXDap73CgWYTU7rvvBwVF3Iq1j , 3sFJv/AtEKwnBL7fYmLcqV7MLqsCsVGT
+
+File: /opt/puppetlabs/puppet/include/facter/version.h
+ SHA256   : SHVERg5FXefOwZP+cJhEjjX/nPDGcIyv , gtFXs8//ey7Asq0sdak1rfPwm50ZbrWt
+
+File: /opt/puppetlabs/puppet/include/openssl/opensslconf.h
+ SHA256   : ZQ1EZ4WTS2Vd6rFTGNaspZpdRwysBG8W , /KmY/ulB8Fg+OZ49+u8Lq986HR87L3x0
+
+File: /opt/puppetlabs/puppet/include/whereami/version.h
+ SHA256   : QgUyl65q76+ewsN/SR9AGsWGFjGEiV92 , k9p4bKKhphiEARDvVpUC+hjP61kv/XRy
+
+File: /opt/puppetlabs/puppet/lib/libaugeas.a
+ SHA256   : gBsKqV2ew/S5i1lhmz3hoZEDGk8dgwBw , PLsEaWGsYxUv8l89sTZe1ik3/c+vep4o
+
+File: /opt/puppetlabs/puppet/lib/libaugeas.so.0.24.0
+ SHA256   : s7vbzAg5w7c3JSOpAHUcpZd/z6MVcTXA , 80m/2ce1o04h/PFH2Bs60i6M1w0sDoBv
+
+File: /opt/puppetlabs/puppet/lib/libcpp-hocon.a
+ SHA256   : drMn615KHXqBDjoRFC1xVxPj6ApYlPz5 , tBX27UaGYfzduamwxfGuj137/CpnuuGA
+
+File: /opt/puppetlabs/puppet/lib/libcrypto.a
+ SHA256   : WF7FRiILVnZWgaxKPxStbZxf73ubOdHo , dUq3I5jSkD+J2CcZz+LW/0iI7IF3xxnS
+
+File: /opt/puppetlabs/puppet/lib/libcurl.a
+ SHA256   : F3286rLG2i4e1oaVrf+toqbfXXGU8DyQ , 5WFi5wdg1qEOPnDLJr3oj7+jtRhT9c5X
+
+File: /opt/puppetlabs/puppet/lib/libcurl.so.4.5.0
+ SHA256   : EjvhHTEZ0/H+tLJUbHQAEpq/wa/SxlJW , iY/gFMwTWoyMMrn/XaQ70Xjozt0psURK
+
+File: /opt/puppetlabs/puppet/lib/libexslt.a
+ SHA256   : ZmPtkUKKE0P2TQja72HoFEe6jUWjy8LF , PGuxLsnjyCBI5kIjaZhGoNfIOejbgp8n
+
+File: /opt/puppetlabs/puppet/lib/libfa.a
+ SHA256   : h+5cgAnFk/2iujp0GyToVXSnTSi53PJ8 , Xcy+3C3Ykw11Q9xDJTb3ohJ+ZUCMs96a
+
+File: /opt/puppetlabs/puppet/lib/libfa.so.1.5.1
+ SHA256   : Z0E89t+r7jGKp2F05xg07NVD1ttvlAzn , L96Zq9BsCWs+TmnLHH+qCVvpH2jfBYqm
+
+File: /opt/puppetlabs/puppet/lib/libpxp-agent.a
+ SHA256   : Jfq8+hZYjZGfOWHENhq5ieSwUeTwq2Uy , 0suzCPDZ9cgrX0bh4m8tPa6ORtUcdFl2
+
+File: /opt/puppetlabs/puppet/lib/libruby.so.2.4.4
+ SHA256   : KfVOo6nl7SC9wwJiHZi5hTU2r8z/KVQ3 , 4kU2R9oyi+YuyQC/h8+XXESlpGOcKIZ8
+
+File: /opt/puppetlabs/puppet/lib/libssl.a
+ SHA256   : Ua/FdD6/TCcMFlwIM2GCUivhdGvwEFyn , XV4aYnU5SZ5HRGsWjUuR9uBx0q4gVaIh
+
+File: /opt/puppetlabs/puppet/lib/libssl.so.1.0.0
+ SHA256   : aoRRepDFXn0O/tX0qnGgTdFwT2TJf106 , RUtEliCypgNcz1cfZT6Ghj2hTCZ9/H43
+
+File: /opt/puppetlabs/puppet/lib/libwhereami.a
+ SHA256   : eZ0G+4q0m7eFnv6nZZAaq8asgaKqB/mi , jR1cyipfpSMTmN0H4ML59w+02RSuNec0
+
+File: /opt/puppetlabs/puppet/lib/libxml2.a
+ SHA256   : E8wyZYYlwHs7vGP7WxDjeKzQu+Jj+Q8s , liqXrbayBei9eAQ2GqxBej4YQkO5JvDk
+
+File: /opt/puppetlabs/puppet/lib/libxslt.a
+ SHA256   : iWiqSSzY+guGRQqzwTU/KAhjRe2bqbqT , Yzomg1u5j7DF0JZBPn7SbyNVTtQ2Pom1
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/bigdecimal.so
+ SHA256   : xF/PIGZORckStCDeGd1zf4dOXrhTnR/q , z28M9yhWJgzSf2ZatVl5QauL1Sr7ZUjO
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/cgi/escape.so
+ SHA256   : GqsAtfRgf9Bo8J+a0NLqV3YTmvUdrJNQ , 2ieW/KH7vExUTlxGSSwdh0QYbo5nUfGi
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/continuation.so
+ SHA256   : R0SuSeY58FmKQTnuz4ZCpRlZ6qCYTPrX , PVv0Z/PFB9xkTUvpZQIes48UiwT38m/H
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/coverage.so
+ SHA256   : ll5NVN61SeRHvPos5Vke3fAM8ZmlfBed , HQYusj7pFi+0BVllkr9JkYuNWrFLsiV8
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/date_core.so
+ SHA256   : CU0mcPuhju1L9TysI3ezWMikJoLQDmYJ , r7/gQEOLE0i2bs58oA9uQ1sUnowppQAn
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/bubblebabble.so
+ SHA256   : QohRHTXODtyQNK+Gkgnp8hXnMkPeGDAw , rTFMxqr9mq8erOzMLL7E4ctsakvSqFtY
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/md5.so
+ SHA256   : 5RSGdN3arRPodsaTeUObZO09Nwu6lZSs , iyhq+05Eoul5mKy0Sy0uAeZISH8kL2+0
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/rmd160.so
+ SHA256   : 4qbObEPGIcNvpjLxinjBZOH3y+JPUq/4 , J0xTfy7CbSx9G8EtC+P2iGpvnmjVWTk2
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/sha1.so
+ SHA256   : ConpJCSsJCUTwsAq5tHm2iIXP5HTYUHV , 8ivgTCGBxmgeRTDsBa6Ii2iF0Odn2MGm
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest/sha2.so
+ SHA256   : /9Dz1Qns0O7x6NTAagV5SvMsP5mi6oZQ , r/zGDtLaGSNKJrgcOJO5f6YHnEKkHNFl
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/digest.so
+ SHA256   : OrxREWJEkq8v2jSk26ViGppK5hYQUoM1 , 4ykCfDBmGKeDs3YgY1DW/IBMIoAenh80
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/big5.so
+ SHA256   : /ppdmw05P/vb/DnDgWgaumZXMKf/I7Z6 , 4oIHNBvtSS2aDoovP9mIk8gJkfWUDiqp
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/cp949.so
+ SHA256   : sL0Zd3g8JxMoZl6uO5/Gp0maV8e7Ct9J , 4eQWsLrpXYRStKTm4VRPZPQIkbPAD7uO
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/emacs_mule.so
+ SHA256   : i3ofdQ3btTKmUSPTiqIQZ4NfcnC9OrdO , NjzXjSaUuX5+DgLsssNYhWg88Vz04+qk
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/encdb.so
+ SHA256   : MCAtPySqUny/v6lxS2LrC5a335bUleWf , HEfhVqy5nRQs7eTdzSDpAY9qaQSH/K44
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/euc_jp.so
+ SHA256   : 1+uwOHZ/kyin2PS0zWu9M0ibBZ5L8VZM , tkbajX/kZJCtKkW4ms9UY2lO/cnYc56e
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/euc_kr.so
+ SHA256   : y1DLI/87xlEf2ayOD+iufXBX/vFprufM , DmOKobiofY3DTnq0p5PufATMZQtLZ1og
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/euc_tw.so
+ SHA256   : Dhg/ebP5kEqGwpQOSwhsPZWeDjyyk1Ct , +ELltjy2Hj8aoByNRtN7jflScDJtL8R5
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/gb18030.so
+ SHA256   : Q05xflxyszr5nq0W8Xur1trIY8uI0VJg , 4VXgSwp1rBoBoeOH0yF7282pukWaAJxo
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/gb2312.so
+ SHA256   : Yukm35lit0D/f1RwFhjOSOR+dI7fLQis , ViwOn9csRG+vElmrfsAA2+aFPP5wCuv+
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/gbk.so
+ SHA256   : LHhmX017057PjTG7hAo+BivRmxUxIBzm , nPTypuT2t1VixTizLH7FLytvtMqdjTsD
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_1.so
+ SHA256   : PhQTwxdJyh0H0rmgm5DSWtLvSaS1IeLU , T5m3MHnzSL2A7wkS8rDuiR+k2igs6wyM
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_10.so
+ SHA256   : Iee1Ynf58C7G62Mq3OSRMkr6gpVxqthS , HiOywmBTRyXpfr1nMkmhr3yHhbnvGG5+
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_11.so
+ SHA256   : I3ivRgGx9izC9aEfQTXG8KuRCZOpNaPp , Hh+zcYaXHpDf9RzDlHPrJv1pIp4GyZ/g
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_13.so
+ SHA256   : gPKo5JPWgWUYOh6RC7c/Q3k+vkQiMHoD , kPf2q+1UN3vXkRs9/OkBzdjNxH8qmIQd
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_14.so
+ SHA256   : Clk6wMMi7SkH3cAZhgrkyAytNuL3y1jt , CSk3QzlktndHyYUYu/eCOMemWLHFT4Yb
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_15.so
+ SHA256   : jgLY0KhTgNjwF9R/po327VNC43gfjkkw , N/ceZEjNLFvofsBKjRmcO1Q/jdKsZSnF
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_16.so
+ SHA256   : 9dJ6mIrNuqhnYhAUGmWIuTbjbGud+bSP , fzTWby3rBhWY5N+Fz7SLZsYVZCrkXjxL
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_2.so
+ SHA256   : GSbjPpXz/NKBEoCX9bk4rgjlC3GssUSx , By0wha5VV6TyXM21x5gZ6vIoQ71+AAGB
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_3.so
+ SHA256   : Fz46OGQ2XfByMuk4y/2z2RoT+UW22HI7 , EJbmDDdbKfOshoEtl7hf1VKXCirJP9NL
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_4.so
+ SHA256   : 1Sc8fY9WsFbllbqVkBprLFNLacEm28DG , IoVWGhorvjh3rDeJRpsn/foGWoUcn45k
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_5.so
+ SHA256   : cNjE5xL/hz+j2n7A+zTnndWBZfIhCzh8 , N8wRm8gNv6W6Tj5t91cTp3lC1IqKWvi/
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_6.so
+ SHA256   : +0OifgEP36UNOK1wjSn7T3g7Y6JOrHQp , dh64n+x8ImPKCeLBrJjUt2T7HUwev/3U
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_7.so
+ SHA256   : F2db1OPkQ+cvrhz4FC70sZCo6o5nmjSu , lvpLBcZwHvE8ULjUwc+iv7HYr/DVAF0k
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_8.so
+ SHA256   : 8+P8HeV91U3XGNRstLEVWbbxwkBglH4c , Dd//gtplTjxnnWmdUG7nLNUUMoD0w+6U
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/iso_8859_9.so
+ SHA256   : F2XsshSQ2FLM4nPlmtkMdp4TWX27tOnR , EQz54m/p7W32fTgZn0t5hTFTL7vjPJPP
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/koi8_r.so
+ SHA256   : oZqPBwHsk7b4nW9UeTpeErbOik0dw+oF , 8Z6ZueUlyyrkhOasFk/haTGPaU+GwZFW
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/koi8_u.so
+ SHA256   : T8EWW9bLi8MHzZ++QCmI0rD+P3CzVNlL , 6L17UH9qE6U28AJBvTMrxizjIknX00FZ
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/shift_jis.so
+ SHA256   : agx17vkx5t3V1o7U4VdeYM0pPVJsdnlF , LgbD0VK9Z1joxazr/dum9L3RDSSWcMX6
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/big5.so
+ SHA256   : qKuvQUTfYfcZvQBSWZVLZ5qWbb9FQoih , nYhLOwHiSqz4x219/2namNNE5LcoJNU2
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/chinese.so
+ SHA256   : GfV6C1N+s4nYs2nhzUIhCRbaz7iGDV8x , a4c3+VQu9UoMSToqU8E+HvvtK+lQ233T
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/ebcdic.so
+ SHA256   : Tq6O0fq9gHfUjiMIF06nRJ5S6ygLctKg , sIwTWjoICys7vab+1cYovf0DhEAN4HS5
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji.so
+ SHA256   : c2YBjwl8Akuyhq2sX9g/wu3iiFZM8yaV , RJMiZljGZEx7WrcSfiCr5xNbedcT8ksk
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_iso2022_kddi.so
+ SHA256   : k7DwxBRFnewnNMZYcByoIk9lFXw8xxJu , J7JEX0j1cLjje1k9f91fm5ekk+mKS6cQ
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_sjis_docomo.so
+ SHA256   : 4r4mYdNr6jcoJuE9vjQ7W3TL9njJ96ad , PYVCJo4KGRFIX+6FLkjAM0RC+sio7vtN
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_sjis_kddi.so
+ SHA256   : 8i6PMVOU6G3jjJ6UhqMOIeVDL8Zieb98 , ox4p3RCTDFXwwSRCDXo2nVeG3jFcjY6I
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/emoji_sjis_softbank.so
+ SHA256   : +aarK5y8lfmwA5iGeF23BeNsaKfTzLBP , 6F1J+w33ZZK2bRjZIznmSYa6/28SvMB/
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/escape.so
+ SHA256   : WMGlNUcbV7yVG31U4pzabksi374wj7s5 , +0UUL7yk5icrXevy2sKmRk9oI/wYMn7b
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/gb18030.so
+ SHA256   : jbT05f6lLsj95dhdTj4LLP0bQaQaypBv , x0awn76NxFwCWvGpcOX1HjDrsaN5ILMi
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/gbk.so
+ SHA256   : 5oeMZIQ2k6scyNRCKggl7jKtjl4Q/4hd , W6SeJHVI6g3LXdgf2KNkiRHiULac/m+q
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/iso2022.so
+ SHA256   : VP9URQbHAm6s4h6qYvmLLszQKGUTs9WD , df0iRg9jnDX+bF+ybr/QO7civFkIJNMc
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/japanese.so
+ SHA256   : aapb/yOnngBoZi+YFQOZ4TTgSKX8gk8M , 3sVQEByejmYMpBTQ4PxzWPCwGpjYIFCB
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/japanese_euc.so
+ SHA256   : g4+5R+8f3/wvbJK0s8NOwkAvGbks3jkt , 6RteOsWPsMOrosWI1kLQabHMjGdzJ604
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/japanese_sjis.so
+ SHA256   : gQoyc9I4Pin+IpuL2hxaCXZI6oEQ5Kkk , hH6TepNuFj0478W91gb475AvVkZu7xt+
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/korean.so
+ SHA256   : U8toSvgcro6EMeje5iomv5tI3mCFHFbg , U3BUrFi8NCmhknBeX5Lq+SvmI2LG8DvL
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/single_byte.so
+ SHA256   : xvNDG7//DjX83qJGw6475O3CBX3/16D9 , oY909eOJh5IznuZ64qIlTsdwL/uDdcBI
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/transdb.so
+ SHA256   : YS3yR+eCIitOjsVHSS+SvxNI/XFvK5tk , Un32yJv4YHc7IPTf3vCBFmmcDGs1liem
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/utf8_mac.so
+ SHA256   : Eq+3xlAeEqqaDVHdBrD2kchoYzGh7lOP , CfbGbJHpoAhByhIMa7O6G1r21qDsHXxz
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/trans/utf_16_32.so
+ SHA256   : lB6wHyYejJMKZThHybHRDb+QpQU9OFSY , I/Lc5YgdadP/6PXZf/2/zCq0F5rKbcdr
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_16be.so
+ SHA256   : eC/ByTSpNWUv2AscNWRz5xXeET3sBoO0 , CVcDnIGXUyFuhc1Rhvry6e0Th7mdVMLM
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_16le.so
+ SHA256   : jloDF3408JB0JLteykClpXPn553dFOxR , ZRdnG9pezZtEsndGM3PiMmrWy6vzIyGh
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_32be.so
+ SHA256   : LFXqWmt5s7ErbVLHSgb7CLwtBP66HdLD , bcTrVMPk4liNrCXawOo2TxxF3zj8H/6j
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/utf_32le.so
+ SHA256   : OSGnhGdm8Waq546/eC81uPq9CTWgkjLv , eWk/cwzFeatKfq9Y8YXizKG/wfejTMd1
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1250.so
+ SHA256   : WHWdiWaqPdt9wGhiCkqggyGF+pDCSYC5 , 9wnUZGBzjdT/TPGgeofF4ZHtMvkPL91f
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1251.so
+ SHA256   : G9Ib+VqQciSESaB0sMuuuo6ixyVq0WGq , V6ehNoIMJvo4CIIUXjf6rK4ZGW1/BXnO
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1252.so
+ SHA256   : eOuHDrYAivs2PiHb1XcQ9tMrpV/Wb3JQ , WXiV3A2APkQp5uCw6mOyaJXBIiRDndi+
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1253.so
+ SHA256   : lV+UkXrrKml0NnGwb+j3TO2KePPi6sll , aQPnOQn7xGXz6n96C9s+e+OEWBuVvOae
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1254.so
+ SHA256   : ubtpEp1OiRGnFAJ6xBrz5ZTvezMYPZs2 , v4l8KI/nJU87k6CVlkM3j0GfoU4k7oG/
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_1257.so
+ SHA256   : 7Us1Tu4cDXWiQLc7NCNx8VaWIpUlR7ft , RD6inffuKHX4nAipydj+DSyBEn7AOgm+
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/enc/windows_31j.so
+ SHA256   : 5cUEaPe70xP7bW6chgAzZD3zwgNVetHY , rrOSbbQRaQ3LHr3rbjU0iPmZV87bJdVF
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/etc.so
+ SHA256   : BPDgdK3KpWR+4ei8782jCsj2GnsrVLk3 , mv24vtD0/z/4tVABEw91QQyz2qBdIg82
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/fcntl.so
+ SHA256   : ZsSg5ZTeLj54OkHyqSPBA65T2B2chtKF , v6pigCW2ZsIw/nERD0C2s1tFQdYq4ipZ
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/fiber.so
+ SHA256   : xMwgIBU3pyNhBlbzLC3sEyRfAyqcC3e+ , mTYon2HIZYRTWJxIg6Ma1cvohGFT/6rZ
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/fiddle.so
+ SHA256   : fj51v22G6FHshEPzmaUL+xDlIAQAGmGo , /v60RhPb3iVHFAiD96Jpve+khGHaukW5
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/io/console.so
+ SHA256   : lmJXVmeUvZFYHjQMFkbx5MC0RPOq4XuR , shR/nF1ObuBYFLOuS/VKkLTiJQljOq0c
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/io/nonblock.so
+ SHA256   : grPJwb3UK8swdSO/Ie8e50NOJqXtzUv1 , JEXlfPvkvJmCaDlTmInGa8CmfVnSzt29
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/io/wait.so
+ SHA256   : TqpT3LQed/CuHCKYt3mOsxb+ngdeReMH , SJtQyP7kkG+oM4KLTxn2d9jAaZ2Gi/6t
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/json/ext/generator.so
+ SHA256   : rPsUgBqbOZyH2HjZ2Y0lpPvxWUgrqA1G , iR2xPewO0LFMLF5HlNZ7R4YpsAX2UcEB
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/json/ext/parser.so
+ SHA256   : JRP/DEQFC8lf9na5D2Ko4Of8CiqTfE8C , zAKuMJ7ivYVcgXyqfQJsf4AtGapk1rdl
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/mathn/complex.so
+ SHA256   : x3LcnSAbMRa0UpWCdW0ELlLk8P1Me0ZF , o/wQysupll/YbRyodof1ODMTgQI2XtUx
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/mathn/rational.so
+ SHA256   : ugrX0f1P5KwDRVQACY1Ijote/J/OEUqn , yihVfaBAhoPAvpr0IO4EAVl2jsO2vaqA
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/nkf.so
+ SHA256   : 1KhzlYfDCyXPLCMynnBf77yQEQWx2STg , rIXOmFSEBYXZB4IZ3EdnCNSbS+Uy1PS+
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/objspace.so
+ SHA256   : BCCAStC4Ommt1jbr17Uz9HkZ5HgQL9Cs , 7yptX47MjFPiBcNuf1Y1938yvHmyWmO4
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/openssl.so
+ SHA256   : RG0QclSHsqx+HUTczG4VhOz61lRDfqVF , eMpE4IM+Fj5Z5cqwP490weIZ2W/RI2W8
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/pathname.so
+ SHA256   : ytvjJ7WWHkUy7jkAt+HqAVi3lecgdax6 , K31TNCkE6/OmpFpAmN9WSFX8e4cP/Jb9
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/psych.so
+ SHA256   : WSw9O/2/r7t69fip2hm1HswDnBR9xC+U , EVLXeWj+srNol8mnhOgklFArvmwEX7bW
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/pty.so
+ SHA256   : LdXMbnfJ13jkWurrd6ZMJ1OlkrvcwjkL , jfyunnjHLIPVaDUn+Oxy+4/pXdDDGVU0
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/racc/cparse.so
+ SHA256   : X1BVqMhkh3gVNrBDPXEXWjvMsbrOiLit , mk7/hKQ4La3KismrGGmmCMU4lT8VPPbm
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/rbconfig/sizeof.so
+ SHA256   : JuO90MrWuor9ny+dbtD2AN9neSA7uthq , LLJTNlgTRmbcXn75+/rupbzdkQmyLqEj
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/readline.so
+ SHA256   : lzwPnKZMM+rmhsx9UANIV4kMhJWkb0Dc , ncQ5TFYhn67siqUQa4NTp0lhA0iei0FZ
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/ripper.so
+ SHA256   : YHEs0cJTGcM4cJNLLBr8tCQER6+HD8gc , mzDmZDaNppy+ma7Y6V5DDUfJ64UWQLWc
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/sdbm.so
+ SHA256   : tLJXNcfDkFW4eDvqPnX6gVOhboByjNyd , RUcQlLzXpcgLFFRJduaoHVUjqUF7fpMk
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/socket.so
+ SHA256   : x9fwycNf42qPUKtCj1wQQGkfaDedSMcj , qM0TAE/W4M+KG10MB/hBXSkArfn89hSN
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/stringio.so
+ SHA256   : 15sCksjnA+uLwIGc/aH0is5w5qezqHqm , 4N/LmHhVV2Uo45WFlLyB5VngZtcLK0qb
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/strscan.so
+ SHA256   : ORJHMZle3o/EvxSJdUu/O45BWpoGrkWN , r/ST2okYMWXQRgQi1qnUQzCiqEyF2ip2
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/syslog.so
+ SHA256   : cSjDOAOBd7Ue6e3JbP3VjczYu1fLwaEN , J3evU98WBr70vwGb2JO+7PYnjVnLSw4z
+
+File: /opt/puppetlabs/puppet/lib/ruby/2.4.0/x86_64-linux/zlib.so
+ SHA256   : Z+Lqn7l/pHa7UfRiOAgO/b152bdoG8rc , lhGOc9QGDVFx6w7n2JfSYNsyJvyV75hx
+
+File: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/default/bigdecimal-1.3.2.gemspec
+ SHA256   : 48DN5+alloHvb5s3c2AQxaitZkA1Wr70 , Xw/M333XzNEH6ImZuphRiJm2/x2cgtm1
+
+File: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/default/rdoc-5.0.0.gemspec
+ SHA256   : dAcECuI3Ys/k+MzWclswG4j7fBznIAP3 , KRt6ZMbVZSggnFE8cIn08Usqn48GGlVq
+
+File: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/facter.gemspec
+ SHA256   : FvAaKCcyJztPZutKjx1eUAlFxcgBzbX0 , buCjt8vrv1DnmBcB7Pf4gmyPaUml18wy
+
+File: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/hiera.gemspec
+ SHA256   : MU958AEgl+cPHR4FGwLMs1JEy7Boun0S , 4meEUDjsl47URTRlFoqLTGl/7R9xv/E/
+
+File: /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/specifications/puppet.gemspec
+ SHA256   : 1pzdDi4TzwgfVXskIy0ALMnNrMHLaDQv , 6kyPrbLpn4wPnpHg6hNhOHjjxl5Q2NK6
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/2.4.0/x86_64-linux/_augeas.so
+ SHA256   : IUkyAF0qv89lxsqHyF7ck7RWgM+XcQi1 , sz4oYmwt4+KyQbU6zzFCjzRiTnWgXKZg
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/facter.jar
+ SHA256   : bvu8rtAJeIrVLn0m1Xcfke3oQcaDyBSn , /Yz/O8Ephv4xlSeEBYsDhB6Cbz2FKKnW
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/hiera/version.rb
+ SHA256   : vxWa9bu+Z169iz7mquHCEk0P9QaiBgN3 , uiL/FuPC0uZ7D/D55oeDMNoQVAIZDgIh
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/mcollective.rb
+ SHA256   : vh+Bu62KQHI8U9xHhlHdio3WwK+8VYo9 , R/xsoRI8FudHVupcOsI+BhI+QTNs49e5
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/application/cert.rb
+ SHA256   : YscZX7sFP17ta4nHvd6c77QnkGjsuXXA , enZ2gFyRn4yKR24W4jhEv/4NbG/MbaoF
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/defaults.rb
+ SHA256   : 0fp5KiJ7/MNXGfO+eWGGhe/gfCI9QW9N , Zin66SkEgvhlSNKxXhwFdviUr+XcuAK1
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/face/certificate.rb
+ SHA256   : z1zRGqvTbxB0nUS75sLDetaW/yYAEHOs , K7XQBy4mqNDpCKpq5Y/Wma6vnUOEGscb
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/indirector/ldap.rb
+ SHA256   : cUQO5s8OwqKak5iME1WujDlWmYADt7C0 , e9M++rZr+r/cfBlmx/U50pa4BsqgS2jO
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/node/environment.rb
+ SHA256   : lXDPCMeCrWVihf7+r3KqzKwpdLaRbLrO , 3BMmI07ZiCIN4yPbSt3uLGJyYj/0yYZv
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/parser/functions/tagged.rb
+ SHA256   : uVkqt/a+KGusX2M2X7KPVls6uA10GYIv , HxlxThcPsWDVkx4UtVKSPWm4djBx2YSW
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/pops/issues.rb
+ SHA256   : PR8mA/+jwIRPNwg2R/HkLwMRI0YQnID4 , Hl6cZ47Pr2R/UthUSyVcAfrq5EXerk3M
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/pops/validation/checker4_0.rb
+ SHA256   : /smeXZCbjlKWjO4S3+zcXIIVcs+oE6pu , j2z3irnSWHy0Awx/+G0XEsBPAE2CAbSt
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/pops/validation/validator_factory_4_0.rb
+ SHA256   : jdtsrrWEiPxJMn7bEz84fv8HItER2abj , rfKra6fOMt9KwC34ICaa5uKKAdsxTrXm
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/provider/augeas/augeas.rb
+ SHA256   : edHQUzaJUIpE1KOyK5oAQ6GrcEe1Y9Vj , G+N5MPvXs17CWXlCbW6jCS11gx3Pemaj
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/provider/service/smf.rb
+ SHA256   : jZEv9YRjNazpVxA/RrO5hryih4uVWlMP , bBLJGELolR7H8BBhjEne/wmyxkMhuACO
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/provider/service/upstart.rb
+ SHA256   : 0MOAuuMjFckndDUYkDBr7UodD1xY2O4i , Skxx9m+9RLc6u+HbGF6v6MR4wB1r7fv+
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/test/test_helper.rb
+ SHA256   : lS8NUNY2CbM2+IJ2XqL0ylqKrEUZlkqT , qaQG+AleZLMN456WfTqgA5t+4V3ISXMk
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/type/file/source.rb
+ SHA256   : tFv7HOv3Re7WMHqcEc9jCpLUxKY1BHD1 , CUjXlnaQ+HNGyVnmazdgsC3B4zjAXn9S
+
+File: /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/version.rb
+ SHA256   : KIyAaNoUuWNjHZa72ohcqChnqnuNvM+A , KOWHWpwpz8YD/PLP2bHAat2HyUxCEPiv
+
+File: /opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper
+ SHA256   : uRhW9YS8ayHxiYNVZXhvhf2UwYiSkei+ , GBlCazPQu19pirVYSS3PfSb9BRYCGOOp
+
+File: /opt/puppetlabs/puppet/share/locale/puppet.pot
+ SHA256   : 6aOxzc6kx+LwLhSgzJaY1/4PTeBHUmqe , hVo8+TDaOVLqJ5t8QUc2Y8WVldhcqv32
+
+File: /opt/puppetlabs/puppet/share/man/man5/puppet.conf.5.gz
+ SHA256   : TaheHM2Q1ujWQZjgWiXzx3HOi3kyfG0M , e/SdhdFNd3ReX6wtZsgtDDQlYAmaU1RA
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-agent.8.gz
+ SHA256   : EiPLwUbiFa/m/UCPN7dnfUBb1Tugqc4c , NtaNQ+GMPCkDtr7LcEsFfVuPn9OFuEd2
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-apply.8.gz
+ SHA256   : rlI7RVoCD8Bd99VwBh/r2ZVdjYCbRmtz , UuwGyMrMI/U+esv2ZuqbgOeJ7dBzU251
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-ca.8.gz
+ SHA256   : TcZMWfCVdv6AtWQr7QKPAKpyBA5LO6ZJ , 5mYq1qUnOu9vSZCsA1+OlpsrsFuZHpSi
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-catalog.8.gz
+ SHA256   : 4l56mMF6d58hjfoZ7XhAgHL/A3JbFHqr , mBkiYIh/giKKCQjaszsJ7QlcDhIlihZo
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-cert.8.gz
+ SHA256   : uUVC9wzy+GV8qXfI76ppYlp5t2U2iQd4 , p85NL/alHAt3X71D5nKTuKGzXXUlChJh
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-certificate.8.gz
+ SHA256   : 3zIlUlNhWPk/Womfco28+jj8on4Vo1XX , qZohkirrc8qZCNAlWLYtHAHJZJm19vif
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-certificate_request.8.gz
+ SHA256   : exHyUDanj1wp88spgW4hR5XgLAwlbjA9 , BUdroW2shKRxkoOOmtDuVrIYQ/5rHnzT
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-certificate_revocation_list.8.gz
+ SHA256   : yNOsi/KAuasyJdche73iujXzqHKbj4at , RKTSxTplw6h7+m2mYNFAqSRzX08iR5Dk
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-config.8.gz
+ SHA256   : bOISNDbc6rlbSGuXePXq6SIcpe5Dkgz5 , KvWKONoWmVr3wk1mkxA0LSKYCEyW/BXx
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-describe.8.gz
+ SHA256   : KqHbXZHI2ZV82oqkEt+bBvSPgkEjsxPJ , ecL0eZ24gaorMa1KvT2f4tXNiq0VtqJ4
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-device.8.gz
+ SHA256   : 5a/U1c3x5sf//pz7CcLhLbn2joFjFhy8 , tqJtR1vJjQPdLbPYjWl1mFIGD0e6kTVz
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-doc.8.gz
+ SHA256   : lEyvn1QbfHcws1g4ondG7kvO++2ujGkX , cLCgjXLIkrzF+t3Z2T6vo94id0PIt0xi
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-epp.8.gz
+ SHA256   : RtRhoTmQzk9kYHbRXLx35ZIXN0Xvzkio , CZQg9107c3ByMtSO/Ln2KnNhxGzRh5kP
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-facts.8.gz
+ SHA256   : GpR5rKGdfDmdxPYxqnVeASqnQr7s+Ukx , c7HnsWnaF8iAHkZyDT0fpc7w2zXC5LYI
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-filebucket.8.gz
+ SHA256   : qH5lXQbZ0JwvLkjqdlx8NaA93b5FAC7f , +9BkjBKOVcmm+idfl7bg4wB8fmrDXnao
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-generate.8.gz
+ SHA256   : eiRbXFtFPTvaSKk33txI9L/F38IS1jl6 , Bp3s2zU+uwctIM/uORDkhhWkFuiXOPV+
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-help.8.gz
+ SHA256   : tgL+Lje41dH0RBF5RadHSGLGaOsZGnlX , BTCNE6ANkfpDLBlqTrdtWlxnjmo4WJJR
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-key.8.gz
+ SHA256   : B0yFtdkDbAM/++lB9kAsHjOIaP90/MrM , swUrxYu3J4KTt4HwNTqY01Jt8quTh8E8
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-lookup.8.gz
+ SHA256   : alFlSxcXNIcyBB7lVUIaXizXnv4n25B1 , 8Udnw2UWXH7ef7RtSwVc7QgojQBpcPDJ
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-man.8.gz
+ SHA256   : x0WG7p0DysRqheF6wZ2YJ2yxmkrS/P8b , AP7PC2D6hs379XoI9rkRFLhHwnIjdlJK
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-master.8.gz
+ SHA256   : pkOGqedtGFhlVNsTaput058pPujWZxK/ , bkRbp6CDwImmOroqziD7qPSn/XfuKK2m
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-module.8.gz
+ SHA256   : M8dZjRTXx7Agqego6VU0yEhJ6idMkZdG , Y0NlK4MyaV5Q61PtQS/YCePbci4uztdD
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-node.8.gz
+ SHA256   : jKMXLaWQBNe/z9/QLOtZbRxe7M77pIOj , o/LUOvN/licbHmJcyUNlY4iMmA8wNgFS
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-parser.8.gz
+ SHA256   : 6rw9iJW7hOsl8PCH3XVjkp+I8/+qVjzB , XFAVos2+05KAAaVgbHxZOIOU5DvdR6aw
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-plugin.8.gz
+ SHA256   : PyRW4UrHP0ttcjnClYFC0yWDSIhTJlsx , ee4Td9FAud8U6wpeyGeqxL5yZANRXin3
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-report.8.gz
+ SHA256   : mS4KbJw6AEia3lMqi9uw2m5H0PhSukzu , xwS6bJkXG+ILjySW+J8uTE1kV/SwvQr0
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-resource.8.gz
+ SHA256   : EPfrNIUSM/emJH113HEmr7ZCInETQltk , Hiomju6reh7A3LdTCY07MrU3oUZpp7aP
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-script.8.gz
+ SHA256   : IcTSh+iCRXr+rTh18KGxvvPKBNkwPZCj , v90IZms0KR0Dq1jCmwCuJijKhffVgObo
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet-status.8.gz
+ SHA256   : DD5w+DnZeHsmHQyZj32Yz8Azda8UhXEf , Ssldty6pztdr2ilzQJ9ZqmpzUC9PHCQU
+
+File: /opt/puppetlabs/puppet/share/man/man8/puppet.8.gz
+ SHA256   : meUv3XRruzNOyFyHNmjfNHufQGAu+jjE , 4R5aC7+z9DIBUROarXm0cGV5jQzt59xH
+
+File: /opt/puppetlabs/puppet/ssl/puppet-cacerts
+ SHA256   : YMWUc1BOcS2rtZCATpDE8/vJ0GKXm+y8 , KM0+gmIGss9Wcuz7JeVKlohi66H7Z/we
+
+File: /opt/puppetlabs/server/apps/puppetserver/bin/puppetserver
+ SHA256   : y4wBKD/72/5KfnT5NvRobapTUTm2SdiR , XavvkpBsx7tnmHBBh0HJLRaSfIHvZWKe
+
+File: /opt/puppetlabs/server/apps/puppetserver/ezbake.manifest
+ SHA256   : cyLYAjYWT/Hf4DzBoc38dmBtNwhaUWNi , /MSe3CI3rTAflbhTNwqqHJqeeBi1l7nx
+
+File: /opt/puppetlabs/server/apps/puppetserver/jruby-1_7.jar
+ SHA256   : DfUmw3X3y+AQuWoBrZeL9biFYfxQY1gY , UX1Zo4IkpCu/Z7otwO4lWulPG0ZpM0Ih
+
+File: /opt/puppetlabs/server/apps/puppetserver/jruby-9k.jar
+ SHA256   : xYgLZZlQsaUIjFHuLIwUriL1VvJecWSt , wywIutkWCmZvK06XHukkKYSTzEfCquHs
+
+File: /opt/puppetlabs/server/apps/puppetserver/puppet-server-release.jar
+ SHA256   : PhD/qf67HJJNjNF7+nHGXwzTLPhpchw2 , gpzF8Qw1TKu/If38NckEYYOgW0ZUsdZd
+
+File: /opt/puppetlabs/server/apps/puppetserver/scripts/install.sh
+ SHA256   : 7vy7RyUgK+QglGERoV4GiYYmfGwdkJ8G , DqOtQYgPb0WT8FX4txIhiRx1BmQ9olZs
+
+File: /opt/puppetlabs/server/data/puppetserver/restartcounter
+ SHA256   : 7y0SfeN7lCuq0GFF5UsMYZofIjJ7LrvP , 5/bAEXdujbfNMwtUF0/Xb30CFrYSOHpf
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/eyaml
+ SHA256   : sGiekjwMXgfaNVv6XR2u490f57Q4iwBc , 8/b2h9zfh5PhiyD6lHXxX135jOQnn1z0
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/hocon
+ SHA256   : DYv99hN0SG0ZHuW9agK/KVdmRyjyQpvj , q8H5m/9tQCyriNEpDQN5i6v07un+kaau
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsgcat
+ SHA256   : ZtuSQ3Iw1wFe9iPsWk9E53D2Cg03dqHV , 1uHHeKqUBWX6E1KldmUwwl5ZIgSJB3Zg
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsgfmt
+ SHA256   : HRy2MiJ1zdPwNc3Bg/9gjV8afCKanxnE , 0/gNDWK9Z0k3Nt7qAxvpZIxpkXwuPmfm
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsginit
+ SHA256   : d7Jt6r/HdN1BNLe3wTgpQMCKeG+0GOVK , aIpw1ufxZz6CEx6Ff2CMyjCCiJX+FZ/i
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rmsgmerge
+ SHA256   : Jhw6oRFN6nyFW+5nYOEUYp8f2WDgYdDK , eZBGb1IAIRc45u7Ye69dxgxpAxvNwoES
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/bin/rxgettext
+ SHA256   : Ptt/p9PFHzlFx3uVMoP89DwVgWPRjiSG , 29lI3I0pEjst5Ry7B3oxKBFaBGRPIvWL
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/fast_gettext-1.1.2.gemspec
+ SHA256   : Czq1/9RncZcqDBpgTqds6F3Dke1ukEmB , MnEO4i+nXFJG5OAEDld5jDDEPvSBo9Bu
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/gettext-3.2.2.gemspec
+ SHA256   : 12lXhY5GWiZjrVxFU6AAOG0GHuZZzbuf , h3lewPLAjoa8AI58ff8o/9Bkw+d36f29
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/hiera-eyaml-2.1.0.gemspec
+ SHA256   : X57qSl6gy3MSAFK1l5xqyUi4/m1K2TbM , +50Ir2dL3v5wxtbtycA+zoDXHLbXBuJB
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/highline-1.6.21.gemspec
+ SHA256   : IFH45GL++5Jz/6ouemYwD7a12mhLdA6i , wJ1XMu90F6Kk+0Oun9QxLoeADL4Zaqnb
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/hocon-1.2.5.gemspec
+ SHA256   : sQLgKFtTM0W+W67LoQvMrRxcM5po5Kdt , 0pvWJ/Mg0VuOqv61ierAdwzDSHb+zWN+
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/locale-2.1.2.gemspec
+ SHA256   : YLjGhoZgpmLKIqGe0kPY+oWiuoD70Ckw , l9uWqEPWdUcz/JvPtEuIyZ6MwolX8hDs
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/semantic_puppet-0.1.3.gemspec
+ SHA256   : 7kyLgGaA7gbHeeln5DetmEVtKwEPP8Ym , 28ODooCVker9JI/ccgBQKcgPE4YA6o4h
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/text-1.3.1.gemspec
+ SHA256   : vZ51Le1joiurhN18F3xUdI1y8iyZtUcn , HD4186x8Un6jUm4dBzwzcA6kzgHiGnRy
+
+File: /opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems/specifications/trollop-2.1.3.gemspec
+ SHA256   : G2RdkiC/i35kX5r3B/KZKwt11PEg6+/m , 0Q1z5B4xHDFG1+AE0rr6+CemIh8blB8+
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/master.io.yaml
+ SHA256   : b2W0o644nIv1fcCJnz7lnb/pfZRW4MEf , O9G44DRN1ZyMdWtIYjDRHmumis6W0zsE
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/nagios.io.yaml
+ SHA256   : Xn2KsIjagA/FKVEWP65ndTHDyHGrSUa4 , Oy+XaR96jueHXqyT06Vh5rmXhiJsIoex
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/oracledb.io.yaml
+ SHA256   : SoFwwnCXzY/Hk5w6vBaj+i7+7ECaGQDn , oEfcz+A7uhaiXVsRqf2hzj6abxL4DWe8
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/proxy.io.yaml
+ SHA256   : s84i0ewazMqz1iZJNQv4GpKinnfxAUVA , EUWyGBS9E1Uvo+GPxJ+b6yixy7uARPu7
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/teampass.io.yaml
+ SHA256   : 3LvR4sSAXKedyxbQPMgYBiU2psp/gboa , auakA+s852PIXC1r60kVBw0mpysQS5uo
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/tp.io.yaml
+ SHA256   : kyGgixj3EZYuywf0pV/x+fppX0torU+w , ykulz5QulPBptVTCR9B0FO9Yl0hchOCZ
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/zabbix.io.yaml
+ SHA256   : iYMEcWpTh3hosM86WjSklGl9oDy/WEZ+ , dj7AU/NAugKAaV6/RaTcbM8M6J0sFC92

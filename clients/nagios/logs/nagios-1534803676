@@ -1,0 +1,56 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-21 03:00:09
+
+Summary:
+  Total number of files:	163
+  Added files:			11
+  Removed files:		0
+  Changed files:		5
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /etc/logrotate.d/ossec-hids
+added: /etc/ossec-init.conf
+added: /etc/rc.d/init.d/ossec-hids
+added: /usr/share/doc/ossec-hids-3.0.0
+added: /usr/share/doc/ossec-hids-3.0.0/BUGS
+added: /usr/share/doc/ossec-hids-3.0.0/CHANGELOG
+added: /usr/share/doc/ossec-hids-3.0.0/CONFIG
+added: /usr/share/doc/ossec-hids-3.0.0/CONTRIBUTORS
+added: /usr/share/doc/ossec-hids-3.0.0/INSTALL
+added: /usr/share/doc/ossec-hids-3.0.0/LICENSE
+added: /usr/share/doc/ossec-hids-3.0.0/README.md
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/group
+changed: /etc/gshadow
+changed: /etc/passwd
+changed: /etc/shadow
+changed: /usr/share/doc
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/group
+ SHA256   : 2+liyC3vFwfO+TMXmNsjuU5lQfDIhEpn , GKN6W/QgzJA0PgXYOdPDwbaTobhDU6jk
+
+File: /etc/gshadow
+ SHA256   : Dsip+uUADFD4/cpviNycsmBTRiHVjukC , aiM+UZ58nHX8OTZuzZNmafVdBFX+icRY
+
+File: /etc/passwd
+ SHA256   : LUzp0uZPIT/z+y59Jmsu3L8+0mBOOc4W , dhTzzOMujmN3F3ESRRtHg3YSvItZDhNq
+
+File: /etc/shadow
+ SHA256   : hHCpo8VdLk8DL4EHJjSsCh7zKh8KOF3d , op/ezF5bcWwJmXmgEzfG08fl17VQ5/Up
+
+Directory: /usr/share/doc
+ Linkcount: 967                              , 968

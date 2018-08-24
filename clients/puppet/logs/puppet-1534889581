@@ -1,0 +1,152 @@
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-22 03:00:29
+
+Summary:
+  Total number of files:	283
+  Added files:			84
+  Removed files:		0
+  Changed files:		11
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211316.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211416.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211516.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211616.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211716.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211816.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808211916.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808212016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/master.io/201808212116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211045.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211145.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211245.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211345.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211445.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211545.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211645.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211745.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211845.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808211945.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808212045.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/nagios.io/201808212145.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211051.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211151.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211220.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211320.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211420.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211520.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211620.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211720.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211820.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808211920.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808212020.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/oracledb.io/201808212120.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211216.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211316.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211416.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211516.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211616.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211717.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211816.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808211916.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808212016.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/proxy.io/201808212116.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211030.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211130.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211230.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211330.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211430.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211530.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211630.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211730.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211830.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808211930.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808212030.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/teampass.io/201808212130.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211051.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211151.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211251.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211351.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211450.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211551.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211650.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211750.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211852.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808211950.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808212050.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/tp.io/201808212150.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211039.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211138.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211238.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211338.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211438.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211538.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211638.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211739.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211838.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808211938.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808212038.yaml
+added: /opt/puppetlabs/server/data/puppetserver/reports/zabbix.io/201808212138.yaml
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /opt/puppetlabs/puppet/cache/client_data/catalog/master.io.json
+changed: /opt/puppetlabs/puppet/cache/state/last_run_report.yaml
+changed: /opt/puppetlabs/puppet/cache/state/last_run_summary.yaml
+changed: /opt/puppetlabs/puppet/cache/state/state.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/master.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/nagios.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/oracledb.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/proxy.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/teampass.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/tp.io.yaml
+changed: /opt/puppetlabs/server/data/puppetserver/yaml/facts/zabbix.io.yaml
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /opt/puppetlabs/puppet/cache/client_data/catalog/master.io.json
+ SHA256   : 2WVTJGjca3hWa7rtYq462tEyjJn0/mep , 35xqYPfpdT42m8OjgCC0JzaAShDGb9wU
+
+File: /opt/puppetlabs/puppet/cache/state/last_run_report.yaml
+ SHA256   : TPOVxYKO+mg4CThhGCk4vhUtYaivr1O8 , 1yHdM84ZZv8s6jQQfyEYwe082inzYaeT
+
+File: /opt/puppetlabs/puppet/cache/state/last_run_summary.yaml
+ SHA256   : nF5crNtiygf0zk7dbttEPbgFb1SlQfOD , lZxOB1uWoPg/e6/rUHnNz4kP1nXULJ+p
+
+File: /opt/puppetlabs/puppet/cache/state/state.yaml
+ SHA256   : oUgRhFjzgUXt1OGqVIPW5GvXaY4uG5E7 , ECF4AbsbcSr1yPIppf9HxwYX9J84IHFY
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/master.io.yaml
+ SHA256   : ZiPGDR3cuflHViCcDXGaQFAX+wVahbBD , b2W0o644nIv1fcCJnz7lnb/pfZRW4MEf
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/nagios.io.yaml
+ SHA256   : vemVUsgu4uNAtdoeRnNmwcaWIuNMifHA , Xn2KsIjagA/FKVEWP65ndTHDyHGrSUa4
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/oracledb.io.yaml
+ SHA256   : pZz/7jujxyZ9qh2g3X2EfriGK+ht5GfL , SoFwwnCXzY/Hk5w6vBaj+i7+7ECaGQDn
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/proxy.io.yaml
+ SHA256   : CdFqtnh0F2TFZy8xxElu3W1JzBFKw7+F , s84i0ewazMqz1iZJNQv4GpKinnfxAUVA
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/teampass.io.yaml
+ SHA256   : gDbKSX7iBLEFpBcMb4/Cxy9DFzGwqDdV , 3LvR4sSAXKedyxbQPMgYBiU2psp/gboa
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/tp.io.yaml
+ SHA256   : 6H6uB70v51D0U1PZVd8k7vHk28B+/2+u , kyGgixj3EZYuywf0pV/x+fppX0torU+w
+
+File: /opt/puppetlabs/server/data/puppetserver/yaml/facts/zabbix.io.yaml
+ SHA256   : 2t5Op+R7iNnO0VADA8NgLT9vnCT/M/ej , iYMEcWpTh3hosM86WjSklGl9oDy/WEZ+

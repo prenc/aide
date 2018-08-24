@@ -1,0 +1,82 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-24 15:00:01
+
+Summary:
+  Total number of files:	128
+  Added files:			28
+  Removed files:		4
+  Changed files:		5
+
+
+---------------------------------------------------
+Added files:
+---------------------------------------------------
+
+added: /etc/nagios/send_nsca.cfg
+added: /lib64/libmcrypt.so.4
+added: /lib64/libmcrypt.so.4.4.8
+added: /sbin/send_nsca
+added: /usr/lib64/libmcrypt.so.4
+added: /usr/lib64/libmcrypt.so.4.4.8
+added: /usr/local/nagios/libexec/check_memory
+added: /usr/local/sbin/nsca_diskroot
+added: /usr/local/sbin/nsca_load
+added: /usr/local/sbin/nsca_mem
+added: /usr/local/sbin/nsca_procs
+added: /usr/local/sbin/nsca_swap
+added: /usr/sbin/send_nsca
+added: /usr/share/doc/libmcrypt-2.5.8
+added: /usr/share/doc/libmcrypt-2.5.8/AUTHORS
+added: /usr/share/doc/libmcrypt-2.5.8/COPYING.LIB
+added: /usr/share/doc/libmcrypt-2.5.8/ChangeLog
+added: /usr/share/doc/libmcrypt-2.5.8/KNOWN-BUGS
+added: /usr/share/doc/libmcrypt-2.5.8/NEWS
+added: /usr/share/doc/libmcrypt-2.5.8/README
+added: /usr/share/doc/libmcrypt-2.5.8/THANKS
+added: /usr/share/doc/libmcrypt-2.5.8/TODO
+added: /usr/share/doc/nsca-client-2.9.2
+added: /usr/share/doc/nsca-client-2.9.2/Changelog
+added: /usr/share/doc/nsca-client-2.9.2/LEGAL
+added: /usr/share/doc/nsca-client-2.9.2/README
+added: /usr/share/doc/nsca-client-2.9.2/SECURITY
+added: /usr/share/man/man3/mcrypt.3.gz
+
+---------------------------------------------------
+Removed files:
+---------------------------------------------------
+
+removed: /root/.ssh
+removed: /root/.ssh/id_rsa
+removed: /root/.ssh/id_rsa.pub
+removed: /root/.ssh/known_hosts
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/ld.so.cache
+changed: /etc/passwd
+changed: /etc/shadow
+changed: /etc/sudoers
+changed: /usr/share/doc
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/ld.so.cache
+ SHA256   : Y5OjTUIy/jHa/nSBcaPNoQnYr4Dsej1R , /AGhZD/Y9jqUmKt9XV072DTvxHCNDah/
+
+File: /etc/passwd
+ SHA256   : vIWF7/v/Do2tYvkfZgbLGKfmjWoZblu+ , 473f/FJVHNW4WfZM013WAr15ZLof05/3
+
+File: /etc/shadow
+ SHA256   : 4CnwXW/Pfm4+Thr22DtsINTTYeGTKsez , OG+eYweKbEOMGOcIKQNxZ6VQrXjrBhWd
+
+File: /etc/sudoers
+ SHA256   : eJG6n3Onmxj04tQSTidP6AK2ExP3h6Xq , 2Og1YSkcmAryLV02vdqzMtP4qtCdjKJz
+
+Directory: /usr/share/doc
+ Linkcount: 371                              , 373

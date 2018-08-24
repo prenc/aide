@@ -1,0 +1,40 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-14 00:30:02
+
+Summary:
+  Total number of files:	94
+  Added files:			0
+  Removed files:		0
+  Changed files:		5
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /etc/group
+changed: /etc/gshadow
+changed: /etc/passwd
+changed: /etc/shadow
+changed: /etc/sudoers
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /etc/group
+ SHA256   : fNB7cdCi5ymvnlbDtYimQMcWnEbTRByW , 2bxxeYXxPlGHe4qJy8TUCSLaRHwzLJp7
+
+File: /etc/gshadow
+ SHA256   : eKUsxRFu+CmrmoynrbAGdDX3C0giY4i+ , z1myA9Z7Z7S276dpf+MKjFoMzy99gpjO
+
+File: /etc/passwd
+ SHA256   : Nh2S/49gODlGpYpDgTkpfhLMpk6MnChX , vIWF7/v/Do2tYvkfZgbLGKfmjWoZblu+
+
+File: /etc/shadow
+ SHA256   : 0FlCnNZMpvjbDzM1C7bHTHX7oAgGLu9a , g/CS7Q35lwRvKR+gTc3QAIyaPNandLRL
+
+File: /etc/sudoers
+ SHA256   : 8djZAWRGWp5h1IgQlYwCjw+Yl0lXEIrz , pPQRR46p4khGaNjMo6eqh8jYAbOEV4mJ

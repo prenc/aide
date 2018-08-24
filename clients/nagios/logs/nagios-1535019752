@@ -1,0 +1,24 @@
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-23 15:00:08
+
+Summary:
+  Total number of files:	148
+  Added files:			0
+  Removed files:		0
+  Changed files:		1
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /usr/local/nagios/etc/linux_services.cfg
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /usr/local/nagios/etc/linux_services.cfg
+ SHA256   : 9vW7NNg6ZAIPXnVm6loZjpzpB6LeH9/j , VUDDQr3JvsmrdWztfPdoNP9gayCfMxHj

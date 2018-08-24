@@ -1,0 +1,32 @@
+Entry /lib64/python2.7/site-packages/perf.so in databases has different attributes: b4020081d a4020081d
+Entry /lib64/python2.7/site-packages/perf-0.1-py2.7.egg-info in databases has different attributes: b4020081d a4020081d
+WARNING: Old db contains a entry that shouldn't be there, run --init or --update
+Entry /usr/lib64/python2.7/site-packages/perf.so in databases has different attributes: b4020081d a4020081d
+Entry /usr/lib64/python2.7/site-packages/perf-0.1-py2.7.egg-info in databases has different attributes: b4020081d a4020081d
+AIDE 0.15.1 found differences between the two databases!!
+Start timestamp: 2018-08-15 15:00:01
+
+Summary:
+  Total number of files:	91
+  Added files:			0
+  Removed files:		0
+  Changed files:		2
+
+
+---------------------------------------------------
+Changed files:
+---------------------------------------------------
+
+changed: /lib64/python2.7/site-packages/perf.so
+changed: /usr/lib64/python2.7/site-packages/perf.so
+
+---------------------------------------------------
+Detailed information about changes:
+---------------------------------------------------
+
+
+File: /lib64/python2.7/site-packages/perf.so
+ SHA256   : WgZ6loRWeCftyZGjmcld9l671saovLoJ , Uk0kHV56F49fhwVueAhVQX35LeDRWhdQ
+
+File: /usr/lib64/python2.7/site-packages/perf.so
+ SHA256   : WgZ6loRWeCftyZGjmcld9l671saovLoJ , Uk0kHV56F49fhwVueAhVQX35LeDRWhdQ
