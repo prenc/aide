@@ -1,6 +1,5 @@
 /spool/*
 !/spool
-/clients/*
 !/clients
 /conf/*
 !/conf/aide.conf
