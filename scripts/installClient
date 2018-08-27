@@ -30,9 +30,9 @@ read -s AIDE_PASSWORD; echo
 echo -ne "Enter password to root on ${SERVER}: "
 read -s SERVER_PASSWORD; echo
 if [[ ${TEST_MODE} == 1 ]]; then 
-	${0}.expect ${SERVER} ${SERVER_PASSWORD} ${AIDE_PASSWORD}
+	${HOME_DIR}/scripts/installClient.expect ${SERVER} ${SERVER_PASSWORD} ${AIDE_PASSWORD}
 else
-	${0}.expect ${SERVER} ${SERVER_PASSWORD} ${AIDE_PASSWORD} > /dev/null
+	${HOME_DIR}/scripts/installClient.expect ${SERVER} ${SERVER_PASSWORD} ${AIDE_PASSWORD} > /dev/null
 fi
 if [ "$?" = 0 ]; then
 	echo -e "[\e[32mOK\e[0m] Client ${SERVER} has been successfully installed."
