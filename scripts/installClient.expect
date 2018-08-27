@@ -77,4 +77,3 @@ expect "<#>aide_spool>>" {
 expect "<#>root>>" {
 	send {logout};send \r
 }
-

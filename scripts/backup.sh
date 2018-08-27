@@ -66,7 +66,7 @@ else
 fi
 if [[ ${INIT_MODE} == 1 ]]; then
 	if [ -f ${HOME_DIR}/conf/${SERVER}.conf ]; then
-		ok "Client's file has been found."
+		ok "Client's config file has been found."
 	else
 		error "Client's config has not been found." 3
 	fi
@@ -78,48 +78,51 @@ if [[ ${INIT_MODE} == 1 ]]; then
 			TAR_COMMAND=${TAR_COMMAND}" --exclude='"$(echo ${input} | sed -r 's|^\!||' | sed -r 's|^([^~\*$\.\\ ]+).*|\1|')"'"
 		fi
 	done < ${HOME_DIR}/conf/${SERVER}.conf
-	TAR_COMMAND=${TAR_COMMAND}" > ${HOME_DIR}/clients/${SERVER}/backup/dump-$(date +%s).tar.gz"
+	TAR_COMMAND=${TAR_COMMAND}" > ${HOME_DIR}/clients/${SERVER}/backup/dump-$(date +%s).tar"
 	if [[ ${TEST_MODE} == 1 ]]; then
 		echo ${TAR_COMMAND}
 	else
-		if eval ${TAR_COMMAND} 2>/dev/null; then
-			ok "New dump initialized."
+		if eval ${TAR_COMMAND}; then
+			ok "New dump has been initialized."
+		elif [[ $? == 2 ]]; then
+			ok "New dump has been initialized but config file is not perfectly configured."
 		else
 			error "Something went wrong during dump initialization." 4
 		fi
 	fi
 else
-	echo "this part of script is under construction"
+	echo "###this part of script is under construction###"
 	if [[ ${TEST_MODE} == 1 ]];then
 		echo "FILES TO CHANGE: ${FILES_TO_CHANGE[@]}"
 		echo "FILES TO ADD: ${FILES_TO_ADD[@]}"
 		echo "FILES TO REMOVE: ${FILES_TO_REMOVE[@]}"
 	fi
-	if $(ls ${HOME_DIR}/clients/${SERVER}/backup | grep -P "dump-[0-9]{10}.tar.gz" > /dev/null); then
-		BACKUP_FILE=$(ls ${HOME_DIR}/clients/${SERVER}/backup | grep -P "dump-[0-9]{10}.tar.gz" | sort -r | sed -ne '1p')
+	if $(ls ${HOME_DIR}/clients/${SERVER}/backup | grep -P "^dump-[0-9]{10}.tar$" > /dev/null); then
+		BACKUP_FILE=$(ls ${HOME_DIR}/clients/${SERVER}/backup | grep -P "^dump-[0-9]{10}.tar$" | sort -r | sed -ne '1p')
 		BACKUP_DATE=$(echo ${BACKUP_FILE} | grep -Po "[0-9]{10}")
 		ok "Dump from $(date -d@${BACKUP_DATE} +%D-%T) has been found."
 	else
 		error "Client does not have dump initialized." 5
 	fi
 	BACKUP_FILE_PATH="${HOME_DIR}/clients/${SERVER}/backup/${BACKUP_FILE}"
-	TAR_COMMAND="tar zxf ${BACKUP_FILE_PATH} --xform='s#^.+/##x' --xform='s#.*#&.$(date +%s).old#x' -C ${HOME_DIR}/clients/${SERVER}/recovery/"
+	TAR_COMMAND="tar xf ${BACKUP_FILE_PATH} --xform='s#^.+/##x' --xform='s#.*#&.old.$(date +%s)#x' -C ${HOME_DIR}/clients/${SERVER}/recovery/"
 	for file in ${FILES_TO_CHANGE[@]}; do 
 		TAR_COMMAND+=" "$(echo ${file} | sed 's#^/##')
  	done
-	if eval ${TAR_COMMAND} 2>/dev/null 1>/dev/null;then 
-		ok "New files in recovery directory"
+	if eval ${TAR_COMMAND};then 
+		ok "New files in recovery directory."
 	else
 		error "Something went wrong with extracting files from archive." 6
 	fi
-	if_init=0
 	for file in ${FILES_TO_ADD[@]}; do 
-		if_init=1
+		# nothing to do
+		break
 	done
 	for file in ${FILES_TO_REMOVE[@]}; do 
-		if_init=1
+		# nothing to do
+		break
 	done
-	if [[ ${if_init} == 1 ]]; then
-		${HOME_DIR}/scripts/bash.sh -h ${SERVER} -i
-	fi
+	rm "${BACKUP_FILE_PATH}"
+	echo "Creating new dump. Please wait..."
+	${HOME_DIR}/scripts/backup.sh -h ${SERVER} -i 2>/dev/null
 fi

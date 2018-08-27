@@ -1,7 +1,6 @@
 #!/bin/bash
 HOME_DIR="/home/aide/aide"
 TEST_MODE=0
-
 usage () {
 	echo -e "Usage: $0 -h hostname"
 	exit 1
