@@ -1,7 +1,8 @@
 /spool/*
-!/spool
-!/clients
+!/spool/.gitkeep
 /conf/*
 !/conf/aide.conf
 /logs/cron/*
-~/logs/cron
+!/logs/cron/.gitkeep
+/clients/*
+!/clients/.gitkeep
