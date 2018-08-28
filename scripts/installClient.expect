@@ -41,11 +41,6 @@ expect "<#>root>>" {
 expect "<#>root>>" {
 	send {cat /tmp/temp2 > /etc/sudoers && rm -f /tmp/temp && rm -f /tmp/temp2};send \r
 }
-expect "<#>root>>" {send {passwd aide_spool};send \r}
-expect {
-	"New password:" {send {zzz};send \r;exp_continue}
-	"Retype new password:" {send {zzz};send \r}
-}
 expect "<#>root>>" {send {su aide_spool};send \r}
 send {PS1="\n@@@@@@@@@<#>\u>> \n\n"};send \r
 expect "<#>aide_spool>>" {send {ssh-keygen -t rsa};send \r}
@@ -60,7 +55,7 @@ expect "<#>aide_spool>>" {
 }
 expect {
 	"yes/no)?" {send yes\r; exp_continue}
-	"password:" {send ${SERVER_PASSWORD}\r}
+	"password:" {send ${ADMIN_PASSWORD}\r}
 }
 expect "<#>aide_spool>>" {
 	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\`/bin/date +\%s\`" > /tmp/cron};send \r

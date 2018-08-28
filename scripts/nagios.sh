@@ -1,6 +1,9 @@
 #!/bin/bash
 HOME_DIR="/home/aide/aide"
 CLIENTS_LOG="${HOME_DIR}/clients/${1}/logs"
+ADDED=0
+REMOVED=0
+CHANGED=0
 usage () {
 	echo "Usage: $0 <client_name>"
 	exit 3
@@ -24,9 +27,9 @@ if  cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | grep "found differences between" > /de
 	ADDED=$(cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -n '/Added files:/p' | grep -o '[0-9]\+')
 	REMOVED=$(cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -n '/Removed files:/p' | grep -o '[0-9]\+')
 	CHANGED=$(cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -n '/Changed files:/p' | grep -o '[0-9]\+')
-	echo "${DATE} Added:${ADDED} Removed:${REMOVED} Changed:${CHANGED}"
+	echo "${DATE} Added:${ADDED} Removed:${REMOVED} Changed:${CHANGED} | Added=${ADDED};300;500;900;0 Removed=${REMOVED};300;500;900;0 Changed=${CHANGED};300;500;900;0"
 	exit 1
 else
-	echo "${DATE} OK"
+	echo "${DATE} OK  | Added=${ADDED};300;500;900;0 Removed=${REMOVED};300;500;900;0 Changed=${CHANGED};300;500;900;0"
 	exit 0
 fi

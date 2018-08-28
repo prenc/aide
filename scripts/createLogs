@@ -51,15 +51,15 @@ for client in $(ls ${HOME_DIR}/clients); do
 					BACKUP_COMMAND+="-c ${FILES_TO_CHANGE}"
 				fi
 				if [ ! -z "${FILES_TO_ADD}" ]; then
-					BACKUP_COMMAND+="-c ${FILES_TO_ADD}"
+					BACKUP_COMMAND+="-a ${FILES_TO_ADD}"
 				fi
 				if [ ! -z "${FILES_TO_REMOVE}" ]; then
-					BACKUP_COMMAND+="-c ${FILES_TO_REMOVE}"
+					BACKUP_COMMAND+="-r ${FILES_TO_REMOVE}"
 				fi
-				eval ${BACKUP_COMMAND}
-				##improving logs by introducing differences, under construction, care of times
+				#eval ${BACKUP_COMMAND}
+				##improving logs by introducing differences, under construction
 				NEW_DUMP="$(ls ${HOME_DIR}/clients/${client}/backup | grep -P "^dump-[0-9]{10}.tar$" | sort -r | sed -n '1p')"
-				NEW_DUMP_PATH="${HOME_DIR}/clients/${client}"${NEW_DUMP}
+				NEW_DUMP_PATH="${HOME_DIR}/clients/${client}/"${NEW_DUMP}
 			fi
 		else
 			if [ ! -s ${std_log} ]; then
