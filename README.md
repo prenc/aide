@@ -14,14 +14,14 @@
 - [x] create tar command basing on client's config
 - [x] script can be invoked anytime with option -i and then creates backup from scratch (especially when client's config is reconfigured) 
 - [x] adding and removing files from archive according to changes detected by AIDE (optinon -a and -r) NOT EFFICIENT WITH TAR
-	- [ ] think out how not to initialized dump always when changes are detected
+	- [ ] think out how not to initialize dump always when changes are detected
 - [ ] think out and introduce better way of archive management (AMANDA?) 
 - [x] when file change detected, send old version (*filename.old.unixtime*) to recovery directory and update backup (option -c) 
-- [ ] improve AIDE log file by including differences between each file versions (problem: check dates of each file)
+- [x] improve AIDE log file by including differences between each file versions (problem: check dates of each file)
 - robustness:
 	- [ ] not enough space for new backup file
 
-### documentation update:
+### Documentation update:
 - update source code
 - add script names and specification
 - add backup and recovery chapter
@@ -29,5 +29,3 @@
 - add chapter dedicated to AIDE
 - new introduction
 - update limitations
-	- client's hostname has to be unique
-	- installation script has to be invoked with hostname (ip is not enough)
