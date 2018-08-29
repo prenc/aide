@@ -5,6 +5,7 @@ INIT_MODE=0
 FILES_TO_CHANGE=()
 FILES_TO_ADD=()
 FILES_TO_REMOVE=()
+TAR_COMMAND_MODE="old"
 usage () {
 	echo -e "Usage: backup.sh -h hostname <-i | <[-c file...] [-a file...] [-r file...]> [-t]"
 	exit 1
@@ -47,6 +48,10 @@ i=$1
 			LAST_ARRAY="FILES_TO_CHANGE"
 			shift 2
 		;;
+		-n)
+			TAR_COMMAND_MODE="new"
+			shift 1
+		;;
 		*)	if [ ! -z ${LAST_ARRAY} ]; then
 				eval ${LAST_ARRAY}=\( \${${LAST_ARRAY}[@]} $1 \)
 				shift
@@ -60,7 +65,7 @@ if [ -z ${SERVER} ] || [[ ${INIT_MODE} == 1 ]] && ( [ ${#FILES_TO_CHANGE[@]} -ne
 	usage
 fi
 if [ ! -d ${HOME_DIR}/clients/${SERVER}/backup ]; then
-	error "No such client or his structure of file is corrupted." 2
+	error "No such client or directory structure is corrupted." 2
 else
 	ok "Client has been found."
 fi
@@ -91,11 +96,11 @@ if [[ ${INIT_MODE} == 1 ]]; then
 		fi
 	fi
 else
-	echo "###this part of script is under construction###"
 	if [[ ${TEST_MODE} == 1 ]];then
 		echo "FILES TO CHANGE: ${FILES_TO_CHANGE[@]}"
 		echo "FILES TO ADD: ${FILES_TO_ADD[@]}"
 		echo "FILES TO REMOVE: ${FILES_TO_REMOVE[@]}"
+		exit 0
 	fi
 	if $(ls ${HOME_DIR}/clients/${SERVER}/backup | grep -P "^dump-[0-9]{10}.tar$" > /dev/null); then
 		BACKUP_FILE=$(ls ${HOME_DIR}/clients/${SERVER}/backup | grep -P "^dump-[0-9]{10}.tar$" | sort -r | sed -ne '1p')
@@ -105,24 +110,28 @@ else
 		error "Client does not have dump initialized." 5
 	fi
 	BACKUP_FILE_PATH="${HOME_DIR}/clients/${SERVER}/backup/${BACKUP_FILE}"
-	TAR_COMMAND="tar xf ${BACKUP_FILE_PATH} --xform='s#^.+/##x' --xform='s#.*#&.old.$(date +%s)#x' -C ${HOME_DIR}/clients/${SERVER}/recovery/"
+	TAR_COMMAND="tar xf ${BACKUP_FILE_PATH} --xform='s#^.+/##x' --xform='s#.*#&.${TAR_COMMAND_MODE}.${BACKUP_DATE}#x' -C ${HOME_DIR}/clients/${SERVER}/recovery/"
 	for file in ${FILES_TO_CHANGE[@]}; do 
 		TAR_COMMAND+=" "$(echo ${file} | sed 's#^/##')
  	done
-	if eval ${TAR_COMMAND};then 
+	if eval ${TAR_COMMAND};then
 		ok "New files in recovery directory."
+	elif [[ $? == 2 ]]; then
+		ok "Cannot find all files in dump. Dump is corrupted or you are seeking for temporary files (conf should be improved)."
 	else
 		error "Something went wrong with extracting files from archive." 6
 	fi
-	for file in ${FILES_TO_ADD[@]}; do 
-		# nothing to do
-		break
-	done
-	for file in ${FILES_TO_REMOVE[@]}; do 
-		# nothing to do
-		break
-	done
-	rm "${BACKUP_FILE_PATH}"
-	echo "Creating new dump. Please wait..."
-	${HOME_DIR}/scripts/backup.sh -h ${SERVER} -i 2>/dev/null
+	if [ "${TAR_COMMAND_MODE}" = "old" ];then 
+		for file in ${FILES_TO_ADD[@]}; do 
+			# nothing to do yet
+			break
+		done
+		for file in ${FILES_TO_REMOVE[@]}; do 
+			# nothing to do yet
+			break
+		done
+		rm "${BACKUP_FILE_PATH}"
+		echo "Creating new dump. Please wait..."
+		${HOME_DIR}/scripts/backup.sh -h ${SERVER} -i 2>/dev/null
+	fi
 fi

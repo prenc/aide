@@ -17,11 +17,13 @@ if ! ls ${HOME_DIR}/clients > /dev/null; then
 	info "No registered clients."
 fi
 for client in $(ls ${HOME_DIR}/clients); do
+	CLIENT_LOGS="${HOME_DIR}/clients/${client}/logs"
+	CLIENT_RECOVERY="${HOME_DIR}/clients/${client}/recovery"
 	echo "Client ${client}:"
 	COUNT="$(ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | wc -l)"
 	if [ ${COUNT} -ge 2 ]; then
 		NEWER="$(ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | sort -r | sed -n '1p')"
-		if [ -f "${HOME_DIR}/clients/${client}/logs/${NEWER}" ]; then
+		if [ -f "${CLIENT_LOGS}/${NEWER}" ]; then
 			info "No new version available for this client."
 			continue
 		else
@@ -34,7 +36,7 @@ for client in $(ls ${HOME_DIR}/clients); do
 		cat /tmp/xxx > ${HOME_DIR}/conf/${client}.conf
 		info "Comparing databases. Please wait..."
 		aide_error_log="${HOME_DIR}/logs/aide-`date +%s`"
-		std_log="${HOME_DIR}/clients/${client}/logs/${NEWER}"
+		std_log="${CLIENT_LOGS}/${NEWER}"
 		/usr/sbin/aide -c ${HOME_DIR}/conf/${client}.conf --compare 1>${std_log} 2>${aide_error_log}
 		if [ "$?" -lt 14 ]; then
 			ok "Output has been saved to proper log file."
@@ -56,16 +58,47 @@ for client in $(ls ${HOME_DIR}/clients); do
 				if [ ! -z "${FILES_TO_REMOVE}" ]; then
 					BACKUP_COMMAND+="-r ${FILES_TO_REMOVE}"
 				fi
-				#eval ${BACKUP_COMMAND}
-				##improving logs by introducing differences, under construction
-				NEW_DUMP="$(ls ${HOME_DIR}/clients/${client}/backup | grep -P "^dump-[0-9]{10}.tar$" | sort -r | sed -n '1p')"
-				NEW_DUMP_PATH="${HOME_DIR}/clients/${client}/"${NEW_DUMP}
+				if eval ${BACKUP_COMMAND};then
+					ok "New files in recovery directory."
+					${HOME_DIR}/scripts/backup.sh -h ${client} -n -c ${FILES_TO_CHANGE}
+					if [[ $? != 5 ]]; then
+						for file in ${FILES_TO_CHANGE}; do
+							name=$(echo ${file} | sed 's#^.*/##')
+							if ! ls ${CLIENT_RECOVERY} | grep -P "${name}\.old\.[0-9]{10}"; then 
+								warrning "No such file in dump."
+								continue
+							fi
+							OLD_VER=${CLIENT_RECOVERY}"/"$(ls ${CLIENT_RECOVERY} | grep "${name}\.old\." | sort -r | sed -ne '1p')
+							NEW_VER=${CLIENT_RECOVERY}"/"$(ls ${CLIENT_RECOVERY} | grep "${name}\.new\." | sort -r | sed -ne '1p')
+							DIFFERENCE=$(diff ${OLD_VER} ${NEW_VER} 2>/dev/null)
+							diff_status=$?
+							if [[ ${diff_status} == 1 ]]; then 
+								sed "/^File: .*\/${name}$/s@.*@&\n${DIFFERENCE}\n@" ${std_log} > /tmp/xxx
+								cat /tmp/xxx > ${std_log}
+							elif [[ ${diff_status} == 2 ]]; then
+								sed "/^File: .*\/${name}$/s@.*@&\nSome troubles were encountered while looking for differences.\n@" ${std_log} > /tmp/xxx
+								cat /tmp/xxx > ${std_log}
+							else
+								sed "/^File: .*\/${name}$/s@.*@&\nNo differences were found. It means dump is corrupted.\n@" ${std_log} > /tmp/xxx
+								cat /tmp/xxx > ${std_log}
+							fi
+						done
+						for file in $(ls ${CLIENT_RECOVERY} | grep -P "\.new\.[0-9]{10}"); do
+							rm -f ${file}
+						done
+					else
+						sed "1s@.*@No dump initialized! backup.sh -i needed.\n\n&@" ${std_log} > /tmp/xxx
+								cat /tmp/xxx > ${std_log}
+					fi
+				else
+					error "Something went wrong while extracting files from archive." 6
+				fi
 			fi
 		else
 			if [ ! -s ${std_log} ]; then
 				rm -f ${std_log}      
 			fi
-			error "Something went wrong during AIDE comparison. Check directory logs." 3
+			error "Something went wrong during AIDE comparison. Check logs." 3
 		fi
 	else
 		warrning "Not enough amount of versions has been provided."
