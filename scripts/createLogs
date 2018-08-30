@@ -58,40 +58,43 @@ for client in $(ls ${HOME_DIR}/clients); do
 				if [ ! -z "${FILES_TO_REMOVE}" ]; then
 					BACKUP_COMMAND+="-r ${FILES_TO_REMOVE}"
 				fi
-				if eval ${BACKUP_COMMAND};then
+				eval ${BACKUP_COMMAND}
+				status=$?
+				if [[ ${status} == 0 ]]; then
 					ok "New files in recovery directory."
 					${HOME_DIR}/scripts/backup.sh -h ${client} -n -c ${FILES_TO_CHANGE}
-					if [[ $? != 5 ]]; then
+					if [[ ${status} == 0 ]]; then
 						for file in ${FILES_TO_CHANGE}; do
-							name=$(echo ${file} | sed 's#^.*/##')
-							if ! ls ${CLIENT_RECOVERY} | grep -P "${name}\.old\.[0-9]{10}"; then 
+							name=$(basename ${file})
+							if ! ls ${CLIENT_RECOVERY} | grep -P "${name}\.old\.[0-9]{10}" >/dev/null 2>&1; then 
 								warrning "No such file in dump."
 								continue
 							fi
 							OLD_VER=${CLIENT_RECOVERY}"/"$(ls ${CLIENT_RECOVERY} | grep "${name}\.old\." | sort -r | sed -ne '1p')
 							NEW_VER=${CLIENT_RECOVERY}"/"$(ls ${CLIENT_RECOVERY} | grep "${name}\.new\." | sort -r | sed -ne '1p')
 							DIFFERENCE=$(diff ${OLD_VER} ${NEW_VER} 2>/dev/null)
-							diff_status=$?
+							file=$(echo $file | sed 's@\/@\\/@g')
 							if [[ ${diff_status} == 1 ]]; then 
-								sed "/^File: .*\/${name}$/s@.*@&\n${DIFFERENCE}\n@" ${std_log} > /tmp/xxx
-								cat /tmp/xxx > ${std_log}
+								sed "/^File: ${file}$/s@.*@&\n${DIFFERENCE}\n@" ${std_log} > /tmp/xxx
 							elif [[ ${diff_status} == 2 ]]; then
-								sed "/^File: .*\/${name}$/s@.*@&\nSome troubles were encountered while looking for differences.\n@" ${std_log} > /tmp/xxx
-								cat /tmp/xxx > ${std_log}
+								sed "/^File: ${file}$/s@.*@&\nSome troubles were encountered while looking for differences.\n@" ${std_log} > /tmp/xxx
 							else
-								sed "/^File: .*\/${name}$/s@.*@&\nNo differences were found. It means dump is corrupted.\n@" ${std_log} > /tmp/xxx
-								cat /tmp/xxx > ${std_log}
+								sed "/^File: ${file}$/s@.*@&\nNo differences were found. It means dump is corrupted.\n@" ${std_log} > /tmp/xxx
 							fi
+							cat /tmp/xxx > ${std_log}
+							rm -f /tmp/xxx
 						done
 						for file in $(ls ${CLIENT_RECOVERY} | grep -P "\.new\.[0-9]{10}"); do
-							rm -f ${file}
+							rm -f ${CLIENT_RECOVERY}"/"${file}
 						done
 					else
 						sed "1s@.*@No dump initialized! backup.sh -i needed.\n\n&@" ${std_log} > /tmp/xxx
 								cat /tmp/xxx > ${std_log}
 					fi
+				elif [[ ${status} == 7 ]]; then
+					warrning "no changed files"
 				else
-					error "Something went wrong while extracting files from archive." 6
+					warrning "Something went wrong while extracting files from archive."
 				fi
 			fi
 		else

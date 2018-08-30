@@ -11,10 +11,10 @@ usage () {
 	exit 1
 }
 ok () {
-	echo -e "[\e[32mOK\e[0m] $1"
+	echo -e "backup.sh: [\e[32mOK\e[0m] $1"
 }
 error () {
-	echo -e "[\e[31mERROR\e[0m] $1"
+	echo -e "backup.sh: [\e[31mERROR\e[0m] $1"
 	exit ${2}
 }
 if [[ $# -lt 3 ]] ;then usage ;fi
@@ -37,16 +37,19 @@ i=$1
 			FILES_TO_ADD+=($2)
 			LAST_ARRAY="FILES_TO_ADD"
 			shift 2
+			if [[ $? ]]; then error "option without filename" 7; fi
 		;;
 		-r)
 			FILES_TO_REMOVE+=($2)
 			LAST_ARRAY="FILES_TO_REMOVE"
 			shift 2
+			if [[ $? ]]; then error "option without filename" 7; fi
 		;;
 		-c)
 			FILES_TO_CHANGE+=($2)
 			LAST_ARRAY="FILES_TO_CHANGE"
 			shift 2
+			if [[ $? ]]; then error "option without filename" 7; fi
 		;;
 		-n)
 			TAR_COMMAND_MODE="new"
@@ -110,16 +113,18 @@ else
 		error "Client does not have dump initialized." 5
 	fi
 	BACKUP_FILE_PATH="${HOME_DIR}/clients/${SERVER}/backup/${BACKUP_FILE}"
-	TAR_COMMAND="tar xf ${BACKUP_FILE_PATH} --xform='s#^.+/##x' --xform='s#.*#&.${TAR_COMMAND_MODE}.${BACKUP_DATE}#x' -C ${HOME_DIR}/clients/${SERVER}/recovery/"
-	for file in ${FILES_TO_CHANGE[@]}; do 
-		TAR_COMMAND+=" "$(echo ${file} | sed 's#^/##')
- 	done
-	if eval ${TAR_COMMAND};then
-		ok "New files in recovery directory."
-	elif [[ $? == 2 ]]; then
-		ok "Cannot find all files in dump. Dump is corrupted or you are seeking for temporary files (conf should be improved)."
-	else
-		error "Something went wrong with extracting files from archive." 6
+	if [ ${#FILES_TO_CHANGE[@]} -ne 0 ]; then
+		TAR_COMMAND="tar xf ${BACKUP_FILE_PATH} --xform='s#^.+/##x' --xform='s#.*#&.${TAR_COMMAND_MODE}.${BACKUP_DATE}#x' -C ${HOME_DIR}/clients/${SERVER}/recovery/"
+		for file in ${FILES_TO_CHANGE[@]}; do
+			TAR_COMMAND+=" "$(echo ${file} | sed 's#^/##')
+		done
+		if eval ${TAR_COMMAND};then
+			ok "New files in recovery directory."
+		elif [[ $? == 2 ]]; then
+			ok "Cannot find all files in dump. It is corrupted or you are seeking for temporary files (then conf should be improved)."
+		else
+			error "Something went wrong with extracting files from archive." 6
+		fi
 	fi
 	if [ "${TAR_COMMAND_MODE}" = "old" ];then 
 		for file in ${FILES_TO_ADD[@]}; do 
@@ -131,7 +136,8 @@ else
 			break
 		done
 		rm "${BACKUP_FILE_PATH}"
-		echo "Creating new dump. Please wait..."
+		ok "Creating new dump. Please wait..."
 		${HOME_DIR}/scripts/backup.sh -h ${SERVER} -i 2>/dev/null
 	fi
 fi
+exit 0
