@@ -1,81 +1,83 @@
 #!/bin/bash
-HOME_DIR="/home/aide/aide"
+home_dir="/home/aide/aide"
+####### functions
 info () {
-	echo -e "   $1"
+	printf "   %s\n" "$1" >&2
 }
 ok () {
-	echo -e "   [\e[32mOK\e[0m] $1"
+	printf "   [\e[32mOK\e[0m] %sn" "$1" >&2
 }
 warrning () {
-	echo -e "   [\e[93mWARRNING\e[0m] $1"
+	printf "   [\e[93mWARRNING\e[0m] %s\n" "$1" >&2
 }
 error () {
-	echo -e "   [\e[31mERROR\e[0m] $1"
-	exit ${2}
+	printf "   [\e[31mERROR\e[0m] %s\n" "$1" >&2
+	exit $2
 }
-if ! ls ${HOME_DIR}/clients > /dev/null; then
-	info "No registered clients."
+####### script
+if [ -f ${home_dir}/clients/* ]; then
+	warrning "No registered clients." 8
 fi
-for client in $(ls ${HOME_DIR}/clients); do
-	CLIENT_LOGS="${HOME_DIR}/clients/${client}/logs"
-	CLIENT_RECOVERY="${HOME_DIR}/clients/${client}/recovery"
-	echo "Client ${client}:"
-	COUNT="$(ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | wc -l)"
-	if [ ${COUNT} -ge 2 ]; then
-		NEWER="$(ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | sort -r | sed -n '1p')"
-		if [ -f "${CLIENT_LOGS}/${NEWER}" ]; then
-			info "No new version available for this client."
+for client in ${home_dir}/*; do
+	client_logs="${home_dir}/clients/${client}/logs"
+	client_recovery="${home_dir}/clients/${client}/recovery"
+	count="$(ls ${home_dir}/spool | grep -P "^${client}-[0-9]{10}" | wc -l)"
+	if [ ${count} -ge 2 ]; then
+		newer="$(ls ${home_dir}/spool | grep -P "^${client}-[0-9]{10}" | sort -r | sed -n '1p')"
+		if [ -f ${client_logs}"/"${newer} ]; then
+			info "No new version available for ${client}."
 			continue
 		else
-			info "New version has been found: ${NEWER}"
+			info "New version has been found: ${newer}"
 		fi
-		OLDER=$(ls ${HOME_DIR}/spool | grep -P "^${client}-[0-9]{10}" | sort -r | sed -n '2p')
-		info "Recent version has been found: ${OLDER}"
+		older=$(ls ${home_dir}/spool | grep -P "^${client}-[0-9]{10}" | sort -r | sed -n '2p')
+		info "Recent version has been found: ${older}"
 		info "Setting up conf file."
-		cat ${HOME_DIR}/conf/${client}.conf | sed -r "s|^(database=file:).*$|\1${HOME_DIR}/spool/${OLDER}|" | sed -r "s|^(database_new=file:).*$|\1${HOME_DIR}/spool/${NEWER}|" > /tmp/xxx
-		cat /tmp/xxx > ${HOME_DIR}/conf/${client}.conf
+		cat ${home_dir}/conf/${client}.conf | sed -r "s|^(database=file:).*$|\1${home_dir}/spool/${older}|" | sed -r "s|^(database_new=file:).*$|\1${home_dir}/spool/${newer}|" > /tmp/xxx
+		cat /tmp/xxx > ${home_dir}/conf/${client}.conf
 		info "Comparing databases. Please wait..."
-		aide_error_log="${HOME_DIR}/logs/aide-`date +%s`"
-		std_log="${CLIENT_LOGS}/${NEWER}"
-		/usr/sbin/aide -c ${HOME_DIR}/conf/${client}.conf --compare 1>${std_log} 2>${aide_error_log}
-		if [ "$?" -lt 14 ]; then
+		aide_error_log="${home_dir}/logs/aide-`date +%s`"
+		std_log="${client_logs}/${newer}"
+		/usr/sbin/aide -c ${home_dir}/conf/${client}.conf --compare 1>${std_log} 2>${aide_error_log}
+		aide_status="$?"
+		if (( aide_status < 14 )); then
 			ok "Output has been saved to proper log file."
 			if [ ! -s ${aide_error_log} ]; then
 				rm -f ${aide_error_log}      
 			fi
-			${HOME_DIR}/scripts/nagios.sh ${client} > /dev/null
+			${home_dir}/scripts/nagios.sh ${client} > /dev/null
 			if [ $? -eq 1 ]; then
-				BACKUP_COMMAND="${HOME_DIR}/scripts/backup.sh -h ${client} "
-				FILES_TO_CHANGE=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^changed:"){print $2}' ${std_log})
-				FILES_TO_ADD=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^added:"){print $2}' ${std_log})
-				FILES_TO_REMOVE=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^removed:"){print $2}' ${std_log})
-				if [ ! -z "${FILES_TO_CHANGE}" ]; then
-					BACKUP_COMMAND+="-c ${FILES_TO_CHANGE}"
+				backup_command="${home_dir}/scripts/backup.sh -h ${client} "
+				files_to_change=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^changed:"){print $2}' ${std_log})
+				files_to_add=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^added:"){print $2}' ${std_log})
+				files_to_remove=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^removed:"){print $2}' ${std_log})
+				if [ ! -z "${files_to_change}" ]; then
+					backup_command+="-c ${files_to_change}"
 				fi
-				if [ ! -z "${FILES_TO_ADD}" ]; then
-					BACKUP_COMMAND+="-a ${FILES_TO_ADD}"
+				if [ ! -z "${files_to_add}" ]; then
+					backup_command+="-a ${files_to_add}"
 				fi
-				if [ ! -z "${FILES_TO_REMOVE}" ]; then
-					BACKUP_COMMAND+="-r ${FILES_TO_REMOVE}"
+				if [ ! -z "${files_to_remove}" ]; then
+					backup_command+="-r ${files_to_remove}"
 				fi
-				eval ${BACKUP_COMMAND}
+				eval ${backup_command}
 				status=$?
 				if [[ ${status} == 0 ]]; then
 					ok "New files in recovery directory."
-					${HOME_DIR}/scripts/backup.sh -h ${client} -n -c ${FILES_TO_CHANGE}
+					${home_dir}/scripts/backup.sh -h ${client} -n -c ${files_to_change}
 					if [[ ${status} == 0 ]]; then
-						for file in ${FILES_TO_CHANGE}; do
-							name=$(basename ${file})
-							if ! ls ${CLIENT_RECOVERY} | grep -P "${name}\.old\.[0-9]{10}" >/dev/null 2>&1; then 
+						for file in ${files_to_change}; do
+							name=${file##*/}
+							if ! ls ${client_recovery} | grep -P "${name}\.old\.[0-9]{10}" >/dev/null 2>&1; then 
 								warrning "No such file in dump."
 								continue
 							fi
-							OLD_VER=${CLIENT_RECOVERY}"/"$(ls ${CLIENT_RECOVERY} | grep "${name}\.old\." | sort -r | sed -ne '1p')
-							NEW_VER=${CLIENT_RECOVERY}"/"$(ls ${CLIENT_RECOVERY} | grep "${name}\.new\." | sort -r | sed -ne '1p')
-							DIFFERENCE=$(diff ${OLD_VER} ${NEW_VER} 2>/dev/null)
+							OLD_VER=${client_recovery}"/"$(ls ${client_recovery} | grep "${name}\.old\." | sort -r | sed -ne '1p')
+							NEW_VER=${client_recovery}"/"$(ls ${client_recovery} | grep "${name}\.new\." | sort -r | sed -ne '1p')
+							difference=$(diff ${OLD_VER} ${NEW_VER} 2>/dev/null)
 							file=$(echo $file | sed 's@\/@\\/@g')
 							if [[ ${diff_status} == 1 ]]; then 
-								sed "/^File: ${file}$/s@.*@&\n${DIFFERENCE}\n@" ${std_log} > /tmp/xxx
+								sed "/^File: ${file}$/s@.*@&\n${difference}\n@" ${std_log} > /tmp/xxx
 							elif [[ ${diff_status} == 2 ]]; then
 								sed "/^File: ${file}$/s@.*@&\nSome troubles were encountered while looking for differences.\n@" ${std_log} > /tmp/xxx
 							else
@@ -84,12 +86,12 @@ for client in $(ls ${HOME_DIR}/clients); do
 							cat /tmp/xxx > ${std_log}
 							rm -f /tmp/xxx
 						done
-						for file in $(ls ${CLIENT_RECOVERY} | grep -P "\.new\.[0-9]{10}"); do
-							rm -f ${CLIENT_RECOVERY}"/"${file}
+						for file in $(ls ${client_recovery} | grep -P "\.new\.[0-9]{10}"); do
+							rm -f ${client_recovery}"/"${file}
 						done
 					else
 						sed "1s@.*@No dump initialized! backup.sh -i needed.\n\n&@" ${std_log} > /tmp/xxx
-								cat /tmp/xxx > ${std_log}
+						cat /tmp/xxx > ${std_log}
 					fi
 				elif [[ ${status} == 7 ]]; then
 					warrning "no changed files"
@@ -109,23 +111,22 @@ for client in $(ls ${HOME_DIR}/clients); do
 done
 echo "Additional operations: "
 check=0
-for file in $(ls ${HOME_DIR}/spool | grep -vP ^.+-[0-9]{10}); do
+for file in $(ls ${home_dir}/spool | grep -vP ^.+-[0-9]{10}); do
 	info "   Removing trash file: ${file}"
-	rm -f ${HOME_DIR}/spool/${file}
+	rm -f ${home_dir}/spool/${file}
 	check=1
 done
 if [[ ${check} == 0 ]]; then
 	ok "No trash files in spool directory."
+	check=0
 fi
-check=0
-list_of_clients=""
-for client in $(ls ${HOME_DIR}/clients); do
-	list_of_clients+=$(ls ${HOME_DIR}/spool | grep "${client}-")
+for client in ${home_dir}/clients/*; do
+	list_of_clients+=$(ls ${home_dir}/spool | grep "${client}-")
 done
-for database in `ls ${HOME_DIR}/spool`; do
+for database in ${home_dir}/spool/*; do
 	if ! echo ${list_of_clients} | grep ${database} > /dev/null; then 
 		info "   Removing unregistered client's database: ${database}"
-		rm -f ${HOME_DIR}/spool/${database}
+		rm -f ${home_dir}/spool/${database}
 		check=1
 	fi
 done
@@ -133,10 +134,10 @@ if [[ ${check} == 0 ]]; then
 	ok "No unregistered client's databases."
 fi
 check=0
-for client in $(ls ${HOME_DIR}/clients); do
-	for database in $(ls ${HOME_DIR}/spool | grep -P ^${client}-[0-9]{10} | sort -r | sed -n '3,$p'); do
+for client in ${home_dir}/clients/; do
+	for database in $(ls ${home_dir}/spool | grep -P ^${client}-[0-9]{10} | sort -r | sed -n '3,$p'); do
 		info "   Removing redundant database: ${database}"
-		rm -f ${HOME_DIR}/spool/${database}
+		rm -f ${home_dir}/spool/${database}
 		check=1
 	done
 done
@@ -146,7 +147,7 @@ fi
 if crontab -l 2>/dev/null | grep "0 \*/3 \* \* \* ~/aide/scripts/createLogs > ~/aide/logs/cron/cron-\`date +\\\%s\`" 1>/dev/null; then
 	ok "Cron is set up correctly."
 else
-	if crontab ${HOME_DIR}/scripts/cron; then
+	if crontab ${home_dir}/scripts/cron; then
 		ok "Cron has been set."
 	else
 		warrning "Failed to set up cron."
