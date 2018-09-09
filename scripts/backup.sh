@@ -1,29 +1,50 @@
 #!/bin/bash
+#:       Title: backup.sh - Manage dump of neuralgic client's system files.
+#:    Synopsis: backup.sh HOSTNAME -i | [-c file...] [-a file...] [-r file...] [-t] [-n] [-h]
+#:        Date: 2018-09-07
+#:     Version: 0.9
+#:      Author: Paweł Renc
+#:     Options: -i - Initialize dump based on config file
+#:              -h - Print usage information
+#:              -t - Invoke script in test mode; print commands instead of 
+## Script metadata
+scriptname=${0##*/}			# name that script is invoked with
+usage_information="${scriptname} HOSTNAME -i | [-c file...] [-a file...] [-r file...] [-t] [-n] [-h]"
+description="Manage dump of neuralgic client's files."
+## Script options
+test_mode=0					# run script in test mode (default 0 - false)
+init_mode=0					# only initialize dump (default 0 - false)
+tar_command_mode="old" 		# extract with label defined in variable (default "old")
+## File localizations
 home_dir="/home/aide/aide"	# path to AIDE files
-test_mode=0					# invoke script in test mode
-init_mode=0					# only initialize dump
-tar_commnad_mode="old" 		# extract with label defined in variable
-scriptname=${0##*/}			# name that script was invoked with
-shopt -s extglob
-######### functions
-usage () {
-	printf "Usage: %s -h hostname <-i | <[-c file...] [-a file...] [-r file...]> [-t] [-n]\n" "$scriptname" >&2
+## Shell additional options
+shopt -s extglob 			# turn on extended globbing			
+## Function definitions
+usage () #@ DESCRIPTION: print usage information and exit with 1 return code
+{        #@ USAGE: usage
+	printf "%s - %s\n" "$scriptname" "$description"
+	printf "USAGE: %s\n" "$usage_information"
 	exit 1
 }
-ok () {
+ok () { #@ DESCRIPTION: print information about processes which ended
+        #@ USAGE: ok information
 	printf "%s: [\e[32mOK\e[0m] %s\n" "$scriptname" "$1" >&2
 }
-error () {
-	printf "%s: [\e[31mERROR\e[0m] %s\n" "$scriptname" "$1" >&2
-	exit $2
+warrning () { #@ DESCRIPTION: print information about processes which ended
+        #@ USAGE: ok information
+	printf "%s: [\e[33mWARRNING\e[0m] %s\n" "$scriptname" "$1" >&2
 }
-######### parse arguments
-if [[ $# -lt 3 ]]; then usage; fi
+error () { #@ DESCRIPTION: print error message and exit with supplied return code
+           #@ USAGE: error information error_code
+	error=$2
+	printf "%s: [\e[31mERROR\e[0m] %s\n" "$scriptname" "$1" >&2
+	exit "$error"
+}
+## Parse command-line options
 while (( $# )); do
 	case $1 in
 		-h)
-			server=$2
-			shift 2
+			usage
 		;;
 		-t)
 			test_mode=1
@@ -52,33 +73,35 @@ while (( $# )); do
 			if (( $? )); then error "option without filename" 7; fi
 		;;
 		-n)
-			tar_commnad_mode="new"
+			tar_command_mode="new"
 			shift 1
 		;;
 		*)	if [ ! -z ${last_array} ]; then
 				eval ${last_array}=\( \${${last_array}[@]} $1 \)
 				shift
 			else
-				usage
+				[ -z ${server} ] && server=$1 || usage
+				shift
 			fi
 		;;
 	esac
 done
-####### check sanity
+# Check sanity
 [ -z ${server} ] && usage
-if (( ${init_mode} )) && ([ ${#file_to_change[@]} -ne 0 ] || [ ${#files_to_add[@]} -ne 0 ] || [ ${#files_to_remove[@]} -ne 0 ]); then
+if (( init_mode )) && ([ ${#file_to_change[@]} -ne 0 ] || [ ${#files_to_add[@]} -ne 0 ] || [ ${#files_to_remove[@]} -ne 0 ]); then
 	usage
 fi
-if !(( init_mode )) && [ ${#file_to_change[@]} -eq 0 ] && [ ${#files_to_add[@]} -eq 0 ] && [ ${#files_to_remove[@]} -eq 0 ]; then
+if (( init_mode == 0 )) && (( ${#file_to_change[@]} == 0 )) && (( ${#files_to_add[@]} == 0 )) && (( ${#files_to_remove[@]} == 0 )); then
 	usage
 fi
-####### check whether client exists
+
+# Check whether client exists
 if [ -d ${home_dir}/clients/${server}/backup ]; then
 	ok "Client has been found."
 else
 	error "No such client or directory structure is corrupted." 2
 fi
-####### script
+# Initialize dump or extract from existing one
 if (( init_mode )); then
 	if [ -f ${home_dir}/conf/${server}.conf ]; then
 		ok "Client's config file has been found."
@@ -87,11 +110,10 @@ if (( init_mode )); then
 	fi
 	tar_command="ssh aide_spool@${server} sudo tar cvf -"
 	while IFS='' read -r input || [[ -n "${input}" ]]; do
-		if echo ${input} | grep "^/.*CONTENT" > /dev/null; then
-			input=${input% [A-Z_]*}
-			input=${input%$}
+		if [[ ${input} =~ ^/.*CONTENT ]]; then
+			input=${input%%?($)+( )[A-Z_]*}
 			input=" "${input}
-		elif echo ${input} | grep "^\!" > /dev/null; then
+		elif [[ ${input} =~ ^\! ]]; then
 			input=${input#\!}
 			input=${input%$}
 			input=" --exclude='"${input}"'"
@@ -107,41 +129,45 @@ if (( init_mode )); then
 		if eval ${tar_command}; then
 			ok "New dump has been initialized."
 		elif [[ $? == 2 ]]; then
-			ok "New dump has been initialized but config file is not perfectly configured."
+			warrning "New dump has been initialized but config file is not perfectly configured."
 		else
 			error "Something went wrong during dump initialization." 4
 		fi
 	fi
 else
 	if (( test_mode )); then
-		echo "FILES TO CHANGE: ${file_to_change[*]}"
-		echo "FILES TO ADD: ${files_to_add[*]}"
-		echo "FILES TO REMOVE: ${files_to_remove[*]}"
+		printf "FILES TO CHANGE: %s\n" "${file_to_change[*]}"
+		printf "FILES TO ADD: %s\n" "${files_to_add[*]}"
+		printf "FILES TO REMOVE: %s\n" "${files_to_remove[*]}"
 		exit 0
 	fi
-	if [ -f ${home_dir}/clients/${server}/backup/dump-+([0-9]).tar ]; then
-		read backup_file < <(find ./ -type f -name "dump-*.tar" | sort -r)
-		backup_date=${backup_file##*-}
-		backup_date=${backup_date%%.}
-		ok "Dump from "$(date -d@${backup_date} +%D-%T)" has been found."
+	for f in ${home_dir}/clients/${server}/backup/dump-+([0-9]).tar; do
+		backup_file=$f
+	done
+	if [ -z ${backup_file} ]; then 
+		error "Client does not have any dump." 5
 	else
-		error "Client does not have dump initialized." 5
+		backup_file=${backup_file##*/}
+		backup_date=${backup_file##*-}
+		backup_date=${backup_date%%.tar}
+		ok "Dump from "$(date -d@${backup_date} +%D-%T)" has been found."
 	fi
 	backup_path="${home_dir}/clients/${server}/backup/${backup_file}"
 	if [ ${#file_to_change[@]} -ne 0 ]; then
-		tar_command="tar xf ${backup_path} --xform='s#.*/##x' --xform='s#.*#&.${tar_commnad_mode}.${backup_date}#x' -C ${home_dir}/clients/${server}/recovery/"
+		tar_command="tar xf ${backup_path} --xform='s#/#@#g' --xform='s#.*#&.${tar_command_mode}.${backup_date}#x' -C ${home_dir}/clients/${server}/recovery/"
 		for file in ${file_to_change[@]}; do
 			tar_command+=" "${file#/}
 		done
 		if eval ${tar_command}; then
 			ok "New files in recovery directory."
 		elif [[ $? == 2 ]]; then
-			ok "Cannot find all files in dump. It is corrupted or you are seeking for temporary files (then conf should be improved)."
+			warrning "Cannot find all files in dump. It is corrupted or you are seeking for temporary files (then config should be improved)."
 		else
 			error "Something went wrong with extracting files from archive." 6
 		fi
 	fi
-	if [ "${tar_commnad_mode}" = "old" ]; then 
+	if [ "${tar_command_mode}" = "old" ]; then
+		## idea of updating dump instead of initializating each time
 		for file in ${files_to_add[@]}; do 
 			# nothing to do yet
 			break
@@ -152,7 +178,7 @@ else
 		done
 		rm "${backup_path}"
 		ok "Creating new dump. Please wait..."
-		${home_dir}/scripts/${scriptname} -h ${server} -i 2>/dev/null
+		${home_dir}/scripts/${scriptname} ${server} -i 2>/dev/null
 	fi
 fi
 exit 0
