@@ -25,7 +25,7 @@ for client in ${home_dir}/clients/*; do
 	client=${client##*/}
 	client_logs="${home_dir}/clients/${client}/logs"
 	dumps=(${home_dir}/spool/${client}-+([0-9]))
-	if (( ${#dumps} >= 2 )); then
+	if (( ${#dumps[@]} >= 2 )); then
 		newer=${dumps[-1]}
 		newer=${newer##*/}
 		older=${dumps[-2]}

@@ -27,7 +27,6 @@ files_to_remove=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^removed:"){print $2}' ${logf
 [ ! -z "${files_to_remove}" ] && backup_command+=" -r ${files_to_remove}"
 eval ${backup_command}
 status="$?"
-set -x
 if (( status == 0 )); then
 	ok "New files in recovery directory."
 	${home_dir}/scripts/backup.sh ${client} -n -c ${files_to_change}
@@ -45,12 +44,13 @@ if (( status == 0 )); then
 			old_ver=${old_recovery[-1]}
 			new_ver=${new_recovery[-1]}
 			f=${f////\\/}
-			difference=$(diff -y ${old_ver} ${new_ver} 2>/dev/null)
+			difference=$(diff ${old_ver} ${new_ver})
 			diff_status="$?"
+			difference=$(echo "${difference}" | sed '$!s/$/\\/')
 			if (( diff_status == 1 )); then 
-				sed "/^File: ${f}$/s@.*@&\n${difference}\n@" ${logfile} > /tmp/xxx
+				sed "/^File: ${f}$/i${difference}" ${logfile} > /tmp/xxx #TODO insert after this line
 			elif (( diff_status == 2 )); then
-				sed "/^File: ${f}$/s@.*@&\nSome troubles were encountered while looking for differences.\n@" ${logfile} > /tmp/xxx
+				sed "/^File: ${f}$/s@.*@&\nSome troubles were encountered while looking for differences.\n@" ${logfile} > /tmp/xxx #TODO permission denied
 			else
 				sed "/^File: ${f}$/s@.*@&\nNo differences were found. It means dump is corrupted.\n@" ${logfile} > /tmp/xxx
 			fi
