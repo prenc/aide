@@ -20,26 +20,7 @@ home_dir="/home/aide/aide"	# path to AIDE files
 ## Shell additional options
 shopt -s extglob 			# turn on extended globbing			
 ## Function definitions
-usage () #@ DESCRIPTION: print usage information and exit with 1 return code
-{        #@ USAGE: usage
-	printf "%s - %s\n" "$scriptname" "$description"
-	printf "USAGE: %s\n" "$usage_information"
-	exit 1
-}
-ok () { #@ DESCRIPTION: print information about processes which ended
-        #@ USAGE: ok information
-	printf "%s: [\e[32mOK\e[0m] %s\n" "$scriptname" "$1" >&2
-}
-warrning () { #@ DESCRIPTION: print information about processes which ended
-        #@ USAGE: ok information
-	printf "%s: [\e[33mWARRNING\e[0m] %s\n" "$scriptname" "$1" >&2
-}
-error () { #@ DESCRIPTION: print error message and exit with supplied return code
-           #@ USAGE: error information error_code
-	error=$2
-	printf "%s: [\e[31mERROR\e[0m] %s\n" "$scriptname" "$1" >&2
-	exit "$error"
-}
+source ${home_dir}/scripts/info_functions
 ## Parse command-line options
 while (( $# )); do
 	case $1 in
@@ -176,7 +157,7 @@ else
 			# nothing to do yet
 			break
 		done
-		rm "${backup_path}"
+		#rm "${backup_path}"
 		ok "Creating new dump. Please wait..."
 		${home_dir}/scripts/${scriptname} ${server} -i 2>/dev/null
 	fi

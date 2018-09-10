@@ -1,0 +1,21 @@
+info () { #@ DESCRIPTION: print information about running process
+          #@ USAGE: ok information
+		  #@ REQUIRES: scriptname
+	printf "${scriptname}: [\e[34mINFO\e[0m] %s\n" "$1" >&2
+}
+ok () { #@ DESCRIPTION: print information about processes which ended
+        #@ USAGE: ok information
+		#@ REQUIRES: scriptname
+	printf "${scriptname}: [\e[32mOK\e[0m] %s\n" "$1" >&2
+}
+warrning () { #@ DESCRIPTION: print information about processes which ended
+              #@ USAGE: ok information
+			  #@ REQUIRES: scriptname
+	printf "${scriptname}: [\e[93mWARRNING\e[0m] %s\n" "$1" >&2
+}
+error () { #@ DESCRIPTION: print error message and exit with supplied return code
+           #@ USAGE: error information error_code
+		   #@ REQUIRES: scriptname
+	printf "${scriptname}: [\e[31mERROR\e[0m] %s\n" "$1" >&2
+	exit $2
+}
