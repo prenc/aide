@@ -1,61 +1,72 @@
 #!/bin/bash
-HOME_DIR="/home/aide/aide"
-TEST_MODE=0
-usage () {
-	echo -e "Usage: $0 -h hostname"
-	exit 1
-}
-while [[ $# -gt 0 ]]; do
-i=$1
+#:       Title: installClient - Installs new client.
+#:    Synopsis: installClient HOSTNAME [-h]
+#:        Date: 2018-09-07
+#:     Version: 0.9
+#:      Author: Paweł Renc
+#:     Options: -h - Print usage information
+#:              -t - Invoke script in test mode; print commands instead of 
+## Script metadata
+scriptname=${0##*/}			# name that script is invoked with
+usage_information="${scriptname} HOSTNAME [-h] [-t]"
+description="Installs new client."
+## File localizations
+home_dir="/home/aide/aide"
+## Script options
+test_mode=0
+## Function definitions
+source "${home_dir}/scripts/info_functions"
+## Parse command-line options
+while (( $# ));do
 	case $1 in
 		-h)
-			SERVER=$2
-			shift 2
+			usage
 		;;
 		-t)
-			TEST_MODE=1
+			test_mode=1
 			shift
 		;;
 		*)
-			usage
+			server=$1
+			shift
 		;;
 	esac
 done
-if [ -z ${SERVER} ]; then
+if [ -z ${server} ]; then
 	usage
 fi
 echo -ne "Enter password to aide: "
-read -s AIDE_PASSWORD; echo
-echo -ne "Enter password to root on ${SERVER}: "
-read -s SERVER_PASSWORD; echo
-if [[ ${TEST_MODE} == 1 ]]; then 
-	${HOME_DIR}/scripts/installClient.expect ${SERVER} ${SERVER_PASSWORD} ${AIDE_PASSWORD}
+read -rs aide_password; echo
+echo -ne "Enter password to root on ${server}: "
+read -rs server_password; echo
+if [[ ${test_mode} == 1 ]]; then 
+	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password}
 else
-	${HOME_DIR}/scripts/installClient.expect ${SERVER} ${SERVER_PASSWORD} ${AIDE_PASSWORD} > /dev/null
+	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password} > /dev/null
+	(($?)) || ${home_dir}/scripts/backup.sh ${server} -i
 fi
 if [ "$?" = 0 ]; then
-	echo -e "[\e[32mOK\e[0m] Client ${SERVER} has been successfully installed."
+	ok "Client ${server} has been successfully installed."
 else
-	echo -e "[\e[31mERROR\e[0m] Expect script failure."
-	exit 1
+	error "Expect script failure." 2
 fi
-if [[ ${TEST_MODE} == 0 ]]; then
-	FLAG=0
-	mkdir ${HOME_DIR}/clients/${SERVER} 2>/dev/null && FLAG=$((${FLAG}+1))
-	mkdir ${HOME_DIR}/clients/${SERVER}/logs 2>/dev/null && FLAG=$((${FLAG}+1))
-	mkdir ${HOME_DIR}/clients/${SERVER}/backup 2>/dev/null && FLAG=$((${FLAG}+1))
-	mkdir ${HOME_DIR}/clients/${SERVER}/recovery 2>/dev/null && FLAG=$((${FLAG}+1))
-	if [[ ${FLAG} == 4 ]]; then
-		echo -e "[\e[32mOK\e[0m] New dirs has been created."
-	elif [[ ${FLAG} == 0 ]]; then
-		echo -e "[\e[93mWARRNING\e[0m] No new dirs have been created."
+if [[ ${test_mode} == 0 ]]; then
+	flag=0
+	mkdir ${home_dir}/clients/${server} 2>/dev/null && ((flag++))
+	mkdir ${home_dir}/clients/${server}/logs 2>/dev/null && ((flag++))
+	mkdir ${home_dir}/clients/${server}/backup 2>/dev/null && ((flag++))
+	mkdir ${home_dir}/clients/${server}/recovery 2>/dev/null && ((flag++))
+	if [[ ${flag} == 4 ]]; then
+		ok "New dirs has been created."
+	elif [[ ${flag} == 0 ]]; then
+		warrning "No new dirs have been created."
 	else
-		echo -e "[\e[93mWARRNING\e[0m] Only ${FLAG} new dir(s) have been created."
+		warrning "Only ${flag} new dir(s) have been created."
 	fi
-	if [ ! -f ${HOME_DIR}/conf/${SERVER}.conf ]; then
-		cp -n ${HOME_DIR}/conf/aide.conf ${HOME_DIR}/conf/${SERVER}.conf 2>/dev/null
-		echo -e "[\e[32mOK\e[0m] ${SERVER}.conf has been created."
+	if [ ! -f ${home_dir}/conf/${server}.conf ]; then
+		cp -n ${home_dir}/conf/aide.conf ${home_dir}/conf/${server}.conf 2>/dev/null
+		ok "${server}.conf has been created."
 	else
-		echo -e "[\e[93mWARRNING\e[0m] ${SERVER}.conf already exists."
+		warrning "${server}.conf already exists."
 	fi
 fi

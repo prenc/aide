@@ -1,19 +1,27 @@
 #!/bin/bash
-#:       Title: createLogs - Manage aide dumps and logs.
+#:       Title: createLogs - Manages AIDE dumps and logs.
 #:    Synopsis: createLogs
 #:        Date: 2018-09-10
 #:     Version: 0.9
 #:      Author: Paweł Renc
+#:     Options: -h - Print usage information
 ## Script metadata
 scriptname=${0##*/}			# name that script is invoked with
-description="Manage dump of neuralgic client's files."
+description="Executes AIDE comparison based on databases in spool directory."
+usage_information="${scriptname} [-h]"
 ## File localizations
 home_dir="/home/aide/aide"	# path to AIDE files
 ## Shell additional options
 shopt -s extglob 			# turn on extended globbing	
 shopt -s nullglob 			# allow globs to return null string
 ## Function definitions
-source ${home_dir}/scripts/info_functions
+source "${home_dir}/scripts/info_functions"
+## Parse command-line options
+while (( $# )); do
+	case $1 in
+	*) usage ;;
+	esac
+done
 ## Check whether there are registered clients.
 test -e ${home_dir}/clients/* 2>/dev/null
 case $? in
@@ -30,14 +38,14 @@ for client in ${home_dir}/clients/*; do
 		newer=${newer##*/}
 		older=${dumps[-2]}
 		older=${older##*/}
-		if [ -f ${client_logs}"/"${newer} ]; then
+		if [ -f "${client_logs}/${newer}" ]; then
 			info "No newer version available for ${client}."
 			continue
 		else
 			info "New version has been found: ${newer}"
 		fi
 		info "Recent version has been found: ${older}"
-		if [ -s ${home_dir}/conf/${client}.conf ]; then
+		if [ -s "${home_dir}/conf/${client}.conf" ]; then
 			sed -r -e "s|^(database=file:).*$|\1${home_dir}/spool/${older}|" -e "s|^(database_new=file:).*$|\1${home_dir}/spool/${newer}|" ${home_dir}/conf/${client}.conf > /tmp/xxx && mv /tmp/xxx ${home_dir}/conf/${client}.conf
 		else
 			error "Config does not exist or is corrupted." 9
@@ -54,8 +62,8 @@ for client in ${home_dir}/clients/*; do
 				${home_dir}/scripts/recovery.sh ${client} ${std_log}
 			fi
 		else
-			if [ ! -s ${std_log} ]; then
-				rm -f ${std_log}      
+			if [ ! -s "${std_log}" ]; then
+				rm -f "${std_log}"      
 			fi
 			error "Something went wrong during AIDE comparison." 3
 		fi
@@ -64,48 +72,40 @@ for client in ${home_dir}/clients/*; do
 	fi
 done
 ## Maintenance operations
-check=0
-for dump in $(ls ${home_dir}/spool | grep -vP "^.+-[0-9]{10}"); do
-	info "Removing trash file: ${dump}"
-	rm -f ${home_dir}/spool/${dump}
-	check=1
-done
-if [[ ${check} == 0 ]]; then
-	ok "No trash files in spool directory."
-	check=0
-fi
 dump_list=()
 for client in ${home_dir}/clients/*; do
 	client=${client##*/}
 	for dump in ${home_dir}/spool/${client}-+([0-9]); do
-		dump_list+=(${dump##*/})
+		dump_list+=("${dump##*/}")
 	done
 done
+check=0
 for dump in ${home_dir}/spool/*; do
-	if ! echo ${dump_list[@]} | grep "${dump##*/}" > /dev/null; then 
-		info "Removing unregistered client's dump: ${dump}"
-		rm -f ${dump}
+	if [[ ! "${dump_list[*]}" =~ "${dump##*/}" ]]; then 
+		info "Removing unregistered client's dumps and trash files: ${dump}"
+		rm -f "${dump}"
 		check=1
 	fi
 done
 if [[ ${check} == 0 ]]; then
-	ok "No unregistered client's dumps."
+	ok "No unregistered client's dumps and trash files."
 fi
 check=0
-for client in ${home_dir}/clients/; do
-	for dump in $(ls ${home_dir}/spool | grep -P "^${client}-[0-9]{10}" | sort -r | sed -n '3,$p'); do
-		info "Removing redundant dump: ${dump}"
-		rm -f ${dump}
+for client in ${home_dir}/clients/*; do
+	clients_dumps=(${home_dir}/spool/${client##*/}-+([0-9]))
+	for ((i=0;i<${#clients_dumps[@]}-2;i++)); do
+		info "Removing redundant dump: ${clients_dumps[i]}"
+		rm -f "${clients_dumps[i]}"
 		check=1
 	done
 done
 if [[ ${check} == 0 ]]; then
 	ok "No redundant dumps."
 fi
-if crontab -l 2>/dev/null | grep "0 \*/3 \* \* \* ~/aide/scripts/createLogs > ~/aide/logs/cron/cron-\`date +\\\%s\`" 1>/dev/null; then
+if [ "$(crontab -l 2>/dev/null)" == "$(cat cron)" ]; then
 	ok "Cron is set up correctly."
 else
-	if crontab ${home_dir}/scripts/cron; then
+	if crontab "${home_dir}/scripts/cron"; then
 		ok "Cron has been set up."
 	else
 		warrning "Failed to set up cron."

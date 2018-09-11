@@ -1,5 +1,5 @@
 #!/bin/bash
-#:       Title: backup.sh - Manage dump of neuralgic client's system files.
+#:       Title: backup.sh - Manages dump of neuralgic client's system files.
 #:    Synopsis: backup.sh HOSTNAME -i | [-c file...] [-a file...] [-r file...] [-t] [-n] [-h]
 #:        Date: 2018-09-07
 #:     Version: 0.9
@@ -10,7 +10,7 @@
 ## Script metadata
 scriptname=${0##*/}			# name that script is invoked with
 usage_information="${scriptname} HOSTNAME -i | [-c file...] [-a file...] [-r file...] [-t] [-n] [-h]"
-description="Manage dump of neuralgic client's files."
+description="Manages dump of neuralgic client's system files."
 ## Script options
 test_mode=0					# run script in test mode (default 0 - false)
 init_mode=0					# only initialize dump (default 0 - false)
@@ -146,6 +146,7 @@ else
 		else
 			error "Something went wrong with extracting files from archive." 6
 		fi
+		chmod 600  ${home_dir}/clients/${server}/recovery/*
 	fi
 	if [ "${tar_command_mode}" = "old" ]; then
 		## idea of updating dump instead of initializating each time

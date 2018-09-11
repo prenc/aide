@@ -58,7 +58,7 @@ expect {
 	"password:" {send ${ADMIN_PASSWORD}\r}
 }
 expect "<#>aide_spool>>" {
-	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\`/bin/date +\%s\`" > /tmp/cron};send \r
+	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\$(/bin/date +\%s)" > /tmp/cron};send \r
 }
 expect "<#>aide_spool>>" {
 	send {crontab /tmp/cron && rm -f /tmp/cron};send \r

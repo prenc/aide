@@ -17,5 +17,12 @@ error () { #@ DESCRIPTION: print error message and exit with supplied return cod
            #@ USAGE: error information error_code
 		   #@ REQUIRES: scriptname
 	printf "${scriptname}: [\e[31mERROR\e[0m] %s\n" "$1" >&2
-	exit $2
+	exit ${2:-2}
+}
+usage () #@ DESCRIPTION: print usage information and exit with 1 return code
+{        #@ USAGE: usage
+		 #@ REQUIRES: scriptname description usage_information
+	printf "%s - %s\n" "$scriptname" "$description"
+	printf "USAGE: %s\n" "$usage_information"
+	exit 1
 }
