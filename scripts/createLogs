@@ -38,14 +38,14 @@ for client in ${home_dir}/clients/*; do
 		newer=${newer##*/}
 		older=${dumps[-2]}
 		older=${older##*/}
-		if [ -f "${client_logs}/${newer}" ]; then
-			info "No newer version available for ${client}."
+		if [[ -f ${client_logs}/${newer} ]]; then
+			info "${client}: No new version available."
 			continue
 		else
 			info "New version has been found: ${newer}"
 		fi
 		info "Recent version has been found: ${older}"
-		if [ -s "${home_dir}/conf/${client}.conf" ]; then
+		if [[ -s ${home_dir}/conf/${client}.conf ]]; then
 			sed -r -e "s|^(database=file:).*$|\1${home_dir}/spool/${older}|" -e "s|^(database_new=file:).*$|\1${home_dir}/spool/${newer}|" ${home_dir}/conf/${client}.conf > /tmp/xxx && mv /tmp/xxx ${home_dir}/conf/${client}.conf
 		else
 			error "Config does not exist or is corrupted." 9
@@ -60,15 +60,17 @@ for client in ${home_dir}/clients/*; do
 			nagiosplugin_status="$?"
 			if (( nagiosplugin_status == 1 )); then
 				${home_dir}/scripts/recovery.sh ${client} ${std_log}
+			elif (( nagiosplugin_status == 0 )); then
+				info "No changes were detected in ${client}'s files."
 			fi
 		else
-			if [ ! -s "${std_log}" ]; then
+			if [[ ! -s ${std_log} ]]; then
 				rm -f "${std_log}"      
 			fi
 			error "Something went wrong during AIDE comparison." 3
 		fi
 	else
-		warrning "Not enough amount of versions has been provided."
+		warrning "${client}: Not enough amount of versions has been provided."
 	fi
 done
 ## Maintenance operations
@@ -102,10 +104,10 @@ done
 if [[ ${check} == 0 ]]; then
 	ok "No redundant dumps."
 fi
-if [ "$(crontab -l 2>/dev/null)" == "$(cat cron)" ]; then
+if [[ $(crontab -l) == $(cat ${home_dir}/scripts/cron /dev/null) ]]; then
 	ok "Cron is set up correctly."
 else
-	if crontab "${home_dir}/scripts/cron"; then
+	if crontab ${home_dir}/scripts/cron; then
 		ok "Cron has been set up."
 	else
 		warrning "Failed to set up cron."

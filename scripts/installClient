@@ -43,7 +43,6 @@ if [[ ${test_mode} == 1 ]]; then
 	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password}
 else
 	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password} > /dev/null
-	(($?)) || ${home_dir}/scripts/backup.sh ${server} -i
 fi
 if [ "$?" = 0 ]; then
 	ok "Client ${server} has been successfully installed."
@@ -69,4 +68,5 @@ if [[ ${test_mode} == 0 ]]; then
 	else
 		warrning "${server}.conf already exists."
 	fi
+	${home_dir}/scripts/backup.sh ${server} -i
 fi

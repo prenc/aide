@@ -24,5 +24,5 @@ usage () #@ DESCRIPTION: print usage information and exit with 1 return code
 		 #@ REQUIRES: scriptname description usage_information
 	printf "%s - %s\n" "$scriptname" "$description"
 	printf "USAGE: %s\n" "$usage_information"
-	exit 1
+	exit ${1:-1}
 }

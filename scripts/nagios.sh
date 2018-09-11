@@ -1,35 +1,55 @@
 #!/bin/bash
-HOME_DIR="/home/aide/aide"
-CLIENTS_LOG="${HOME_DIR}/clients/${1}/logs"
-ADDED=0
-REMOVED=0
-CHANGED=0
-usage () {
-	echo "Usage: $0 <client_name>"
-	exit 3
-}
-if [ -z $1 ]; then
-	usage
-elif [ ! -d ${HOME_DIR}/clients/${1} ]; then
-	echo "AIDE ERROR client does not exist."
-	exit 3
-elif [ ! "$(ls -A ${CLIENTS_LOG})" > /dev/null ]; then
-	echo "AIDE ERROR client does not have logs."
-	exit 3
-fi
-LAST_LOG_FILE=$(ls ${CLIENTS_LOG} | grep -P "^${1}-[0-9]{10}" | sort -r| sed -n '1p')
-DATE=$(ls ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -r 's/^[^-]+-([0-9]{10})$/\1/'| xargs -i{} date -d @{} "+%H:%M %F")
-if [ $(($(date +%s) - $(ls ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -r 's/^[^-]+-([0-9]{10})$/\1/'))) -ge 86399 ]; then
+#:       Title: nagios.sh - Informs Nagios about last AIDE log result.
+#:    Synopsis: nagios.sh [-h] HOSTNAME 
+#:        Date: 2018-09-11
+#:     Version: 1.0
+#:      Author: Paweł Renc
+#:     Options: -h - Print usage information
+## Script metadata
+scriptname=${0##*/}			# name that script is invoked with
+description="Inform Nagios about last AIDE log result."
+usage_information="${scriptname} [-h] HOSTNAME"
+## File localizations
+home_dir="/home/aide/aide"
+clients_log="${home_dir}/clients/${1}/logs"
+## Shell additional options
+shopt -s extglob 			# turn on extended globbing	
+shopt -s nullglob 			# allow globs to return null string
+## Script options
+added=0
+removed=0
+changed=0
+## Function definitions
+source "${home_dir}/scripts/info_functions"
+## Parse command-line options
+while (( $# )); do
+	case $1 in
+	-h) usage 3;;
+	*) break
+	esac
+done
+## Check sanity
+[[ -z $1 ]] && usage 3
+[[ ! -d ${home_dir}/clients/${1} ]] && echo "AIDE ERROR client does not exist." && exit 3
+is_empty=(${clients_log}/*)
+(( ${#is_empty[@]} )) || (echo "AIDE ERROR client does not have logs." && exit 3)
+## Script body
+for log in ${clients_log}/${1}-+([0-9]); do
+	last_log=${log}
+done
+date=$(date -d @${last_log##*-} "+%H:%M %F")
+## Check whether the log is too old
+if (( ($(date +%s) - ${last_log##*-}) > 86399 )); then
 	echo "AIDE ERROR outdated logs, the last log file is older than 24h."
 	exit 2
 fi	
-if  cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | grep "found differences between" > /dev/null ; then
-	ADDED=$(cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -n '/Added files:/p' | grep -o '[0-9]\+')
-	REMOVED=$(cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -n '/Removed files:/p' | grep -o '[0-9]\+')
-	CHANGED=$(cat ${CLIENTS_LOG}/${LAST_LOG_FILE} | sed -n '/Changed files:/p' | grep -o '[0-9]\+')
-	echo "${DATE} Added:${ADDED} Removed:${REMOVED} Changed:${CHANGED} | Added=${ADDED};300;500;900;0 Removed=${REMOVED};300;500;900;0 Changed=${CHANGED};300;500;900;0"
+if grep "found differences between" ${last_log} > /dev/null ; then
+	added=$(sed -n '/Added files:/p' ${last_log} | grep -o '[0-9]\+')
+	removed=$(sed -n '/Removed files:/p' ${last_log} | grep -o '[0-9]\+')
+	changed=$(sed -n '/Changed files:/p' ${last_log} | grep -o '[0-9]\+')
+	echo "${date} Added:${added} Removed:${removed} Changed:${changed} | Added=${added};300;500;900;0 Removed=${removed};300;500;900;0 Changed=${changed};300;500;900;0"
 	exit 1
 else
-	echo "${DATE} OK  | Added=${ADDED};300;500;900;0 Removed=${REMOVED};300;500;900;0 Changed=${CHANGED};300;500;900;0"
+	echo "${date} OK | Added=${added};300;500;900;0 Removed=${removed};300;500;900;0 Changed=${changed};300;500;900;0"
 	exit 0
 fi

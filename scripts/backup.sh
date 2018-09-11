@@ -57,19 +57,19 @@ while (( $# )); do
 			tar_command_mode="new"
 			shift 1
 		;;
-		*)	if [ ! -z ${last_array} ]; then
+		*)	if [[ ! -z ${last_array} ]]; then
 				eval ${last_array}=\( \${${last_array}[@]} $1 \)
 				shift
 			else
-				[ -z ${server} ] && server=$1 || usage
+				[[ -z ${server} ]] && server=$1 || usage
 				shift
 			fi
 		;;
 	esac
 done
 # Check sanity
-[ -z ${server} ] && usage
-if (( init_mode )) && ([ ${#file_to_change[@]} -ne 0 ] || [ ${#files_to_add[@]} -ne 0 ] || [ ${#files_to_remove[@]} -ne 0 ]); then
+[[ -z ${server} ]] && usage
+if (( init_mode )) && ([[ ${#file_to_change[@]} -ne 0 ]] || [[ ${#files_to_add[@]} -ne 0 ]] || [[ ${#files_to_remove[@]} -ne 0 ]]); then
 	usage
 fi
 if (( init_mode == 0 )) && (( ${#file_to_change[@]} == 0 )) && (( ${#files_to_add[@]} == 0 )) && (( ${#files_to_remove[@]} == 0 )); then
@@ -77,7 +77,7 @@ if (( init_mode == 0 )) && (( ${#file_to_change[@]} == 0 )) && (( ${#files_to_ad
 fi
 
 # Check whether client exists
-if [ -d ${home_dir}/clients/${server}/backup ]; then
+if [[ -d ${home_dir}/clients/${server}/backup ]]; then
 	ok "Client has been found."
 else
 	error "No such client or directory structure is corrupted." 2
@@ -134,7 +134,7 @@ else
 		ok "Dump from "$(date -d@${backup_date} +%D-%T)" has been found."
 	fi
 	backup_path="${home_dir}/clients/${server}/backup/${backup_file}"
-	if [ ${#file_to_change[@]} -ne 0 ]; then
+	if [[ ${#file_to_change[@]} -ne 0 ]]; then
 		tar_command="tar xf ${backup_path} --xform='s#/#@#g' --xform='s#.*#&.${tar_command_mode}.${backup_date}#x' -C ${home_dir}/clients/${server}/recovery/"
 		for file in ${file_to_change[@]}; do
 			tar_command+=" "${file#/}
@@ -148,7 +148,7 @@ else
 		fi
 		chmod 600  ${home_dir}/clients/${server}/recovery/*
 	fi
-	if [ "${tar_command_mode}" = "old" ]; then
+	if [[ "${tar_command_mode}" = "old" ]]; then
 		## idea of updating dump instead of initializating each time
 		for file in ${files_to_add[@]}; do 
 			# nothing to do yet
