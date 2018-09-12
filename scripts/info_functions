@@ -8,7 +8,7 @@ ok () { #@ DESCRIPTION: print information about processes which ended
 		#@ REQUIRES: scriptname
 	printf "${scriptname}: [\e[32mOK\e[0m] %s\n" "$1" >&2
 }
-warrning () { #@ DESCRIPTION: print information about processes which ended
+warrning () { #@ DESCRIPTION: print warrning about processes which ended
               #@ USAGE: ok information
 			  #@ REQUIRES: scriptname
 	printf "${scriptname}: [\e[93mWARRNING\e[0m] %s\n" "$1" >&2

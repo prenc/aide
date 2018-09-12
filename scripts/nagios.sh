@@ -31,8 +31,9 @@ done
 ## Check sanity
 [[ -z $1 ]] && usage 3
 [[ ! -d ${home_dir}/clients/${1} ]] && echo "AIDE ERROR client does not exist." && exit 3
+## Check whether client has logs
 is_empty=(${clients_log}/*)
-(( ${#is_empty[@]} )) || (echo "AIDE ERROR client does not have logs." && exit 3)
+(( ${#is_empty[@]} )) || { echo "AIDE ERROR client does not have logs." && exit 3; }
 ## Script body
 for log in ${clients_log}/${1}-+([0-9]); do
 	last_log=${log}

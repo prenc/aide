@@ -1,6 +1,6 @@
 #!/bin/bash
 #:       Title: installClient - Installs new client.
-#:    Synopsis: installClient HOSTNAME [-h]
+#:    Synopsis: installClient [-h] [-t] HOSTNAME 
 #:        Date: 2018-09-07
 #:     Version: 0.9
 #:      Author: Paweł Renc
@@ -8,7 +8,7 @@
 #:              -t - Invoke script in test mode; print commands instead of 
 ## Script metadata
 scriptname=${0##*/}			# name that script is invoked with
-usage_information="${scriptname} HOSTNAME [-h] [-t]"
+usage_information="${scriptname} [-h] [-t] HOSTNAME"
 description="Installs new client."
 ## File localizations
 home_dir="/home/aide/aide"
@@ -29,12 +29,11 @@ while (( $# ));do
 		*)
 			server=$1
 			shift
-		;;
+			break
 	esac
 done
-if [ -z ${server} ]; then
-	usage
-fi
+## Check sanity
+[[ -z ${server} ]] && usage
 echo -ne "Enter password to aide: "
 read -rs aide_password; echo
 echo -ne "Enter password to root on ${server}: "
@@ -44,29 +43,34 @@ if [[ ${test_mode} == 1 ]]; then
 else
 	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password} > /dev/null
 fi
-if [ "$?" = 0 ]; then
+if [[ ${?} == 0 ]]; then
 	ok "Client ${server} has been successfully installed."
 else
 	error "Expect script failure." 2
 fi
 if [[ ${test_mode} == 0 ]]; then
 	flag=0
-	mkdir ${home_dir}/clients/${server} 2>/dev/null && ((flag++))
-	mkdir ${home_dir}/clients/${server}/logs 2>/dev/null && ((flag++))
-	mkdir ${home_dir}/clients/${server}/backup 2>/dev/null && ((flag++))
-	mkdir ${home_dir}/clients/${server}/recovery 2>/dev/null && ((flag++))
+	mkdir "${home_dir}/clients/${server}" 2>/dev/null && ((flag++))
+	mkdir "${home_dir}/clients/${server}/logs" 2>/dev/null && ((flag++))
+	mkdir "${home_dir}/clients/${server}/backup" 2>/dev/null && ((flag++))
+	mkdir "${home_dir}/clients/${server}/recovery" 2>/dev/null && ((flag++))
 	if [[ ${flag} == 4 ]]; then
-		ok "New dirs has been created."
+		ok "${server}: new dirs has been created."
 	elif [[ ${flag} == 0 ]]; then
-		warrning "No new dirs have been created."
+		warrning "${server}: no new dirs have been created."
 	else
-		warrning "Only ${flag} new dir(s) have been created."
+		warrning "${server}: only ${flag} new dir(s) have been created."
 	fi
-	if [ ! -f ${home_dir}/conf/${server}.conf ]; then
-		cp -n ${home_dir}/conf/aide.conf ${home_dir}/conf/${server}.conf 2>/dev/null
-		ok "${server}.conf has been created."
+	if [[ ! -f ${home_dir}/conf/${server}.conf ]]; then
+		cp -n "${home_dir}/conf/aide.conf" "${home_dir}/conf/${server}.conf" 2>/dev/null
+		ok "${server}: config has been created."
 	else
-		warrning "${server}.conf already exists."
+		warrning "${server}: config already exists."
 	fi
-	${home_dir}/scripts/backup.sh ${server} -i
+## Initialize dump if it is not done yet
+	is_empty=(${home_dir}/clients/${server}/backup/*)
+	(( ${#is_empty} )) || { 
+		${home_dir}/scripts/backup.sh -i "${server}"
+		(( $? )) || ok "${server}: Dump initialized." && warrning "${server}: Dump error."
+		} && ok "${server}: Dump is already initialized."
 fi
