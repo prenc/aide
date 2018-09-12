@@ -1,9 +1,0 @@
-#!/bin/bash
-
-HOME_DIR=/home/aide/aide
-
-for x in `ls ${HOME_DIR}/clients`; do
-	if [ ! -f ${HOME_DIR}/conf/${x}.conf ]; then
-		cp ${HOME_DIR}/conf/aide.conf ${HOME_DIR}/conf/${x}.conf
-	fi
-done

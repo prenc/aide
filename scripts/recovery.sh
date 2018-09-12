@@ -57,12 +57,12 @@ if (( status == 0 )); then
 			difference=$(echo "${difference}" | sed '$!s/$/\\/')
 			if (( diff_status == 1 )); then 
 				if [[ ${#difference} > 1000 ]]; then
-					sed "/^File: ${f}$/a Too many differences." "${logfile}" > /tmp/xxx
+					sed "/^File: ${f}$/a The difference counts over 1000 characters." "${logfile}" > /tmp/xxx
 				else
 					sed "/^File: ${f}$/a ${difference}" "${logfile}" > /tmp/xxx
 				fi
 			elif (( diff_status == 2 )); then
-				sed "/^File: ${f}$/a Some troubles were encountered while looking for differences." "${logfile}" > /tmp/xxx
+				sed "/^File: ${f}$/a Some troubles were encountered while looking for differences. (It can be binary file.)" "${logfile}" > /tmp/xxx
 			else
 				sed "/^File: ${f}$/a No differences were found. It means dump is corrupted." "${logfile}" > /tmp/xxx
 			fi
