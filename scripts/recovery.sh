@@ -40,7 +40,8 @@ files_to_remove=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^removed:"){print $2}' ${logf
 eval ${backup_command}
 status=$?
 if (( status == 0 )); then
-	ok "New files in recovery directory."
+	ok "${client}: New files in recovery directory."
+	info "Extracting files from new dump."
 	${home_dir}/scripts/backup.sh ${client} -n -c ${files_to_change}
 	if (( $? == 0 )); then
 		for f in ${files_to_change}; do
@@ -77,3 +78,6 @@ if (( status == 0 )); then
 else
 	error "Something went wrong while extracting old versions from archive." 2
 fi
+for f in old_recovery=(${client_recovery}/${name}.old.+([0-9])); do
+	(( $(date -d"3 days ago" +%s) > ${f##*old.} )) && rm -f "${f}"
+done

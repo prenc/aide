@@ -12,7 +12,7 @@ usage_information="${scriptname} [-h]"
 ## File localizations
 home_dir="/home/aide/aide"	# path to AIDE files
 ## Shell additional options
-shopt -s extglob 			# turn on extended globbing	
+shopt -s extglob 			# turn on extended globbing
 shopt -s nullglob 			# allow globs to return null string
 ## Function definitions
 source "${home_dir}/scripts/info_functions"
@@ -25,8 +25,8 @@ done
 ## Check whether there are registered clients.
 test -e ${home_dir}/clients/* 2>/dev/null
 case $? in
-	1)   warrning "No registered clients." ;;
-	*)    ;;
+	1) warrning "No registered clients." ;;
+	*) ;;
 esac
 ## Loop through all registered clients
 for client in ${home_dir}/clients/*; do
@@ -48,14 +48,14 @@ for client in ${home_dir}/clients/*; do
 		if [[ -s ${home_dir}/conf/${client}.conf ]]; then
 			sed -r -e "s|^(database=file:).*$|\1${home_dir}/spool/${older}|" -e "s|^(database_new=file:).*$|\1${home_dir}/spool/${newer}|" ${home_dir}/conf/${client}.conf > /tmp/xxx && mv /tmp/xxx ${home_dir}/conf/${client}.conf
 		else
-			error "Config does not exist or is corrupted." 9
+			warrning "Config does not exist or is corrupted." && continue
 		fi
 		std_log=${client_logs}"/"${newer}
 		info "Comparing databases. Please wait..."
 		/usr/sbin/aide -c ${home_dir}/conf/${client}.conf --compare 1>${std_log}
 		aide_status="$?"
 		if (( aide_status < 14 )); then
-			ok "Output has been saved to proper log file."
+			ok "${client}: AIDE successful comparison. Check log file."
 			${home_dir}/scripts/nagios.sh ${client} > /dev/null
 			nagiosplugin_status="$?"
 			if (( nagiosplugin_status == 1 )); then
@@ -65,9 +65,9 @@ for client in ${home_dir}/clients/*; do
 			fi
 		else
 			if [[ ! -s ${std_log} ]]; then
-				rm -f "${std_log}"      
+				rm -f "${std_log}"
 			fi
-			error "Something went wrong during AIDE comparison." 3
+			warrning "Something went wrong during AIDE comparison." && continue
 		fi
 	else
 		warrning "${client}: Not enough amount of versions has been provided."

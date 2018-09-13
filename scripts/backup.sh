@@ -1,6 +1,6 @@
 #!/bin/bash
 #:       Title: backup.sh - Manages dump of neuralgic client's system files.
-#:    Synopsis: backup.sh HOSTNAME -i | [-c file...] [-a file...] [-r file...] [-t] [-n] [-h]
+#:    Synopsis: backup.sh HOSTNAME [-t] [-n] [-h] -i | [-c file...] [-a file...] [-r file...]
 #:        Date: 2018-09-07
 #:     Version: 0.9
 #:      Author: Paweł Renc
@@ -9,7 +9,7 @@
 #:              -t - Invoke script in test mode; print commands instead of 
 ## Script metadata
 scriptname=${0##*/}			# name that script is invoked with
-usage_information="${scriptname} HOSTNAME -i | [-c file...] [-a file...] [-r file...] [-t] [-n] [-h]"
+usage_information="${scriptname} [-t] [-n] [-h] HOSTNAME -i | [-c file...] [-a file...] [-r file...]"
 description="Manages dump of neuralgic client's system files."
 ## Script options
 test_mode=0					# run script in test mode (default 0 - false)
@@ -84,7 +84,7 @@ else
 fi
 # Initialize dump or extract from existing one
 if (( init_mode )); then
-	if [ -f ${home_dir}/conf/${server}.conf ]; then
+	if [[ -f ${home_dir}/conf/${server}.conf ]]; then
 		ok "Client's config file has been found."
 	else
 		error "Client's config has not been found." 3
@@ -125,7 +125,7 @@ else
 	for f in ${home_dir}/clients/${server}/backup/dump-+([0-9]).tar; do
 		backup_file=$f
 	done
-	if [ -z ${backup_file} ]; then 
+	if [[ -z ${backup_file} ]]; then 
 		error "Client does not have any dump." 5
 	else
 		backup_file=${backup_file##*/}
@@ -158,7 +158,7 @@ else
 			# nothing to do yet
 			break
 		done
-		#rm "${backup_path}"
+		rm "${backup_path}"
 		ok "Creating new dump. Please wait..."
 		${home_dir}/scripts/${scriptname} ${server} -i 2>/dev/null
 	fi

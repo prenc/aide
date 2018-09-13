@@ -28,7 +28,6 @@ while (( $# ));do
 		;;
 		*)
 			server=$1
-			shift
 			break
 	esac
 done
