@@ -78,6 +78,6 @@ if (( status == 0 )); then
 else
 	error "Something went wrong while extracting old versions from archive." 2
 fi
-for f in old_recovery=(${client_recovery}/${name}.old.+([0-9])); do
+for f in ${client_recovery}/${name}.old.+([0-9]); do
 	(( $(date -d"3 days ago" +%s) > ${f##*old.} )) && rm -f "${f}"
 done
