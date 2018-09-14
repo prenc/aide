@@ -33,13 +33,10 @@ expect "<#>root>>" {
 	send {touch /var/lib/aide/aide.db.new.gz && chown aide_spool /var/lib/aide && chgrp aide_spool /var/lib/aide};send \r
 }
 expect "<#>root>>" {
-	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/sbin/aide@' /etc/sudoers > /tmp/temp};send \r
+	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/sbin/aide\naide_spool ALL=NOPASSWD: /usr/bin/tar\n@' /etc/sudoers > /tmp/temp};send \r
 }
 expect "<#>root>>" {
-	send {sed '$s@.*@&\naide_spool ALL=NOPASSWD: /usr/bin/tar@' /tmp/temp > /tmp/temp2};send \r
-}
-expect "<#>root>>" {
-	send {cat /tmp/temp2 > /etc/sudoers && rm -f /tmp/temp && rm -f /tmp/temp2};send \r
+	send {mv -f /tmp/temp /etc/sudoers && rm -f /tmp/temp};send \r
 }
 expect "<#>root>>" {send {su aide_spool};send \r}
 send {PS1="\n@@@@@@@@@<#>\u>> \n\n"};send \r

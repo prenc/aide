@@ -46,7 +46,7 @@ for client in ${home_dir}/clients/*; do
 		fi
 		info "Recent version has been found: ${older}"
 		if [[ -s ${home_dir}/conf/${client}.conf ]]; then
-			sed -r -e "s|^(database=file:).*$|\1${home_dir}/spool/${older}|" -e "s|^(database_new=file:).*$|\1${home_dir}/spool/${newer}|" ${home_dir}/conf/${client}.conf > /tmp/xxx && mv /tmp/xxx ${home_dir}/conf/${client}.conf
+			sed -r -e "s|^(database=file:).*$|\1${home_dir}/spool/${older}|" -e "s|^(database_new=file:).*$|\1${home_dir}/spool/${newer}|" ${home_dir}/conf/${client}.conf > /tmp/xxx && mv -f /tmp/xxx ${home_dir}/conf/${client}.conf
 		else
 			warrning "Config does not exist or is corrupted." && continue
 		fi

@@ -67,13 +67,13 @@ if (( status == 0 )); then
 			else
 				sed "/^File: ${f}$/a No differences were found. It means dump is corrupted." "${logfile}" > /tmp/xxx
 			fi
-			mv /tmp/xxx "${logfile}"
+			mv -f /tmp/xxx "${logfile}"
 			for f in "${new_recovery[@]}"; do
 				rm -f "${f}"
 			done
 		done
 	else
-		sed "1i Something went wrong during recovery\!\!\!\n\n" ${logfile} > /tmp/xxx && mv /tmp/xxx ${logfile}
+		sed "1i Something went wrong during recovery\!\!\!\n\n" ${logfile} > /tmp/xxx && mv -f /tmp/xxx ${logfile}
 	fi
 else
 	error "Something went wrong while extracting old versions from archive." 2
