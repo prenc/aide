@@ -75,7 +75,6 @@ fi
 if (( init_mode == 0 )) && (( ${#file_to_change[@]} == 0 )) && (( ${#files_to_add[@]} == 0 )) && (( ${#files_to_remove[@]} == 0 )); then
 	usage
 fi
-
 # Check whether client exists
 if [[ -d ${home_dir}/clients/${server}/backup ]]; then
 	ok "Client has been found."

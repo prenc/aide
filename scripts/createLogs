@@ -23,13 +23,10 @@ while (( $# )); do
 	esac
 done
 ## Check whether there are registered clients.
-test -e ${home_dir}/clients/* 2>/dev/null
-case $? in
-	1) warrning "No registered clients." ;;
-	*) ;;
-esac
+list_of_clients=(${home_dir}/clients/*)
+(( ${#list_of_clients[@]} )) || warrning "No registered clients."
 ## Loop through all registered clients
-for client in ${home_dir}/clients/*; do
+for client in "${list_of_clients[@]}"; do
 	client=${client##*/}
 	client_logs="${home_dir}/clients/${client}/logs"
 	dumps=(${home_dir}/spool/${client}-+([0-9]))
