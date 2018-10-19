@@ -1,21 +1,22 @@
 #!/usr/bin/expect
 
 if {[llength $argv] != 3} {
-	puts "usage: installClient.expect {server_name} {root_password} {admin_password}" 
+	puts "usage: installClient.expect {server_name} {root_password} {admin_password}"
 	exit 1
 }
 
 set timeout 5
-set SERVER [lindex $argv 0];
-set SERVER_PASSWORD [lindex $argv 1];
-set ADMIN_PASSWORD [lindex $argv 2];
+set server [lindex $argv 0];
+set server_password [lindex $argv 1];
+set admin_password [lindex $argv 2];
+set aide_server_ip "192.168.1.232"
 
-spawn ssh root@${SERVER}
+spawn ssh root@${server}
 expect {
 	timeout {puts "time out"; exit 1}
 	"Name or service not known" {exit 1}
 	"to continue connecting (yes/no)?" {send yes\r; exp_continue}
-	"password:" {send ${SERVER_PASSWORD}; send \r}
+	"password:" {send ${server_password}; send \r}
 }
 expect "Last login" {send {PS1="\n#########<#>\u>> \n\n"};send \r}
 expect "<#>root>>" {
@@ -48,20 +49,20 @@ expect {
 	"passphrase again:" {send \r}
 }
 expect "<#>aide_spool>>" {
-	send {ssh-copy-id -f aide@aide};send \r
+	send {ssh-copy-id -f aide@}; send ${aide_server_ip};send \r
 }
 expect {
 	"yes/no)?" {send yes\r; exp_continue}
-	"password:" {send ${ADMIN_PASSWORD}\r}
+	"password:" {send ${admin_password}\r}
 }
 expect "<#>aide_spool>>" {
-	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@aide:~/aide/spool/${HOSTNAME}-\$(/bin/date +\%s)" > /tmp/cron};send \r
+	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@"}; send ${aide_server_ip}; send {":~/aide/spool/${HOSTNAME}-\$(/bin/date +\%s)" > /tmp/cron};send \r
 }
 expect "<#>aide_spool>>" {
 	send {crontab /tmp/cron && rm -f /tmp/cron};send \r
 }
 expect "<#>aide_spool>>" {
-	send {scp aide@aide:~/.ssh/id_rsa.pub ~/.ssh/authorized_keys};send \r
+	send {scp aide@}; send ${aide_server_ip}; send {:~/.ssh/id_rsa.pub ~/.ssh/authorized_keys};send \r
 }
 expect "<#>aide_spool>>" {
 	send {exit};send \r

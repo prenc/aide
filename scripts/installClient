@@ -1,17 +1,20 @@
 #!/bin/bash
 #:       Title: installClient - Installs new client.
-#:    Synopsis: installClient [-h] [-t] HOSTNAME 
+#:    Synopsis: installClient [-h] [-t] HOSTNAME
 #:        Date: 2018-09-07
 #:     Version: 0.9
 #:      Author: Paweł Renc
 #:     Options: -h - Print usage information
-#:              -t - Invoke script in test mode; print commands instead of 
+#:              -t - Invoke script in test mode; print commands instead
 ## Script metadata
 scriptname=${0##*/}			# name that script is invoked with
 usage_information="${scriptname} [-h] [-t] HOSTNAME"
 description="Installs new client."
 ## File localizations
 home_dir="/home/aide/aide"
+## Shell additional options
+shopt -s extglob 			# turn on extended globbing
+shopt -s nullglob 			# allow globs to return null string
 ## Script options
 test_mode=0
 ## Function definitions
@@ -37,7 +40,7 @@ echo -ne "Enter password to aide: "
 read -rs aide_password; echo
 echo -ne "Enter password to root on ${server}: "
 read -rs server_password; echo
-if [[ ${test_mode} == 1 ]]; then 
+if [[ ${test_mode} == 1 ]]; then
 	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password}
 else
 	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password} > /dev/null
@@ -48,6 +51,8 @@ else
 	error "Expect script failure." 2
 fi
 if [[ ${test_mode} == 0 ]]; then
+	echo -ne "Enter server hostname: "
+	read -r server
 	flag=0
 	mkdir "${home_dir}/clients/${server}" 2>/dev/null && ((flag++))
 	mkdir "${home_dir}/clients/${server}/logs" 2>/dev/null && ((flag++))
@@ -68,8 +73,8 @@ if [[ ${test_mode} == 0 ]]; then
 	fi
 ## Initialize dump if it is not done yet
 	is_empty=(${home_dir}/clients/${server}/backup/*)
-	(( ${#is_empty} )) || { 
+	(( ${#is_empty[@]} )) || {
 		${home_dir}/scripts/backup.sh -i "${server}"
-		(( $? )) || ok "${server}: Dump initialized." && warrning "${server}: Dump error."
+		(( $? )) ||  ok "${server}: Dump initialized." && warrning "${server}: Dump error."
 		} && ok "${server}: Dump is already initialized."
 fi
