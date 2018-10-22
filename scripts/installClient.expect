@@ -6,12 +6,12 @@ if {[llength $argv] != 3} {
 }
 
 set timeout 5
-set server [lindex $argv 0];
+set server_ip [lindex $argv 0];
 set server_password [lindex $argv 1];
 set admin_password [lindex $argv 2];
 set aide_server_ip "192.168.1.232"
 
-spawn ssh root@${server}
+spawn ssh root@${server_ip}
 expect {
 	timeout {puts "time out"; exit 1}
 	"Name or service not known" {exit 1}
@@ -56,7 +56,7 @@ expect {
 	"password:" {send ${admin_password}\r}
 }
 expect "<#>aide_spool>>" {
-	send {echo "0 0,12 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@"}; send ${aide_server_ip}; send {":~/aide/spool/${HOSTNAME}-\$(/bin/date +\%s)" > /tmp/cron};send \r
+	send {echo "0 6,18 * * * sudo /usr/sbin/aide -i && scp /var/lib/aide/aide.db.new.gz aide@"}; send ${aide_server_ip}; send {":~/aide/spool/${HOSTNAME}-\$(/bin/date +\%s)" > /tmp/cron};send \r
 }
 expect "<#>aide_spool>>" {
 	send {crontab /tmp/cron && rm -f /tmp/cron};send \r

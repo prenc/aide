@@ -30,29 +30,32 @@ while (( $# ));do
 			shift
 		;;
 		*)
-			server=$1
-			break
+			server="$1"
+			shift
 	esac
 done
 ## Check sanity
 [[ -z ${server} ]] && usage
-echo -ne "Enter password to aide: "
+## Ask user for passwords
+echo -ne "${server}'s ip: "
+read -r server_ip
+echo -ne "aide@aide's password: "
 read -rs aide_password; echo
-echo -ne "Enter password to root on ${server}: "
+echo -ne "root@${server}'s password: "
 read -rs server_password; echo
+## Install remotely
 if [[ ${test_mode} == 1 ]]; then
-	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password}
+	${home_dir}/scripts/installClient.expect ${server_ip} ${server_password} ${aide_password}
 else
-	${home_dir}/scripts/installClient.expect ${server} ${server_password} ${aide_password} > /dev/null
+	${home_dir}/scripts/installClient.expect ${server_ip} ${server_password} ${aide_password} > /dev/null
 fi
 if [[ ${?} == 0 ]]; then
 	ok "Client ${server} has been successfully installed."
 else
 	error "Expect script failure." 2
 fi
+## Install client locally
 if [[ ${test_mode} == 0 ]]; then
-	echo -ne "Enter server hostname: "
-	read -r server
 	flag=0
 	mkdir "${home_dir}/clients/${server}" 2>/dev/null && ((flag++))
 	mkdir "${home_dir}/clients/${server}/logs" 2>/dev/null && ((flag++))
@@ -71,10 +74,25 @@ if [[ ${test_mode} == 0 ]]; then
 	else
 		warrning "${server}: config already exists."
 	fi
-## Initialize dump if it is not done yet
-	is_empty=(${home_dir}/clients/${server}/backup/*)
-	(( ${#is_empty[@]} )) || {
-		${home_dir}/scripts/backup.sh -i "${server}"
-		(( $? )) ||  ok "${server}: Dump initialized." && warrning "${server}: Dump error."
-		} && ok "${server}: Dump is already initialized."
+	## Optionally add backup and recovery feature
+	echo -e "Do you want to turn on backup and recovery feature?"
+	read -r -n1 -p "(y/n): " bkp_feature; echo
+	if [[ ${bkp_feature} == "y" ]]; then
+		printf "%s %s\n" "${server}" "${server_ip}" >> ${home_dir}/recovery_clients.conf
+		awk '!seen[$0]++' ${home_dir}/recovery_clients.conf > /tmp/x
+		mv /tmp/x ${home_dir}/recovery_clients.conf
+		rm -f /tmp/x
+		## Initialize dump
+		echo -e "Do you want to initialize dump now?"
+		read -r -n1 -p "(y/n): " init_dump_now; echo
+		if [[ ${init_dump_now} == "y" ]]; then
+			is_empty=(${home_dir}/clients/${server}/backup/*)
+			if (( ${#is_empty[@]} )); then
+				ok "${server}: Dump is already initialized."
+			else
+				${home_dir}/scripts/backup.sh -i "${server}"
+				(( $? )) ||  ok "${server}: Dump initialized." && warrning "${server}: Dump error"
+			fi
+		fi
+	fi
 fi

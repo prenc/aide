@@ -80,7 +80,7 @@ for client in ${home_dir}/clients/*; do
 done
 check=0
 for dump in ${home_dir}/spool/*; do
-	if [[ ! "${dump_list[*]}" =~ ${dump##*/} ]]; then 
+	if [[ ! "${dump_list[*]}" =~ ${dump##*/} ]]; then
 		info "Removing unregistered client's dumps and trash files: ${dump}"
 		rm -f "${dump}"
 		check=1
@@ -102,11 +102,11 @@ if [[ ${check} == 0 ]]; then
 	ok "No redundant dumps."
 fi
 if [[ "$(crontab -l)" == "$(cat ${home_dir}/scripts/cron /dev/null)" ]]; then
-	ok "Cron is set up correctly."
+	ok "Crontab is set up correctly."
 else
 	if crontab ${home_dir}/scripts/cron; then
-		ok "Cron has been set up."
+		ok "Crontab has been updated."
 	else
-		warrning "Failed to set up cron."
+		warrning "Failed to set up crontab."
 	fi
 fi

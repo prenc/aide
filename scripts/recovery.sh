@@ -12,37 +12,33 @@ description="Recovers files from dump."
 ## File localizations
 home_dir="/home/aide/aide"	# path to AIDE files
 ## Shell additional options
-shopt -s extglob 			# turn on extended globbing	
+shopt -s extglob 			# turn on extended globbing
 shopt -s nullglob 			# allow globs to return null string
 ## Function definitions
 source ${home_dir}/scripts/info_functions
 ## Parse command-line options
 while (( $# )); do
 	case $1 in
-	-h) 
-		usage 
+	-h)
+		usage
 	;;
-	*) 
+	*)
 		client="$1"
-	    logfile="$2"
-		break
+    logfile="$2"
+		shift 2
 	esac
 done
 client_recovery="${home_dir}/clients/${client}/recovery"
 ## Script body
 backup_command="${home_dir}/scripts/backup.sh ${client}"
 files_to_change=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^changed:"){print $2}' ${logfile} 2>/dev/null)
-files_to_add=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^added:"){print $2}' ${logfile} 2>/dev/null)
-files_to_remove=$(awk 'BEGIN{FS=" ";ORS=" "}($0 ~ "^removed:"){print $2}' ${logfile} 2>/dev/null)
-[[ ! -z ${files_to_change} ]] && backup_command+=" -c ${files_to_change}"
-[[ ! -z ${files_to_add} ]] && backup_command+=" -a ${files_to_add}"
-[[ ! -z ${files_to_remove} ]] && backup_command+=" -r ${files_to_remove}"
+[[ ! -z ${files_to_change} ]] && backup_command+=" -f ${files_to_change}"
 eval ${backup_command}
 status=$?
 if (( status == 0 )); then
 	ok "${client}: New files in recovery directory."
 	info "Extracting files from new dump."
-	${home_dir}/scripts/backup.sh ${client} -n -c ${files_to_change}
+	${home_dir}/scripts/backup.sh ${client} -n -f ${files_to_change}
 	if (( $? == 0 )); then
 		for f in ${files_to_change}; do
 			name="${f#/}"
@@ -54,9 +50,9 @@ if (( status == 0 )); then
 			new_ver="${new_recovery[-1]}"
 			f="${f////\\/}"
 			difference=$(diff ${old_ver} ${new_ver})
-			diff_status=$?
+			diff_status="$?"
 			difference=$(echo "${difference}" | sed '$!s/$/\\/')
-			if (( diff_status == 1 )); then 
+			if (( diff_status == 1 )); then
 				if [[ ${#difference} > 1000 ]]; then
 					sed "/^File: ${f}$/a The difference counts over 1000 characters." "${logfile}" > /tmp/xxx
 				else
@@ -69,15 +65,19 @@ if (( status == 0 )); then
 			fi
 			mv -f /tmp/xxx "${logfile}"
 			for f in "${new_recovery[@]}"; do
-				rm -f "${f}"
+				#rm -f "${f}"
+				echo
 			done
 		done
 	else
-		sed "1i Something went wrong during recovery\!\!\!\n\n" ${logfile} > /tmp/xxx && mv -f /tmp/xxx ${logfile}
+		sed "1i Something went wrong during recovery\!\n\n" ${logfile} > /tmp/xxx && mv -f /tmp/xxx ${logfile}
 	fi
 else
 	error "Something went wrong while extracting old versions from archive." 2
 fi
 for f in ${client_recovery}/${name}.old.+([0-9]); do
 	(( $(date -d"3 days ago" +%s) > ${f##*old.} )) && rm -f "${f}"
+done
+for f in ${client_recovery}/${name}.new.+([0-9]); do
+	rm -f "${f}"
 done
