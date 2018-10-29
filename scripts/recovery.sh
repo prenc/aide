@@ -53,7 +53,7 @@ if (( status == 0 )); then
 			diff_status="$?"
 			difference=$(echo "${difference}" | sed '$!s/$/\\/')
 			if (( diff_status == 1 )); then
-				if [[ ${#difference} > 1000 ]]; then
+				if (( ${#difference} > 1000 )); then
 					sed "/^File: ${f}$/a The difference counts over 1000 characters." "${logfile}" > /tmp/xxx
 				else
 					sed "/^File: ${f}$/a ${difference}" "${logfile}" > /tmp/xxx
@@ -65,8 +65,7 @@ if (( status == 0 )); then
 			fi
 			mv -f /tmp/xxx "${logfile}"
 			for f in "${new_recovery[@]}"; do
-				#rm -f "${f}"
-				echo
+				rm -f "${f}"
 			done
 		done
 	else

@@ -98,9 +98,7 @@ for client in ${home_dir}/clients/*; do
 		check=1
 	done
 done
-if [[ ${check} == 0 ]]; then
-	ok "No redundant dumps."
-fi
+[[ ${check} == 0 ]] &&	ok "No redundant dumps."
 if [[ "$(crontab -l)" == "$(cat ${home_dir}/scripts/cron /dev/null)" ]]; then
 	ok "Crontab is set up correctly."
 else
@@ -110,3 +108,4 @@ else
 		warrning "Failed to set up crontab."
 	fi
 fi
+exit 0

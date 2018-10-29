@@ -19,7 +19,7 @@ tar_command_mode=0 		# type of exstraction (default 0 - "old", 1 - "new")
 home_dir="/home/aide/aide"	# path to AIDE files
 ## Shell additional options
 shopt -s extglob 			# turn on extended globbing
-shopt -s nullglob
+shopt -s nullglob			# enable null globbs
 ## Function definitions
 source ${home_dir}/scripts/info_functions
 ## Parse command-line options
@@ -135,19 +135,18 @@ else
 	(( ${#backup_files[@]} )) || error "Client does not have any dump initialized." 5
 	## Extract files from existing dump
 	for changed_file in ${changed_files[@]}; do
-		### Iterate through dump starting from newest
+		### Iterate through dump starting from newest in order to find the newest version of file
 		for (( i=1;i<=${#backup_files[@]};i++ )); do
-			backup_date=${backup_files[-${i}]##*-}
+			backup_file=${backup_files[-${i}]}
+			backup_date=${backup_file##*-}
 			backup_date=${backup_date%%.tar}
 			if (( ${tar_command_mode} )); then
 				version_mark="new"
 			else
 				version_mark="old"
 			fi
-			tar_command="tar xf ${backup_files[-${i}]}
-			--xform='s#.*#&.${version_mark}.${backup_date}#x' --xform='s#/#@#g' -C ${home_dir}/clients/${server}/recovery/ ${changed_file#/}"
-			echo ${backup_files[-${i}]}
-			echo $tar_command
+			shopt -u nullglob
+			tar_command="tar xf ${backup_file} --xform='s#/#@#g' --xform='s#.*#&.${version_mark}.${backup_date}#' --no-recursion -C ${home_dir}/clients/${server}/recovery/ ${changed_file#/} "
 			if eval ${tar_command}; then
 				ok "File ${changed_file} from "$(date -d@${backup_date} +%D-%T)" has been found."
 				break
@@ -155,7 +154,7 @@ else
 		done
 	done
 	if (( ! ${tar_command_mode} )); then
-	### Download only changed files from client
+		### Download only changed files from client
 		${home_dir}/scripts/backup.sh ${server} -i -f ${changed_files[@]}
 	fi
 	## Change permissons
