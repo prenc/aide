@@ -106,23 +106,33 @@ if (( init_mode )); then
 		done < ${home_dir}/conf/${server}.conf
 	fi
 	tar_command+=" > ${home_dir}/clients/${server}/backup/dump-$(date +%s).tar"
-	## Execute
+	## Download files from clients
 	if (( test_mode )); then
 		printf "%s\n" "${tar_command}"
 	else
+		## Two modes depending whether it is dump initialization or only dump complementation
 		if (( ! ${#changed_files[@]} )); then
-			## Remove old dump's files
+			### Remove old dump's files
 			for f in ${home_dir}/clients/${server}/backup/*; do
 				rm -f ${f}
 			done
-		fi
-		## Create new dump
-		if eval ${tar_command} 2>/dev/null; then
-			ok "New dump has been initialized."
-		elif [[ $? == 2 ]]; then
-			warrning "New dump has been initialized but config file is not perfectly configured."
+			### Create new full dump
+			if eval ${tar_command} 2>/dev/null; then
+				ok "New dump has been initialized."
+			elif [[ $? == 2 ]]; then
+				warrning "New dump has been initialized but config file is not perfectly configured."
+			else
+				error "Something went wrong during dump initialization." 4
+			fi
 		else
-			error "Something went wrong during dump initialization." 4
+			### Create main dump complementation
+			if eval ${tar_command} "--no-recursion" 2>/dev/null; then
+				ok "Changed files has been downloaded properly."
+			elif [[ $? == 2 ]]; then
+				warrning "No all changed files has been downloaded."
+			else
+				error "Something went wrong while downloading files." 4
+			fi
 		fi
 	fi
 else

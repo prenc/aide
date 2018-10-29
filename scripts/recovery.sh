@@ -64,8 +64,9 @@ if (( status == 0 )); then
 				sed "/^File: ${f}$/a No differences were found. It means dump is corrupted." "${logfile}" > /tmp/xxx
 			fi
 			mv -f /tmp/xxx "${logfile}"
+			### Remove files extracted only to compare
 			for f in "${new_recovery[@]}"; do
-				rm -f "${f}"
+				rm -rf "${f}"
 			done
 		done
 	else
@@ -74,9 +75,11 @@ if (( status == 0 )); then
 else
 	error "Something went wrong while extracting old versions from archive." 2
 fi
+## Remove recovered files older than 3 days
 for f in ${client_recovery}/${name}.old.+([0-9]); do
-	(( $(date -d"3 days ago" +%s) > ${f##*old.} )) && rm -f "${f}"
+	(( $(date -d"3 days ago" +%s) > ${f##*old.} )) && rm -fr "${f}"
 done
-for f in ${client_recovery}/${name}.new.+([0-9]); do
-	rm -f "${f}"
-done
+## Theoretically not needed
+# for f in ${client_recovery}/${name}.new.+([0-9]); do
+# 	rm -fr "${f}"
+# done
