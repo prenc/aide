@@ -79,13 +79,14 @@ if [[ ${test_mode} == 0 ]]; then
 	read -r -n1 -p "(y/n): " bkp_feature; echo
 	if [[ ${bkp_feature} == "y" ]]; then
 		printf "%s %s\n" "${server}" "${server_ip}" >> ${home_dir}/recovery_clients.conf
+		### Remove duplicated lines in recovery_clients.conf
 		awk '!seen[$0]++' ${home_dir}/recovery_clients.conf > /tmp/x
 		mv /tmp/x ${home_dir}/recovery_clients.conf
 		rm -f /tmp/x
-		### Add job to crontab
-		echo "0 5 * * 0 ${home_dir}/scripts/backup.sh ${server} -i > ${home_dir}/logs/backup-\$(date +\%s)" >> ${home_dir}/scripts/cron
+		### Add a job to crontab
+		printf "0 5 * * 0 ${home_dir}/scripts/backup.sh ${server} -i 2> ${home_dir}/logs/backup-\$(date +\%s)\n" >> ${home_dir}/scripts/cron
 		### Initialize dump
-		echo -e "Do you want to initialize dump now?"
+		printf -e "Do you want to initialize dump now?"
 		read -r -n1 -p "(y/n): " init_dump_now; echo
 		if [[ ${init_dump_now} == "y" ]]; then
 			is_empty=(${home_dir}/clients/${server}/backup/*)
